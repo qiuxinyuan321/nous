@@ -1,0 +1,1102 @@
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"{\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"goal"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\":\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"设计"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"并"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"验证"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"一个"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"面"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"向"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":" IN"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"TP"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":" 用户"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"的"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"执行"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"力"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"工具"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"，"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"帮助"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"把"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"想"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"法"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"转"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"化"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"为"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"可"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"执行"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"行动"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"，"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"降低"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"拖"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"延"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"与"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"启动"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"成本"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"，同时"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"保"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"留"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"探索"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"与"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"灵"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"活"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"性"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"tasks"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\":[\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"明确"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"目标"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"用户"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"画像"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"："},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"梳"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"理"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":" IN"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"TP"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":" 常"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"见"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"执行"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"障"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"碍"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"，如"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"过"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"度"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"思"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"考"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"兴趣"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"驱"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"动"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"抗"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"拒"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"僵"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"化"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"计划"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"容易"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"分"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"心"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"与"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"半"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"途"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"转"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"向"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"定义"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"核心"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"价值"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"主"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"张"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"："},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"不是"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"强"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"压"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"自"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"律"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"，而"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"是"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"通过"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"低"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"摩"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"擦"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"模块"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"化"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"可"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"探索"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"的"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"方式"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"提升"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"启动"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"率"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"持续"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"率"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"和"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"完成"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"率"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"设计"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"核心"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"使用"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"场"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"景"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"："},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"如"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"灵"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"感"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"捕"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"捉"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"任务"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"拆"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"解"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"启动"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"倒"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"计"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"时"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"分"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"支"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"探索"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"优"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"先"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"级"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"判断"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"复"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"盘"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"总结"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"提"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"炼"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"产品"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"原则"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"："},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"轻"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"量"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"可"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"视"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"化"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"允许"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"非"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"线"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"性"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"支持"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"临"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"时"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"切"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"换"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"避免"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"过"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"度"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"打"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"卡"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"和"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"机械"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"提醒"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"设计"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"最"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"小"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"可"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"行"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"功能"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"（"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"M"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"VP"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"）："},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"包括"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"想"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"法"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"收"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"集"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"箱"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"任务"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"自动"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"拆"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"分"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"下一"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"步"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"动作"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"建议"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"专"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"注"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"计"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"时"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"进"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"度"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"回"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"顾"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"灵"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"感"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"与"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"任务"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"关联"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"加入"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"适"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"配"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":" IN"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"TP"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":" 的"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"机制"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"："},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"例如"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"“"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"先"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"研究"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"后"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"行动"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"”"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"限"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"额"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"探索"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"时间"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"盒"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"任务"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"理由"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"提示"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"可"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"选"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"路径"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"而"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"非"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"单"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"一路"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"径"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"建立"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"执行"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"闭"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"环"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"："},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"从"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"想"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"法"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"输入"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"→"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"判断"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"是否"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"值得"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"做"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"→"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"拆"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"成"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"下一"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"步"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"→"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"启动"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"执行"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"→"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"中"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"途"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"记录"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"阻"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"碍"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"→"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"完成"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"后"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"复"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"盘"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"设计"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"反馈"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"系统"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"："},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"用"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"完成"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"感"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"清"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"晰"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"度"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"连续"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"推进"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"次数"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"等"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"替"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"代"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"单"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"纯"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"的"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"连续"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"打"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"卡"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"，"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"减少"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"挫"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"败"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"感"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"思"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"考"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"差"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"异"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"化"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"亮"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"点"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"："},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"比如"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":" AI"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":" 帮"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"助"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"把"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"模"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"糊"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"念"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"头"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"转"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"为"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"行动"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"清"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"单"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"，"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"或"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"根据"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"用户"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"状态"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"生成"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"当"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"下"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"最"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"容易"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"开始"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"的一"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"步"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"制作"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"用户"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"流程"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"图"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"与"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"线"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"框"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"稿"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"，"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"验证"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"工具"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"是否"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"足"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"够"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"简单"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"，"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"避免"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"功能"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"过"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"多"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"反"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"而"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"增加"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"认"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"知"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"负"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"担"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"定义"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"关键"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"指标"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"："},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"如"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"每日"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"启动"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"次数"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"任务"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"拆"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"解"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"率"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"想"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"法"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"转"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"任务"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"率"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"任务"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"完成"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"率"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"7"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"日"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"留"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"存"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"寻找"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":" "},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"5"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"-"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"10"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":" 位"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"目标"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"用户"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"进行"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"访"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"谈"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"，"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"了解"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"他们"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"当前"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"如何"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"管理"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"任务"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"在哪"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"些"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"环"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"节"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"最"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"容易"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"卡"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"住"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"基"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"于"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"访"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"谈"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"结果"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"快速"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"迭"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"代"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":" MVP"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"，"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"优"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"先"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"保"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"留"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"真正"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"能"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"降低"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"行动"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"门"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"槛"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"的"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"功能"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"制定"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"上线"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"计划"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"："},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"先"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"做"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":" Not"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"ion"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":" 模"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"板"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"网页"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"原"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"型"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"或"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"小"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"程序"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"雏"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"形"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"，再"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"逐"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"步"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"扩"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"展"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"为"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"完整"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"产品"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\",\""},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"补"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"充"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"品牌"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"表达"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"："},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"命"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"名"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"S"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"logan"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":" 和"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"视觉"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"风"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"格"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"应"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"体现"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"理"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"性"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"自由"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"、"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"实验"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"感"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"，而"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"非"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"传统"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"效率"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"工具"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"的"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"压"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"迫"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"感"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"。"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"\"]"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{"role":"assistant","content":"}"},"finish_reason":null,"native_finish_reason":null}]}
+
+data: {"id":"resp_016fe211fc1b6f350169e51884b4088191aff783c0f1be47be","object":"chat.completion.chunk","created":1776621700,"model":"gpt-5.4","choices":[{"index":0,"delta":{},"finish_reason":"stop","native_finish_reason":"stop"}],"usage":{"completion_tokens":584,"total_tokens":621,"prompt_tokens":37,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":20}}}
+
+data: [DONE]
+

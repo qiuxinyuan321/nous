@@ -112,7 +112,6 @@ export async function POST(req: Request) {
     system: systemPrompt,
     messages: messages.map((m) => ({ role: m.role, content: m.content })),
     maxOutputTokens: provider.maxOutputTokens,
-    temperature: 0.7,
     onFinish: async ({ text, usage }) => {
       try {
         await prisma.message.create({
