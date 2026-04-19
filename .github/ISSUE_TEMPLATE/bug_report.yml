@@ -1,0 +1,43 @@
+name: Bug Report
+description: 报告一个 Bug / Report a bug
+labels: ['bug']
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 描述 / Description
+      description: 简要描述遇到的问题 / Describe the bug
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤 / Steps to Reproduce
+      description: |
+        1. 进入 '...'
+        2. 点击 '...'
+        3. 看到错误
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望行为 / Expected Behavior
+
+  - type: dropdown
+    id: deployment
+    attributes:
+      label: 部署方式 / Deployment
+      options:
+        - Docker (自托管 / self-hosted)
+        - 本地开发 / Local dev
+        - 其他 / Other
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 日志 / Logs
+      description: docker logs nous-app 的相关输出
+      render: shell
