@@ -32,11 +32,13 @@ function buildModel(p: ResolvedProvider) {
     const anthropic = createAnthropic({ apiKey: p.apiKey, baseURL: p.baseURL })
     return anthropic(p.model)
   }
+  // 强制用 /v1/chat/completions（兼容网关几乎都只实现这个端点，
+  // @ai-sdk/openai 默认的 /v1/responses 会被浮生云算等网关返回无权限）
   const openai = createOpenAI({
     apiKey: p.apiKey,
     baseURL: p.baseURL,
   })
-  return openai(p.model)
+  return openai.chat(p.model)
 }
 
 export async function POST(req: Request) {

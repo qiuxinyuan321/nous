@@ -72,6 +72,13 @@ export function useNousChat({
           full += decoder.decode(value, { stream: true })
           setStreaming(full)
         }
+        if (!full.trim()) {
+          setStreaming('')
+          setStatus('error')
+          setError('AI_EMPTY_RESPONSE')
+          onError?.('AI_EMPTY_RESPONSE')
+          return
+        }
         setMessages((m) => [...m, { role: 'assistant', content: full }])
         setStreaming('')
         setStatus('idle')

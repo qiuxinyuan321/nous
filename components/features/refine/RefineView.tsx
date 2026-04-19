@@ -23,6 +23,8 @@ const ERROR_LABEL: Record<string, string> = {
   PROVIDER_UNAVAILABLE: 'AI 服务当前不可用。请配置 BYOK 或联系管理员。',
   UNAUTHORIZED: '登录态已失效，请重新登录。',
   NOT_FOUND: '想法不存在或已被删除。',
+  AI_EMPTY_RESPONSE:
+    '模型没返回内容。常见原因：Key 对该模型无权限 / 模型名拼写错误 / 网关超时。查 pnpm dev 终端看具体原因。',
 }
 
 export function RefineView({
