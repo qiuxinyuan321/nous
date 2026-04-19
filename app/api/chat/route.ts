@@ -1,8 +1,7 @@
-import { createAnthropic } from '@ai-sdk/anthropic'
-import { createOpenAI } from '@ai-sdk/openai'
 import { streamText } from 'ai'
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
+import { buildModel } from '@/lib/ai/model'
 import { resolveProvider } from '@/lib/ai/providers'
 import { consumeDemoQuota } from '@/lib/ai/quota'
 import { consumeToken } from '@/lib/ai/ratelimit'
@@ -26,20 +25,6 @@ const bodySchema = z.object({
     .min(1)
     .max(40),
 })
-
-function buildModel(p: ResolvedProvider) {
-  if (p.kind === 'anthropic') {
-    const anthropic = createAnthropic({ apiKey: p.apiKey, baseURL: p.baseURL })
-    return anthropic(p.model)
-  }
-  // 强制用 /v1/chat/completions（兼容网关几乎都只实现这个端点，
-  // @ai-sdk/openai 默认的 /v1/responses 会被浮生云算等网关返回无权限）
-  const openai = createOpenAI({
-    apiKey: p.apiKey,
-    baseURL: p.baseURL,
-  })
-  return openai.chat(p.model)
-}
 
 export async function POST(req: Request) {
   const session = await auth()

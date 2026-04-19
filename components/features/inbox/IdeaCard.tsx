@@ -13,9 +13,14 @@ const statusLabel: Record<string, string> = {
 export function IdeaCard({ idea }: { idea: Idea }) {
   const preview =
     idea.rawContent.length > 160 ? `${idea.rawContent.slice(0, 160)}…` : idea.rawContent
+  const href =
+    idea.status === 'planned' || idea.status === 'executing' || idea.status === 'done'
+      ? `/plan/${idea.id}`
+      : `/refine/${idea.id}`
+  const hoverLabel = href.startsWith('/plan/') ? '查看方案 →' : '进入对话 →'
   return (
     <Link
-      href={`/refine/${idea.id}`}
+      href={href}
       className="border-ink-light/30 bg-paper-aged/40 hover:border-ink-heavy/60 hover:bg-paper-aged/70 group block rounded-sm border p-5 transition"
     >
       <header className="flex items-start justify-between gap-3">
@@ -43,7 +48,7 @@ export function IdeaCard({ idea }: { idea: Idea }) {
           <span />
         )}
         <span className="text-indigo-stone text-xs opacity-0 transition group-hover:opacity-100">
-          进入对话 →
+          {hoverLabel}
         </span>
       </div>
     </Link>

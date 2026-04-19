@@ -21,7 +21,10 @@ export default async function RefinePage({
 
   const idea = await prisma.idea.findFirst({
     where: { id, userId: session.user.id },
-    include: { messages: { orderBy: { createdAt: 'asc' } } },
+    include: {
+      messages: { orderBy: { createdAt: 'asc' } },
+      plan: { select: { id: true } },
+    },
   })
   if (!idea) notFound()
 
@@ -40,6 +43,7 @@ export default async function RefinePage({
       initialMessages={initialMessages}
       initialPhase={initialPhase}
       locale={locale === 'en-US' ? 'en-US' : 'zh-CN'}
+      hasPlan={!!idea.plan}
     />
   )
 }

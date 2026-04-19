@@ -1,9 +1,10 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useTransition } from 'react'
 import type { ChatMessage, Phase } from '@/lib/ai/types'
 import { useNousChat } from '@/lib/hooks/useNousChat'
+import { generatePlanAction } from '@/app/[locale]/(app)/refine/[id]/actions'
 import { MessageBubble } from './MessageBubble'
 import { PhaseIndicator } from './PhaseIndicator'
 import { QuotaBanner } from './QuotaBanner'
@@ -15,6 +16,7 @@ interface RefineViewProps {
   initialMessages: ChatMessage[]
   initialPhase: Phase
   locale: 'zh-CN' | 'en-US'
+  hasPlan: boolean
 }
 
 const ERROR_LABEL: Record<string, string> = {
@@ -25,6 +27,8 @@ const ERROR_LABEL: Record<string, string> = {
   NOT_FOUND: '想法不存在或已被删除。',
   AI_EMPTY_RESPONSE:
     '模型没返回内容。常见原因：Key 对该模型无权限 / 模型名拼写错误 / 网关超时。查 pnpm dev 终端看具体原因。',
+  AI_GENERATION_FAILED: 'AI 生成方案失败。稍后再试或查看终端日志。',
+  PERSIST_FAILED: '保存方案到数据库失败。',
 }
 
 export function RefineView({
@@ -34,9 +38,12 @@ export function RefineView({
   initialMessages,
   initialPhase,
   locale,
+  hasPlan,
 }: RefineViewProps) {
   const t = useTranslations('refine')
   const [input, setInput] = useState('')
+  const [planError, setPlanError] = useState<string | null>(null)
+  const [isPlanning, startPlanning] = useTransition()
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const { messages, streaming, status, error, phase, send } = useNousChat({
@@ -65,7 +72,20 @@ export function RefineView({
     }
   }
 
+  function handleGeneratePlan() {
+    setPlanError(null)
+    startPlanning(async () => {
+      const res = await generatePlanAction(ideaId, locale)
+      if (res && !res.ok) {
+        setPlanError(res.error)
+      }
+      // 成功时 action 已 redirect，不会走到这里
+    })
+  }
+
   const hasConversation = messages.length > 0 || streaming
+  const canPlan = phase === 'ready' || hasPlan
+  const displayError = error ?? planError
 
   return (
     <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-3xl flex-col px-6 py-10">
@@ -91,8 +111,10 @@ export function RefineView({
         {streaming && <MessageBubble role="assistant" content={streaming} streaming />}
       </div>
 
-      {error && (
-        <p className="text-cinnabar mb-3 text-sm">{ERROR_LABEL[error] ?? `错误：${error}`}</p>
+      {displayError && (
+        <p className="text-cinnabar mb-3 text-sm">
+          {ERROR_LABEL[displayError] ?? `错误：${displayError}`}
+        </p>
       )}
 
       <form
@@ -104,7 +126,7 @@ export function RefineView({
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={onKeyDown}
           rows={2}
-          disabled={status === 'streaming' || status === 'sending'}
+          disabled={status === 'streaming' || status === 'sending' || isPlanning}
           placeholder={
             status === 'streaming' ? t('thinking') : '回应一句…（Enter 送出，Shift+Enter 换行）'
           }
@@ -113,22 +135,25 @@ export function RefineView({
         <div className="flex items-center justify-between px-2 pt-1 pb-1">
           <span className="text-ink-light text-xs">
             {status === 'streaming' && t('thinking')}
-            {phase === 'ready' && status === 'idle' && '准备好了，可以生成方案。'}
+            {isPlanning && '生成方案中…（约 10-20 秒）'}
+            {!isPlanning && phase === 'ready' && status === 'idle' && '准备好了，可以生成方案。'}
           </span>
           <div className="flex items-center gap-2">
-            {phase === 'ready' && (
+            {canPlan && (
               <button
                 type="button"
-                disabled
-                title="规划生成器尚未接入（阶段 6）"
-                className="bg-gold-leaf/80 cursor-not-allowed rounded-sm px-3 py-1 text-xs text-[color:var(--paper-rice)] opacity-60"
+                onClick={handleGeneratePlan}
+                disabled={isPlanning || status === 'streaming' || status === 'sending'}
+                className="bg-gold-leaf hover:bg-ink-heavy rounded-sm px-3 py-1 text-xs text-[color:var(--paper-rice)] transition disabled:opacity-50"
               >
-                {t('readyToPlan')}
+                {hasPlan ? '查看方案 →' : isPlanning ? '…' : t('readyToPlan')}
               </button>
             )}
             <button
               type="submit"
-              disabled={!input.trim() || status === 'streaming' || status === 'sending'}
+              disabled={
+                !input.trim() || status === 'streaming' || status === 'sending' || isPlanning
+              }
               className="bg-ink-heavy hover:bg-ink-medium rounded-sm px-4 py-1.5 text-sm text-[color:var(--paper-rice)] transition disabled:opacity-40"
             >
               落笔
