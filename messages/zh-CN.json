@@ -1,0 +1,123 @@
+{
+  "common": {
+    "appName": "Nous",
+    "tagline": "让想法，落地",
+    "subtitle": "专为 INTP 型深度思考者设计的 AI 执行力工具",
+    "loading": "加载中…",
+    "error": "出错了",
+    "cancel": "取消",
+    "confirm": "确定",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "retry": "重试"
+  },
+  "nav": {
+    "inbox": "想法",
+    "focus": "今日",
+    "journal": "复盘",
+    "settings": "设置",
+    "logout": "退出"
+  },
+  "auth": {
+    "login": "登录",
+    "register": "注册",
+    "email": "邮箱",
+    "magicLink": "发送登录链接",
+    "continueWithGithub": "使用 GitHub 继续",
+    "continueWithGoogle": "使用 Google 继续",
+    "alreadyHaveAccount": "已有账号？",
+    "noAccount": "还没有账号？",
+    "welcomeBack": "回来了"
+  },
+  "marketing": {
+    "hero": {
+      "title": "让想法，落地",
+      "subtitle": "INTP 的执行力，不是靠意志力，而是靠被问对问题。",
+      "cta": "开始使用",
+      "learnMore": "了解更多"
+    },
+    "features": {
+      "capture": {
+        "title": "⌘K 捕获",
+        "desc": "零摩擦记录，想法不再流失"
+      },
+      "socratic": {
+        "title": "苏格拉底对话",
+        "desc": "AI 温和追问，把意图问清楚"
+      },
+      "plan": {
+        "title": "一键规划",
+        "desc": "从里程碑到今天的第一步"
+      }
+    }
+  },
+  "inbox": {
+    "title": "想法收件箱",
+    "empty": "这里很安静。⌘K 开始第一个想法。",
+    "quickCapture": {
+      "placeholder": "脑子里的东西，先放进来……",
+      "save": "落笔"
+    },
+    "sections": {
+      "raw": "未整理",
+      "refining": "对话中",
+      "planned": "已规划",
+      "executing": "执行中",
+      "done": "已完成"
+    }
+  },
+  "refine": {
+    "thinking": "思索中…",
+    "quickReplies": "快速回答",
+    "readyToPlan": "生成方案"
+  },
+  "plan": {
+    "goal": "目标",
+    "successCriteria": "成功标准",
+    "milestones": "里程碑",
+    "risks": "风险",
+    "firstAction": "第一步",
+    "priority": {
+      "must": "必做",
+      "should": "应做",
+      "could": "可做",
+      "wont": "不做"
+    },
+    "status": {
+      "todo": "待办",
+      "doing": "进行中",
+      "done": "完成",
+      "skipped": "跳过"
+    }
+  },
+  "focus": {
+    "today": "今日聚焦",
+    "pomodoro": "番茄钟",
+    "start": "开始专注",
+    "pause": "暂停",
+    "stuck": "我卡住了",
+    "empty": "暂无今日任务。去 Inbox 看看"
+  },
+  "journal": {
+    "title": "复盘日志",
+    "weekly": "本周复盘",
+    "generate": "生成复盘"
+  },
+  "settings": {
+    "title": "设置",
+    "profile": "个人资料",
+    "apiKeys": "API Key",
+    "language": "语言",
+    "theme": "主题",
+    "themes": {
+      "rice": "宣纸",
+      "ink": "墨色"
+    }
+  },
+  "quota": {
+    "remaining": "今日还剩 {count} 次体验额度",
+    "exhausted": "今日体验额度已用完",
+    "configureKey": "配置自己的 API Key 可无限使用"
+  }
+}

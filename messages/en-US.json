@@ -1,0 +1,123 @@
+{
+  "common": {
+    "appName": "Nous",
+    "tagline": "Turn thoughts into action",
+    "subtitle": "An AI execution tool crafted for INTP-style deep thinkers",
+    "loading": "Loading…",
+    "error": "Something went wrong",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "retry": "Retry"
+  },
+  "nav": {
+    "inbox": "Ideas",
+    "focus": "Today",
+    "journal": "Journal",
+    "settings": "Settings",
+    "logout": "Log out"
+  },
+  "auth": {
+    "login": "Sign in",
+    "register": "Sign up",
+    "email": "Email",
+    "magicLink": "Send magic link",
+    "continueWithGithub": "Continue with GitHub",
+    "continueWithGoogle": "Continue with Google",
+    "alreadyHaveAccount": "Already have an account?",
+    "noAccount": "No account yet?",
+    "welcomeBack": "Welcome back"
+  },
+  "marketing": {
+    "hero": {
+      "title": "Turn thoughts into action",
+      "subtitle": "For INTPs: execution is not willpower, it's being asked the right questions.",
+      "cta": "Get started",
+      "learnMore": "Learn more"
+    },
+    "features": {
+      "capture": {
+        "title": "⌘K Capture",
+        "desc": "Zero-friction input, no idea lost"
+      },
+      "socratic": {
+        "title": "Socratic dialogue",
+        "desc": "Gentle AI inquiry to clarify your intent"
+      },
+      "plan": {
+        "title": "One-click plan",
+        "desc": "From milestones to today's first step"
+      }
+    }
+  },
+  "inbox": {
+    "title": "Idea Inbox",
+    "empty": "Quiet here. Press ⌘K to capture your first thought.",
+    "quickCapture": {
+      "placeholder": "Drop whatever's on your mind…",
+      "save": "Save"
+    },
+    "sections": {
+      "raw": "Unsorted",
+      "refining": "In dialogue",
+      "planned": "Planned",
+      "executing": "Executing",
+      "done": "Done"
+    }
+  },
+  "refine": {
+    "thinking": "Thinking…",
+    "quickReplies": "Quick replies",
+    "readyToPlan": "Generate plan"
+  },
+  "plan": {
+    "goal": "Goal",
+    "successCriteria": "Success criteria",
+    "milestones": "Milestones",
+    "risks": "Risks",
+    "firstAction": "First step",
+    "priority": {
+      "must": "Must",
+      "should": "Should",
+      "could": "Could",
+      "wont": "Won't"
+    },
+    "status": {
+      "todo": "Todo",
+      "doing": "Doing",
+      "done": "Done",
+      "skipped": "Skipped"
+    }
+  },
+  "focus": {
+    "today": "Today's focus",
+    "pomodoro": "Pomodoro",
+    "start": "Start",
+    "pause": "Pause",
+    "stuck": "I'm stuck",
+    "empty": "No tasks today. Check the Inbox."
+  },
+  "journal": {
+    "title": "Journal",
+    "weekly": "This week",
+    "generate": "Generate review"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "apiKeys": "API keys",
+    "language": "Language",
+    "theme": "Theme",
+    "themes": {
+      "rice": "Rice paper",
+      "ink": "Ink dark"
+    }
+  },
+  "quota": {
+    "remaining": "{count} free calls left today",
+    "exhausted": "You've used all free calls for today",
+    "configureKey": "Configure your own API key for unlimited use"
+  }
+}

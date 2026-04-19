@@ -1,0 +1,220 @@
+// ═══════════════════════════════════════════════════════════════════
+// Nous · Prisma Schema
+// 五层模型: 用户 / 凭证 / 想法 / 对话 / 规划
+// ═══════════════════════════════════════════════════════════════════
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ───────────────── User & Auth ─────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  image         String?
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts  Account[]
+  sessions  Session[]
+  apiKeys   ApiKey[]
+  ideas     Idea[]
+  settings  UserSettings?
+  demoUsage DemoUsage[]
+}
+
+/// NextAuth.js: 第三方登录凭证
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+/// NextAuth.js: Session
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+/// NextAuth.js: Email magic link 验证
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ───────────────── 用户设置 & API Key ─────────────────
+
+model UserSettings {
+  userId          String  @id
+  theme           String  @default("rice") // rice | ink
+  locale          String  @default("zh-CN") // zh-CN | en-US
+  defaultApiKeyId String?
+  pomodoroMinutes Int     @default(25)
+  weeklyReviewDay Int     @default(0) // 0=Sunday
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+/// BYOK · 用户自带 API Key（AES-256-GCM 加密）
+model ApiKey {
+  id        String   @id @default(cuid())
+  userId    String
+  provider  String // openai | anthropic | deepseek | kimi | doubao | openai-compatible
+  label     String?
+  baseUrl   String?
+  keyCipher String // 加密后的密钥
+  keyIv     String // GCM IV
+  keyTag    String // GCM auth tag
+  model     String // 默认模型，如 gpt-4o-mini
+  isDefault Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+/// 内置 Demo Key 使用记录（每日配额 + 防滥用）
+model DemoUsage {
+  id        String   @id @default(cuid())
+  userId    String
+  date      DateTime @db.Date // 按日聚合
+  count     Int      @default(0)
+  tokensIn  Int      @default(0)
+  tokensOut Int      @default(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date])
+  @@index([date])
+}
+
+// ───────────────── Idea & 对话 ─────────────────
+
+model Idea {
+  id             String   @id @default(cuid())
+  userId         String
+  title          String?
+  rawContent     String   @db.Text
+  refinedSummary String?  @db.Text
+  status         String   @default("raw")
+  // raw | refining | planned | executing | done | archived
+  tags           String[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages    Message[]
+  plan        Plan?
+  reflections Reflection[]
+
+  @@index([userId, status])
+  @@index([userId, createdAt])
+}
+
+/// 苏格拉底对话流
+model Message {
+  id        String   @id @default(cuid())
+  ideaId    String
+  role      String // user | assistant | system
+  content   String   @db.Text
+  phase     String // intent | detail | boundary | ready
+  metadata  Json? // quick_replies, tokens, model
+  createdAt DateTime @default(now())
+
+  idea Idea @relation(fields: [ideaId], references: [id], onDelete: Cascade)
+
+  @@index([ideaId, createdAt])
+}
+
+// ───────────────── Plan · 结构化执行方案 ─────────────────
+
+model Plan {
+  id              String   @id @default(cuid())
+  ideaId          String   @unique
+  goal            String
+  successCriteria Json // string[]
+  risks           Json // string[]
+  firstAction     String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  idea       Idea        @relation(fields: [ideaId], references: [id], onDelete: Cascade)
+  milestones Milestone[]
+}
+
+model Milestone {
+  id       String    @id @default(cuid())
+  planId   String
+  title    String
+  deadline DateTime?
+  status   String    @default("pending") // pending | active | done
+  orderIdx Int
+
+  plan  Plan   @relation(fields: [planId], references: [id], onDelete: Cascade)
+  tasks Task[]
+
+  @@index([planId, orderIdx])
+}
+
+model Task {
+  id           String    @id @default(cuid())
+  milestoneId  String
+  title        String
+  description  String?   @db.Text
+  priority     String    @default("should") // must | should | could | wont
+  estimatedMin Int?
+  status       String    @default("todo") // todo | doing | done | skipped
+  orderIdx     Int
+  completedAt  DateTime?
+
+  milestone Milestone @relation(fields: [milestoneId], references: [id], onDelete: Cascade)
+
+  @@index([milestoneId, orderIdx])
+}
+
+// ───────────────── Reflection · 复盘日志 ─────────────────
+
+model Reflection {
+  id        String   @id @default(cuid())
+  ideaId    String
+  kind      String // daily | weekly | on-complete
+  content   String   @db.Text
+  aiInsight String?  @db.Text
+  createdAt DateTime @default(now())
+
+  idea Idea @relation(fields: [ideaId], references: [id], onDelete: Cascade)
+
+  @@index([ideaId, createdAt])
+}
