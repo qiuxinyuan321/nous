@@ -23,6 +23,11 @@
     "prisma:seed": "dotenv -e .env.local -- tsx prisma/seed.ts",
     "docker:dev": "docker compose -f docker/docker-compose.dev.yml up -d",
     "docker:dev:down": "docker compose -f docker/docker-compose.dev.yml down",
+    "docker:prod:build": "docker compose --env-file .env.prod -f docker/docker-compose.prod.yml build",
+    "docker:prod": "docker compose --env-file .env.prod -f docker/docker-compose.prod.yml up -d",
+    "docker:prod:down": "docker compose --env-file .env.prod -f docker/docker-compose.prod.yml down",
+    "docker:prod:logs": "docker compose --env-file .env.prod -f docker/docker-compose.prod.yml logs -f",
+    "deploy": "bash scripts/deploy.sh",
     "prepare": "husky"
   },
   "lint-staged": {

@@ -1,0 +1,56 @@
+# ╭─── Node & package deps ───╮
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-store
+.pnpm-debug.log
+
+# ╭─── Build artifacts ───╮
+.next
+out
+dist
+build
+.turbo
+coverage
+.next-cache
+
+# ╭─── Local / dev ───╮
+.env
+.env.local
+.env.*.local
+.env.development
+
+# ╭─── IDE / OS ───╮
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+*.swp
+
+# ╭─── Git / CI ───╮
+.git
+.gitignore
+.github
+.husky
+
+# ╭─── Docs / tests ───╮
+docs
+tests
+*.test.ts
+*.test.tsx
+*.spec.ts
+playwright-report
+test-results
+
+# ╭─── Misc ───╮
+README*.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+LICENSE
+scripts
+.claude
+.kiro
+# pnpm-workspace.yaml 只含 onlyBuiltDependencies 配置,pnpm 9 会误判为 workspace 根
+# Docker 内 pnpm install 不需要这些字段,直接排除
+pnpm-workspace.yaml

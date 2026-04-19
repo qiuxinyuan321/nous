@@ -1,0 +1,100 @@
+# ═══════════════════════════════════════════════════════════════════
+# Nous · Production docker-compose
+# Stack: Next.js app + PostgreSQL 16 + Redis 7 + Nginx (reverse proxy + SSL)
+# 使用: docker compose -f docker/docker-compose.prod.yml --env-file .env.prod up -d
+# ═══════════════════════════════════════════════════════════════════
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: nous:latest
+    container_name: nous-app
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: 'postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}'
+      REDIS_URL: 'redis://redis:6379'
+      NEXTAUTH_URL: '${NEXTAUTH_URL}'
+      NEXTAUTH_SECRET: '${NEXTAUTH_SECRET}'
+      CRYPTO_KEY: '${CRYPTO_KEY}'
+      # Demo Key (可选)
+      DEMO_BASE_URL: '${DEMO_BASE_URL:-}'
+      DEMO_API_KEY: '${DEMO_API_KEY:-}'
+      DEMO_MODEL: '${DEMO_MODEL:-gpt-4o-mini}'
+      DEMO_DAILY_LIMIT: '${DEMO_DAILY_LIMIT:-20}'
+      DEMO_MAX_TOKENS: '${DEMO_MAX_TOKENS:-2000}'
+      # 第三方登录 (可选)
+      GITHUB_ID: '${GITHUB_ID:-}'
+      GITHUB_SECRET: '${GITHUB_SECRET:-}'
+      EMAIL_SERVER: '${EMAIL_SERVER:-}'
+      EMAIL_FROM: '${EMAIL_FROM:-}'
+      NODE_ENV: production
+    expose:
+      - '3000'
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - nous-net
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: nous-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: '${POSTGRES_USER}'
+      POSTGRES_PASSWORD: '${POSTGRES_PASSWORD}'
+      POSTGRES_DB: '${POSTGRES_DB}'
+    volumes:
+      - nous-postgres-data:/var/lib/postgresql/data
+    networks:
+      - nous-net
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: nous-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 128mb --maxmemory-policy allkeys-lru
+    volumes:
+      - nous-redis-data:/data
+    networks:
+      - nous-net
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: nous-nginx
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - nous-certbot-www:/var/www/certbot:ro
+    depends_on:
+      - app
+    networks:
+      - nous-net
+
+volumes:
+  nous-postgres-data:
+  nous-redis-data:
+  nous-certbot-www:
+
+networks:
+  nous-net:
+    driver: bridge
