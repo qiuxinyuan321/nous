@@ -87,6 +87,8 @@ export default async function PlanPage({
                 description: t.description,
                 priority: t.priority,
                 estimatedMin: t.estimatedMin,
+                focusedOn: t.focusedOn,
+                status: t.status,
               }))}
             />
           ))}

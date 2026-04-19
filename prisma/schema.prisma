@@ -198,10 +198,12 @@ model Task {
   status       String    @default("todo") // todo | doing | done | skipped
   orderIdx     Int
   completedAt  DateTime?
+  focusedOn    DateTime? @db.Date // 被选入某日「今日聚焦」
 
   milestone Milestone @relation(fields: [milestoneId], references: [id], onDelete: Cascade)
 
   @@index([milestoneId, orderIdx])
+  @@index([focusedOn])
 }
 
 // ───────────────── Reflection · 复盘日志 ─────────────────

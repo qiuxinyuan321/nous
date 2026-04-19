@@ -21,7 +21,9 @@ export async function AppHeader({ user }: { user: NonNullable<Session['user']> }
             <Link href="/inbox" className="hover:text-ink-heavy transition">
               {t('nav.inbox')}
             </Link>
-            <span className="text-ink-light/50">{t('nav.focus')}</span>
+            <Link href="/focus" className="hover:text-ink-heavy transition">
+              {t('nav.focus')}
+            </Link>
             <span className="text-ink-light/50">{t('nav.journal')}</span>
           </nav>
         </div>

@@ -10,6 +10,8 @@ interface MilestoneSectionProps {
     description: string | null
     priority: string
     estimatedMin: number | null
+    focusedOn: Date | null
+    status: string
   }[]
 }
 
@@ -42,10 +44,13 @@ export function MilestoneSection({ index, title, deadline, tasks }: MilestoneSec
         {tasks.map((t) => (
           <TaskCard
             key={t.id}
+            id={t.id}
             title={t.title}
             description={t.description}
             priority={t.priority}
             estimatedMin={t.estimatedMin}
+            focused={!!t.focusedOn}
+            status={t.status}
           />
         ))}
       </div>
