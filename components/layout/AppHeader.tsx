@@ -24,7 +24,9 @@ export async function AppHeader({ user }: { user: NonNullable<Session['user']> }
             <Link href="/focus" className="hover:text-ink-heavy transition">
               {t('nav.focus')}
             </Link>
-            <span className="text-ink-light/50">{t('nav.journal')}</span>
+            <Link href="/journal" className="hover:text-ink-heavy transition">
+              {t('nav.journal')}
+            </Link>
           </nav>
         </div>
         <div className="flex items-center gap-4">
