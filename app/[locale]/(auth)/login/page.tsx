@@ -11,11 +11,11 @@ export default async function LoginPage({
   searchParams,
 }: {
   params: Promise<{ locale: string }>
-  searchParams: Promise<{ verify?: string; callbackUrl?: string }>
+  searchParams: Promise<{ verify?: string; callbackUrl?: string; provider?: string; type?: string }>
 }) {
   const { locale } = await params
   setRequestLocale(locale)
-  const { verify, callbackUrl } = await searchParams
+  const { verify, callbackUrl, provider, type } = await searchParams
   const t = await getTranslations()
 
   // 已登录用户直接跳 inbox
@@ -24,7 +24,9 @@ export default async function LoginPage({
     redirect(`/${locale}/inbox`)
   }
 
-  if (verify === '1') {
+  const isVerifying = verify === '1' || (provider === 'nodemailer' && type === 'email')
+
+  if (isVerifying) {
     return (
       <div className="flex flex-col items-center text-center">
         <Seal variant="done" size="lg">

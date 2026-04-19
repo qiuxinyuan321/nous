@@ -8,7 +8,7 @@ import type { NextAuthConfig } from 'next-auth'
 export const authConfig: NextAuthConfig = {
   pages: {
     signIn: '/login',
-    verifyRequest: '/login?verify=1',
+    verifyRequest: '/login',
   },
   providers: [],
   session: { strategy: 'jwt' },
