@@ -50,6 +50,57 @@
         "title": "One-click plan",
         "desc": "From milestones to today's first step"
       }
+    },
+    "flow": {
+      "title": "How it works",
+      "steps": {
+        "capture": {
+          "title": "Capture",
+          "desc": "Hit ⌘K, drop a messy thought. No naming, no tagging, no folders."
+        },
+        "refine": {
+          "title": "Dialogue",
+          "desc": "AI asks through four phases — intent, detail, boundary, ready. One question at a time, no fluff."
+        },
+        "plan": {
+          "title": "Plan",
+          "desc": "Turns the dialogue into a visible plan tree: goal, first action, milestones, tasks, risks, MoSCoW priorities."
+        },
+        "focus": {
+          "title": "Execute",
+          "desc": "Pick today's few from the tree. Run a pomodoro. Tick them off."
+        },
+        "review": {
+          "title": "Review",
+          "desc": "One click on Sunday to see what you did, where you stalled, and what to focus next week."
+        }
+      }
+    },
+    "faq": {
+      "title": "FAQ",
+      "items": {
+        "byok": {
+          "q": "Do I have to pay?",
+          "a": "No. Built-in Demo Key gives every new user 20 free calls per day — enough to run a full idea through the flow. Configure your own API key (OpenAI, Anthropic, DeepSeek, Kimi, Doubao, or any OpenAI-compatible endpoint) for unlimited use on your own bill."
+        },
+        "privacy": {
+          "q": "Are my keys and data safe?",
+          "a": "Keys are encrypted with AES-256-GCM before hitting the database. Master key lives in server env vars only. Ideas, messages and plans stay under your account. Code is MIT-licensed — self-host for full control."
+        },
+        "selfhost": {
+          "q": "Can I self-host?",
+          "a": "Yes. A single docker-compose file spins up the full stack (PostgreSQL + Redis + Next.js + Nginx). Your server, your domain, your keys, zero external dependencies."
+        },
+        "free": {
+          "q": "Is it free?",
+          "a": "The code is MIT-licensed and free forever. The hosted version is free for now; AI cost is covered by BYOK."
+        }
+      }
+    },
+    "selfhost": {
+      "title": "Self-host in 5 minutes",
+      "desc": "One docker-compose. One .env.prod. Your ECS, your domain, your keys.",
+      "docs": "Read the deploy guide"
     }
   },
   "inbox": {

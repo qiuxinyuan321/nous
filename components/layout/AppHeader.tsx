@@ -33,6 +33,12 @@ export async function AppHeader({ user }: { user: NonNullable<Session['user']> }
           <span className="text-ink-light hidden text-xs sm:inline" title={user.email ?? undefined}>
             {user.email ?? user.name ?? '…'}
           </span>
+          <Link
+            href="/settings"
+            className="text-ink-medium hover:text-ink-heavy text-sm transition"
+          >
+            {t('nav.settings')}
+          </Link>
           <form action={logout}>
             <button
               type="submit"
