@@ -35,9 +35,13 @@
       "title": "Turn thoughts into action",
       "subtitle": "For INTPs: execution is not willpower, it's being asked the right questions.",
       "cta": "Get started",
-      "learnMore": "Learn more"
+      "learnMore": "Learn more",
+      "imageAlt": "Hero artwork blending sumi-e ink with glassmorphism UI",
+      "lede": "Capture · Refine · Plan · Focus · Review"
     },
     "features": {
+      "sectionTitle": "Three small things",
+      "sectionDesc": "Three moves that quietly close the loop from thought to action.",
       "capture": {
         "title": "⌘K Capture",
         "desc": "Zero-friction input, no idea lost"
@@ -100,7 +104,12 @@
     "selfhost": {
       "title": "Self-host in 5 minutes",
       "desc": "One docker-compose. One .env.prod. Your ECS, your domain, your keys.",
-      "docs": "Read the deploy guide"
+      "docs": "Read the deploy guide",
+      "badge": "MIT · commercial-friendly",
+      "code": {
+        "copy": "COPY",
+        "copied": "COPIED ✓"
+      }
     }
   },
   "inbox": {

@@ -35,9 +35,13 @@
       "title": "让想法，落地",
       "subtitle": "INTP 的执行力，不是靠意志力，而是靠被问对问题。",
       "cta": "开始使用",
-      "learnMore": "了解更多"
+      "learnMore": "了解更多",
+      "imageAlt": "宣纸水墨与玻璃卡片交融的主视觉插画",
+      "lede": "捕获 · 精炼 · 规划 · 执行 · 复盘"
     },
     "features": {
+      "sectionTitle": "三件事",
+      "sectionDesc": "三件小事，串成一次完整的「思维→行动」闭环。",
       "capture": {
         "title": "⌘K 捕获",
         "desc": "零摩擦记录，想法不再流失"
@@ -100,7 +104,12 @@
     "selfhost": {
       "title": "5 分钟自托管",
       "desc": "一份 docker-compose，一个 .env.prod，你的 ECS、你的域名、你的 Key。",
-      "docs": "查看部署文档"
+      "docs": "查看部署文档",
+      "badge": "MIT · 可商用",
+      "code": {
+        "copy": "COPY",
+        "copied": "COPIED ✓"
+      }
     }
   },
   "inbox": {
