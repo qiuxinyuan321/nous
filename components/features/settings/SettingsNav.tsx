@@ -1,14 +1,18 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/lib/i18n/navigation'
 
 const ITEMS = [
-  { href: '/settings/profile', label: '个人', key: 'profile' },
-  { href: '/settings/api-keys', label: 'API Key', key: 'api-keys' },
-  { href: '/settings/language', label: '语言', key: 'language' },
+  { href: '/settings/profile', key: 'profile' },
+  { href: '/settings/api-keys', key: 'apiKeys' },
+  { href: '/settings/language', key: 'language' },
+  { href: '/themes', key: 'themes' },
+  { href: '/settings/sync', key: 'sync' },
 ] as const
 
 export function SettingsNav() {
+  const t = useTranslations('settings')
   const pathname = usePathname()
 
   return (
@@ -25,7 +29,7 @@ export function SettingsNav() {
                 : 'text-ink-medium hover:text-ink-heavy hover:bg-ink-heavy/3 border-l-2 border-transparent'
             }`}
           >
-            {item.label}
+            {t(`nav.${item.key}`)}
           </Link>
         )
       })}

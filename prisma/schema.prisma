@@ -31,6 +31,7 @@ model User {
   demoUsage   DemoUsage[]
   reflections Reflection[]
   memories    Memory[]
+  notion      NotionConnection?
 }
 
 /// NextAuth.js: 第三方登录凭证
@@ -250,4 +251,21 @@ model Memory {
   @@index([userId, kind])
   @@index([userId, importance])
   @@index([userId, createdAt])
+}
+
+// ───────────────── Notion · 单向同步配置 ─────────────────
+
+/// 每个用户最多一个 Notion 集成 (integration token 加密存)
+model NotionConnection {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  tokenCipher   String
+  tokenIv       String
+  tokenTag      String
+  databaseId    String
+  lastSyncedAt  DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

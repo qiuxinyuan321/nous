@@ -15,6 +15,7 @@ const PROTECTED = [
   '/graph',
   '/memory',
   '/journal',
+  '/themes',
   '/settings',
 ]
 
