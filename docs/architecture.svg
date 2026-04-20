@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-labelledby="t">
+  <title id="t">Nous · Architecture Overview</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAF7EF"/>
+      <stop offset="100%" stop-color="#F2EBD8"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1C1B19" fill-opacity="0.6"/>
+    </marker>
+    <marker id="arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B8372F"/>
+    </marker>
+  </defs>
+
+  <rect width="1000" height="620" fill="url(#bg)"/>
+
+  <!-- 标题 -->
+  <text x="500" y="42" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="20" fill="#1C1B19" font-weight="500" letter-spacing="6">
+    Nous · 架构一览
+  </text>
+  <path d="M460 52 Q 500 49, 540 52" stroke="#1C1B19" stroke-width="1.2" fill="none" opacity="0.5"/>
+
+  <!-- 层级说明 (左侧) -->
+  <g font-family="Georgia, serif" font-size="9" fill="#8B8880" letter-spacing="3">
+    <text x="30" y="110">CLIENT</text>
+    <text x="30" y="230">EDGE</text>
+    <text x="30" y="350">APP</text>
+    <text x="30" y="480">AI / INTEGRATIONS</text>
+    <text x="30" y="580">DATA</text>
+  </g>
+  <g stroke="#8B8880" stroke-opacity="0.25" stroke-dasharray="2 4">
+    <line x1="100" y1="110" x2="970" y2="110"/>
+    <line x1="100" y1="230" x2="970" y2="230"/>
+    <line x1="100" y1="350" x2="970" y2="350"/>
+    <line x1="100" y1="480" x2="970" y2="480"/>
+    <line x1="100" y1="580" x2="970" y2="580"/>
+  </g>
+
+  <!-- ── CLIENT ── -->
+  <!-- PWA -->
+  <g transform="translate(110, 80)">
+    <rect x="0" y="0" width="180" height="60" rx="6" fill="#FAF7EF" stroke="#1C1B19" stroke-width="1"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">PWA · Next.js 16</text>
+    <text x="14" y="42" font-family="system-ui" font-size="10" fill="#4A4842">React 19 · Tailwind v4 · Framer</text>
+    <text x="14" y="54" font-family="system-ui" font-size="10" fill="#8B8880">ServiceWorker · 离线缓存</text>
+  </g>
+  <!-- ⌘K -->
+  <g transform="translate(310, 80)">
+    <rect x="0" y="0" width="180" height="60" rx="6" fill="#FAF7EF" stroke="#1C1B19" stroke-width="1"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">⌘K CommandPalette</text>
+    <text x="14" y="42" font-family="system-ui" font-size="10" fill="#4A4842">捕获输入 · MediaRecorder</text>
+    <text x="14" y="54" font-family="system-ui" font-size="10" fill="#8B8880">Zustand · React Query</text>
+  </g>
+  <!-- Voice -->
+  <g transform="translate(510, 80)">
+    <rect x="0" y="0" width="180" height="60" rx="6" fill="#FAF7EF" stroke="#1C1B19" stroke-width="1"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">Graph · d3-force</text>
+    <text x="14" y="42" font-family="system-ui" font-size="10" fill="#4A4842">SVG 力导向 · drag / zoom</text>
+    <text x="14" y="54" font-family="system-ui" font-size="10" fill="#8B8880">纯手写指针事件</text>
+  </g>
+  <!-- Theme -->
+  <g transform="translate(710, 80)">
+    <rect x="0" y="0" width="180" height="60" rx="6" fill="#FAF7EF" stroke="#1C1B19" stroke-width="1"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">Ink Theme System</text>
+    <text x="14" y="42" font-family="system-ui" font-size="10" fill="#4A4842">5 内置主题 · CSS Vars</text>
+    <text x="14" y="54" font-family="system-ui" font-size="10" fill="#8B8880">inline script 防 FOUC</text>
+  </g>
+
+  <!-- ── EDGE ── -->
+  <!-- Middleware -->
+  <g transform="translate(210, 200)">
+    <rect x="0" y="0" width="240" height="60" rx="6" fill="#3E5871" fill-opacity="0.1" stroke="#3E5871" stroke-width="1"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#3E5871" font-weight="500">Edge Middleware</text>
+    <text x="14" y="42" font-family="system-ui" font-size="10" fill="#4A4842">next-intl locale routing</text>
+    <text x="14" y="54" font-family="system-ui" font-size="10" fill="#8B8880">Auth guard · PROTECTED 白名单</text>
+  </g>
+  <!-- Nginx -->
+  <g transform="translate(510, 200)">
+    <rect x="0" y="0" width="240" height="60" rx="6" fill="#3E5871" fill-opacity="0.1" stroke="#3E5871" stroke-width="1"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#3E5871" font-weight="500">Nginx + Certbot</text>
+    <text x="14" y="42" font-family="system-ui" font-size="10" fill="#4A4842">HTTPS · WebSocket upgrade</text>
+    <text x="14" y="54" font-family="system-ui" font-size="10" fill="#8B8880">rate limit · gzip · static cache</text>
+  </g>
+
+  <!-- ── APP ── -->
+  <!-- API -->
+  <g transform="translate(60, 320)">
+    <rect x="0" y="0" width="200" height="66" rx="6" fill="#FAF7EF" stroke="#1C1B19" stroke-width="1.3"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">App Router · API Routes</text>
+    <text x="14" y="40" font-family="JetBrains Mono, monospace" font-size="9" fill="#4A4842">/api/ideas  /api/chat  /api/plan</text>
+    <text x="14" y="52" font-family="JetBrains Mono, monospace" font-size="9" fill="#4A4842">/api/memory /api/graph /api/speech</text>
+    <text x="14" y="62" font-family="JetBrains Mono, monospace" font-size="9" fill="#4A4842">/api/sync/{obsidian,notion}</text>
+  </g>
+  <!-- Auth -->
+  <g transform="translate(280, 320)">
+    <rect x="0" y="0" width="160" height="66" rx="6" fill="#FAF7EF" stroke="#1C1B19" stroke-width="1.3"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">Auth · NextAuth v5</text>
+    <text x="14" y="40" font-family="system-ui" font-size="10" fill="#4A4842">Email / GitHub / Google</text>
+    <text x="14" y="52" font-family="system-ui" font-size="10" fill="#4A4842">Credentials (password)</text>
+  </g>
+  <!-- BYOK -->
+  <g transform="translate(460, 320)">
+    <rect x="0" y="0" width="180" height="66" rx="6" fill="#B8372F" fill-opacity="0.08" stroke="#B8372F" stroke-width="1.3"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#B8372F" font-weight="500">BYOK · AES-256-GCM</text>
+    <text x="14" y="40" font-family="system-ui" font-size="10" fill="#4A4842">用户 Key 数据库加密存</text>
+    <text x="14" y="52" font-family="system-ui" font-size="10" fill="#4A4842">Notion Token 同策略</text>
+  </g>
+  <!-- Quota -->
+  <g transform="translate(660, 320)">
+    <rect x="0" y="0" width="150" height="66" rx="6" fill="#FAF7EF" stroke="#1C1B19" stroke-width="1.3"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">Quota · Rate Limit</text>
+    <text x="14" y="40" font-family="system-ui" font-size="10" fill="#4A4842">Demo 日配额 atomic upsert</text>
+    <text x="14" y="52" font-family="system-ui" font-size="10" fill="#4A4842">Redis token bucket</text>
+  </g>
+  <!-- Provider Resolver -->
+  <g transform="translate(830, 320)">
+    <rect x="0" y="0" width="140" height="66" rx="6" fill="#FAF7EF" stroke="#1C1B19" stroke-width="1.3"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">Provider Resolver</text>
+    <text x="14" y="40" font-family="system-ui" font-size="10" fill="#4A4842">BYOK &gt; Demo</text>
+    <text x="14" y="52" font-family="system-ui" font-size="10" fill="#4A4842">OpenAI / Anthropic</text>
+  </g>
+
+  <!-- ── AI / INTEGRATIONS ── -->
+  <!-- Socratic -->
+  <g transform="translate(60, 450)">
+    <rect x="0" y="0" width="170" height="60" rx="6" fill="#FAF7EF" stroke="#B8372F" stroke-width="1"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">Socratic · streamText</text>
+    <text x="14" y="42" font-family="system-ui" font-size="10" fill="#4A4842">intent → detail → boundary</text>
+    <text x="14" y="54" font-family="system-ui" font-size="10" fill="#4A4842">→ ready · 阶段机</text>
+  </g>
+  <!-- Planner -->
+  <g transform="translate(250, 450)">
+    <rect x="0" y="0" width="170" height="60" rx="6" fill="#FAF7EF" stroke="#B8372F" stroke-width="1"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">Planner · generateObject</text>
+    <text x="14" y="42" font-family="system-ui" font-size="10" fill="#4A4842">Zod JSON Schema</text>
+    <text x="14" y="54" font-family="system-ui" font-size="10" fill="#4A4842">Milestones · Tasks · MoSCoW</text>
+  </g>
+  <!-- Memory -->
+  <g transform="translate(440, 450)">
+    <rect x="0" y="0" width="170" height="60" rx="6" fill="#FAF7EF" stroke="#B8372F" stroke-width="1"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">Long-term Memory</text>
+    <text x="14" y="42" font-family="system-ui" font-size="10" fill="#4A4842">embed · cosine top-K</text>
+    <text x="14" y="54" font-family="system-ui" font-size="10" fill="#4A4842">onFinish 抽取 · fail-soft</text>
+  </g>
+  <!-- Whisper -->
+  <g transform="translate(630, 450)">
+    <rect x="0" y="0" width="150" height="60" rx="6" fill="#FAF7EF" stroke="#B8372F" stroke-width="1"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">Whisper · STT</text>
+    <text x="14" y="42" font-family="system-ui" font-size="10" fill="#4A4842">/v1/audio/transcriptions</text>
+    <text x="14" y="54" font-family="system-ui" font-size="10" fill="#4A4842">multipart 15MB 上限</text>
+  </g>
+  <!-- Sync -->
+  <g transform="translate(800, 450)">
+    <rect x="0" y="0" width="170" height="60" rx="6" fill="#FAF7EF" stroke="#B8372F" stroke-width="1"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">Sync · Obsidian / Notion</text>
+    <text x="14" y="42" font-family="system-ui" font-size="10" fill="#4A4842">jszip · @notionhq/client</text>
+    <text x="14" y="54" font-family="system-ui" font-size="10" fill="#4A4842">frontmatter 去重</text>
+  </g>
+
+  <!-- ── DATA ── -->
+  <!-- Postgres -->
+  <g transform="translate(200, 550)">
+    <rect x="0" y="0" width="260" height="50" rx="6" fill="#1C1B19"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#FAF7EF" font-weight="500">PostgreSQL 16 · Prisma 6</text>
+    <text x="14" y="40" font-family="system-ui" font-size="10" fill="#B9B4A6">User · Idea · Plan · Task · Message · Memory</text>
+  </g>
+  <!-- Redis -->
+  <g transform="translate(480, 550)">
+    <rect x="0" y="0" width="200" height="50" rx="6" fill="#1C1B19"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#FAF7EF" font-weight="500">Redis 7 · ioredis</text>
+    <text x="14" y="40" font-family="system-ui" font-size="10" fill="#B9B4A6">quota · rate limit · session</text>
+  </g>
+  <!-- External -->
+  <g transform="translate(700, 550)">
+    <rect x="0" y="0" width="220" height="50" rx="6" fill="#B8372F"/>
+    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#FAF7EF" font-weight="500">OpenAI / Anthropic / 兼容网关</text>
+    <text x="14" y="40" font-family="system-ui" font-size="10" fill="#F5D9D6">BYOK 无限 · Demo 20/day</text>
+  </g>
+
+  <!-- ── 连线 ── -->
+  <g stroke="#1C1B19" stroke-opacity="0.45" stroke-width="1.2" fill="none">
+    <!-- Client → Edge -->
+    <path d="M200 140 L 330 200" marker-end="url(#arrow)"/>
+    <path d="M400 140 L 370 200" marker-end="url(#arrow)"/>
+    <path d="M600 140 L 550 200" marker-end="url(#arrow)"/>
+    <path d="M800 140 L 700 200" marker-end="url(#arrow)"/>
+
+    <!-- Edge → App -->
+    <path d="M330 260 L 160 320" marker-end="url(#arrow)"/>
+    <path d="M330 260 L 360 320" marker-end="url(#arrow)"/>
+    <path d="M630 260 L 550 320" marker-end="url(#arrow)"/>
+    <path d="M630 260 L 730 320" marker-end="url(#arrow)"/>
+    <path d="M630 260 L 900 320" marker-end="url(#arrow)"/>
+
+    <!-- App → AI -->
+    <path d="M160 386 L 145 450" marker-end="url(#arrow)"/>
+    <path d="M360 386 L 335 450" marker-end="url(#arrow)"/>
+    <path d="M550 386 L 525 450" marker-end="url(#arrow)"/>
+    <path d="M730 386 L 705 450" marker-end="url(#arrow)"/>
+    <path d="M900 386 L 885 450" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- AI → Data 用朱砂突出 -->
+  <g stroke="#B8372F" stroke-opacity="0.75" stroke-width="1.3" fill="none">
+    <path d="M145 510 L 300 550" marker-end="url(#arrow-accent)"/>
+    <path d="M335 510 L 360 550" marker-end="url(#arrow-accent)"/>
+    <path d="M525 510 L 560 550" marker-end="url(#arrow-accent)"/>
+    <path d="M705 510 L 810 550" marker-end="url(#arrow-accent)"/>
+    <path d="M885 510 L 810 550" marker-end="url(#arrow-accent)"/>
+  </g>
+</svg>
