@@ -62,7 +62,7 @@ export async function signInWithPassword(
     return { ok: false, error: parsed.error.issues[0]?.message ?? '请检查输入' }
   }
 
-  let redirectUrl = parsed.data.callbackUrl || '/inbox'
+  const redirectUrl = parsed.data.callbackUrl || '/inbox'
 
   try {
     await signIn('credentials', {

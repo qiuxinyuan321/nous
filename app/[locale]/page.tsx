@@ -1,13 +1,36 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/lib/i18n/navigation'
-import { Seal } from '@/components/ink/Seal'
 import { InkStroke } from '@/components/ink/InkStroke'
+import { Reveal } from '@/components/landing/Reveal'
+import { HeroVisual } from '@/components/landing/HeroVisual'
+import { FeatureCard } from '@/components/landing/FeatureCard'
+import { FlowTimeline } from '@/components/landing/FlowTimeline'
+import { FaqAccordion } from '@/components/landing/FaqAccordion'
+import { CodeBlock } from '@/components/landing/CodeBlock'
 import { auth } from '@/lib/auth'
-import { CanvasBackground } from '@/components/canvas-background'
-import { FeatureCard } from '@/components/feature-card'
-import { WorkflowItem } from '@/components/workflow-item'
 
 const FAQ_KEYS = ['byok', 'privacy', 'selfhost', 'free'] as const
+const FLOW_KEYS = ['capture', 'refine', 'plan', 'focus', 'review'] as const
+const FEATURE_KEYS = ['capture', 'socratic', 'plan'] as const
+
+const FEATURE_ACCENT: Record<
+  (typeof FEATURE_KEYS)[number],
+  'cinnabar' | 'celadon' | 'indigo-stone'
+> = {
+  capture: 'cinnabar',
+  socratic: 'indigo-stone',
+  plan: 'celadon',
+}
+
+const DEPLOY_SNIPPET = `# 克隆
+git clone https://github.com/<you>/nous.git && cd nous
+
+# 配置
+cp .env.example .env.prod
+vim .env.prod
+
+# 启动
+docker compose -f docker/docker-compose.prod.yml up -d`
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -16,152 +39,199 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const session = await auth()
   const ctaHref = session?.user ? '/inbox' : '/login'
 
+  const flowSteps = FLOW_KEYS.map((k) => ({
+    key: k,
+    title: t(`marketing.flow.steps.${k}.title`),
+    desc: t(`marketing.flow.steps.${k}.desc`),
+  }))
+  const faqItems = FAQ_KEYS.map((k) => ({
+    key: k,
+    q: t(`marketing.faq.items.${k}.q`),
+    a: t(`marketing.faq.items.${k}.a`),
+  }))
+
   return (
-    <main className="relative mx-auto max-w-5xl px-6">
+    <main className="relative mx-auto max-w-6xl px-6">
+      {/* 纸面装饰 · 柔色光晕 */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+        aria-hidden="true"
+      >
+        <div className="bg-cinnabar/10 absolute top-[-8rem] right-[-6rem] h-[28rem] w-[28rem] rounded-full blur-3xl" />
+        <div className="bg-indigo-stone/10 absolute top-[24rem] left-[-8rem] h-[24rem] w-[24rem] rounded-full blur-3xl" />
+        <div className="bg-celadon/8 absolute top-[70rem] right-[-4rem] h-[20rem] w-[20rem] rounded-full blur-3xl" />
+      </div>
+
       {/* ─── Hero ─── */}
-      <section className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center py-24">
-        <CanvasBackground />
+      <section className="relative grid min-h-[calc(100vh-4rem)] items-center gap-12 py-20 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:gap-16 md:py-28">
+        <div className="order-2 md:order-1">
+          <Reveal>
+            <p className="text-ink-light font-serif-en mb-5 text-xs tracking-[0.3em] uppercase">
+              {t('marketing.hero.lede')}
+            </p>
+          </Reveal>
 
-        <div className="absolute top-10 right-10 hidden md:block">
-          <Seal size="lg">思</Seal>
+          <Reveal delay={0.08}>
+            <h1 className="font-serif-en text-ink-heavy text-6xl leading-[0.95] font-medium tracking-tight md:text-7xl lg:text-8xl">
+              Nous
+            </h1>
+          </Reveal>
+
+          <Reveal delay={0.16} className="mt-6 w-28">
+            <InkStroke variant="medium" />
+          </Reveal>
+
+          <Reveal delay={0.22}>
+            <p className="font-serif-cn text-ink-medium mt-8 text-2xl leading-snug md:text-3xl">
+              {t('marketing.hero.title')}
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.3}>
+            <p className="text-ink-light mt-5 max-w-xl text-base leading-relaxed md:text-lg">
+              {t('marketing.hero.subtitle')}
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.4}>
+            <div className="mt-12 flex flex-wrap gap-4">
+              <Link
+                href={ctaHref}
+                className="group bg-ink-heavy hover:bg-ink-medium relative inline-flex items-center gap-2 overflow-hidden rounded-md px-7 py-3.5 text-[color:var(--paper-rice)] shadow-[0_20px_40px_-20px_rgba(28,27,25,0.45)] transition-all duration-300"
+              >
+                <span>{t('marketing.hero.cta')}</span>
+                <span
+                  aria-hidden
+                  className="translate-x-0 transition-transform duration-300 group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </Link>
+              <a
+                href="https://github.com/qiuxinyuan321/nous"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-ink-light/60 text-ink-medium hover:border-ink-heavy hover:text-ink-heavy inline-flex items-center gap-2 rounded-md border px-7 py-3.5 transition"
+              >
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.57.1.78-.25.78-.55v-2.1c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.74.4-1.25.74-1.54-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.28 1.2-3.08-.12-.3-.52-1.48.11-3.1 0 0 .97-.31 3.2 1.18a11.1 11.1 0 0 1 5.82 0c2.22-1.49 3.2-1.18 3.2-1.18.63 1.62.23 2.8.11 3.1.75.8 1.2 1.82 1.2 3.08 0 4.42-2.69 5.39-5.26 5.68.41.35.78 1.05.78 2.12v3.15c0 .3.2.66.78.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z" />
+                </svg>
+                GitHub
+              </a>
+            </div>
+          </Reveal>
         </div>
 
-        <h1 className="font-serif-en text-ink-heavy text-center text-6xl leading-tight font-medium tracking-tight md:text-8xl">
-          Nous
-        </h1>
-
-        <div className="mt-6 w-24">
-          <InkStroke variant="medium" />
-        </div>
-
-        <p className="font-serif-cn text-ink-medium mt-10 text-center text-2xl md:text-3xl">
-          {t('marketing.hero.title')}
-        </p>
-
-        <p className="text-ink-light mt-4 max-w-xl text-center text-base md:text-lg">
-          {t('marketing.hero.subtitle')}
-        </p>
-
-        <div className="mt-14 flex gap-4">
-          <Link
-            href={ctaHref}
-            className="bg-ink-heavy hover:bg-ink-medium rounded-md px-6 py-3 text-[color:var(--paper-rice)] transition"
-          >
-            {t('marketing.hero.cta')}
-          </Link>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border-ink-light text-ink-medium hover:border-ink-heavy hover:text-ink-heavy rounded-md border px-6 py-3 transition"
-          >
-            GitHub
-          </a>
+        <div className="relative order-1 md:order-2">
+          <HeroVisual alt={t('marketing.hero.imageAlt')} />
         </div>
       </section>
 
-      {/* ─── 三个卖点 ─── */}
-      <section className="py-20">
-        <div className="mb-12 text-center">
-          <h2 className="font-serif-cn text-ink-heavy text-2xl">三件事</h2>
-          <div className="mx-auto mt-3 w-12">
+      {/* ─── 三件事 ─── */}
+      <section className="py-24 md:py-28">
+        <Reveal className="mb-14 text-center">
+          <h2 className="font-serif-cn text-ink-heavy text-3xl md:text-4xl">
+            {t('marketing.features.sectionTitle')}
+          </h2>
+          <div className="mx-auto mt-4 w-14">
             <InkStroke variant="thin" />
           </div>
-        </div>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {(['capture', 'socratic', 'plan'] as const).map((key, idx) => (
-            <FeatureCard
-              key={key}
-              index={idx}
-              title={t(`marketing.features.${key}.title`)}
-              desc={t(`marketing.features.${key}.desc`)}
-            />
+          <p className="text-ink-light mt-5 text-sm md:text-base">
+            {t('marketing.features.sectionDesc')}
+          </p>
+        </Reveal>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+          {FEATURE_KEYS.map((k, idx) => (
+            <Reveal key={k} delay={idx * 0.08}>
+              <FeatureCard
+                index={idx + 1}
+                title={t(`marketing.features.${k}.title`)}
+                desc={t(`marketing.features.${k}.desc`)}
+                accent={FEATURE_ACCENT[k]}
+              />
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* ─── 工作流 ─── */}
-      <section className="py-20">
-        <div className="mb-12 text-center">
-          <h2 className="font-serif-cn text-ink-heavy text-2xl">{t('marketing.flow.title')}</h2>
-          <div className="mx-auto mt-3 w-12">
+      <section className="py-24 md:py-28">
+        <Reveal className="mb-14 text-center">
+          <h2 className="font-serif-cn text-ink-heavy text-3xl md:text-4xl">
+            {t('marketing.flow.title')}
+          </h2>
+          <div className="mx-auto mt-4 w-14">
             <InkStroke variant="thin" />
           </div>
-        </div>
-        <ol className="mx-auto max-w-3xl space-y-6">
-          {(['capture', 'refine', 'plan', 'focus', 'review'] as const).map((k, idx) => (
-            <WorkflowItem
-              key={k}
-              index={idx}
-              title={t(`marketing.flow.steps.${k}.title`)}
-              desc={t(`marketing.flow.steps.${k}.desc`)}
-            />
-          ))}
-        </ol>
+        </Reveal>
+
+        <FlowTimeline steps={flowSteps} />
       </section>
 
       {/* ─── FAQ ─── */}
-      <section className="py-20">
-        <div className="mb-12 text-center">
-          <h2 className="font-serif-cn text-ink-heavy text-2xl">{t('marketing.faq.title')}</h2>
-          <div className="mx-auto mt-3 w-12">
+      <section className="py-24 md:py-28">
+        <Reveal className="mb-14 text-center">
+          <h2 className="font-serif-cn text-ink-heavy text-3xl md:text-4xl">
+            {t('marketing.faq.title')}
+          </h2>
+          <div className="mx-auto mt-4 w-14">
             <InkStroke variant="thin" />
           </div>
-        </div>
-        <div className="mx-auto max-w-3xl space-y-4">
-          {FAQ_KEYS.map((k) => (
-            <details
-              key={k}
-              className="border-ink-light/30 bg-paper-aged/30 rounded-sm border p-5 open:shadow-sm"
-            >
-              <summary className="font-serif-cn text-ink-heavy cursor-pointer list-none text-base font-medium">
-                {t(`marketing.faq.items.${k}.q`)}
-              </summary>
-              <p className="text-ink-medium mt-3 text-sm leading-relaxed whitespace-pre-line">
-                {t(`marketing.faq.items.${k}.a`)}
-              </p>
-            </details>
-          ))}
-        </div>
+        </Reveal>
+
+        <FaqAccordion items={faqItems} />
       </section>
 
       {/* ─── 自托管引导 ─── */}
-      <section className="py-20">
-        <div className="border-ink-heavy/30 bg-paper-aged/50 mx-auto max-w-3xl rounded-sm border p-8">
-          <p className="text-ink-light text-xs tracking-widest uppercase">Self-hosted</p>
-          <h2 className="font-serif-cn text-ink-heavy mt-2 text-2xl">
-            {t('marketing.selfhost.title')}
-          </h2>
-          <p className="text-ink-medium mt-4 text-sm leading-relaxed">
-            {t('marketing.selfhost.desc')}
-          </p>
-          <pre className="bg-ink-heavy/95 text-paper-rice mt-5 overflow-x-auto rounded-sm p-4 font-mono text-xs leading-relaxed">
-            {`# 克隆
-git clone https://github.com/<you>/nous.git && cd nous
+      <section className="py-24 md:py-28">
+        <Reveal>
+          <div className="border-ink-heavy/25 from-paper-aged/60 to-paper-rice/40 relative mx-auto max-w-3xl overflow-hidden rounded-xl border bg-gradient-to-br p-8 shadow-[0_30px_60px_-40px_rgba(28,27,25,0.3)] md:p-10">
+            <span
+              className="bg-cinnabar/15 pointer-events-none absolute -top-20 -right-20 h-56 w-56 rounded-full blur-3xl"
+              aria-hidden
+            />
 
-# 配置
-cp .env.example .env.prod
-vim .env.prod
+            <div className="relative">
+              <p className="text-ink-light font-serif-en text-xs tracking-[0.25em] uppercase">
+                Self-hosted
+              </p>
+              <h2 className="font-serif-cn text-ink-heavy mt-3 text-2xl md:text-3xl">
+                {t('marketing.selfhost.title')}
+              </h2>
+              <p className="text-ink-medium mt-4 text-sm leading-relaxed md:text-base">
+                {t('marketing.selfhost.desc')}
+              </p>
 
-# 启动
-docker compose -f docker/docker-compose.prod.yml up -d`}
-          </pre>
-          <div className="mt-6 flex items-center gap-4">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-indigo-stone text-sm underline"
-            >
-              {t('marketing.selfhost.docs')} →
-            </a>
-            <span className="text-ink-light text-xs">MIT · 可商用</span>
+              <div className="mt-6">
+                <CodeBlock
+                  code={DEPLOY_SNIPPET}
+                  copyLabel={t('marketing.selfhost.code.copy')}
+                  copiedLabel={t('marketing.selfhost.code.copied')}
+                />
+              </div>
+
+              <div className="mt-7 flex flex-wrap items-center gap-5">
+                <a
+                  href="https://github.com/qiuxinyuan321/nous#自托管--5-分钟上线"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-indigo-stone hover:text-ink-heavy inline-flex items-center gap-1.5 text-sm underline-offset-4 transition hover:underline"
+                >
+                  {t('marketing.selfhost.docs')}
+                  <span aria-hidden>→</span>
+                </a>
+                <span className="border-ink-light/40 text-ink-light rounded-full border px-3 py-1 text-xs tracking-wide">
+                  {t('marketing.selfhost.badge')}
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* ─── Footer ─── */}
-      <div className="mx-auto mt-10 w-48 opacity-50">
+      <div className="mx-auto mt-16 w-48 opacity-40">
         <InkStroke variant="thin" />
       </div>
       <footer className="text-ink-light pt-6 pb-12 text-center text-xs">
