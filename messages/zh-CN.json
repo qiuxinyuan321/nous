@@ -16,6 +16,7 @@
     "inbox": "想法",
     "focus": "今日",
     "graph": "图谱",
+    "memory": "记忆",
     "journal": "复盘",
     "settings": "设置",
     "logout": "退出"
@@ -209,6 +210,33 @@
       "openPlan": "查看方案"
     },
     "tagDescription": "该标签下有 {count} 个想法"
+  },
+  "memory": {
+    "title": "长期记忆",
+    "intro": "Nous 会悄悄记下关于你的稳定画像——偏好、习惯、长期目标、盲点——用于在后续对话里把提问角度调对。所有条目对你可见、可改、可删。",
+    "save": "收下",
+    "delete": "删除",
+    "placeholder": "用一句话记下关于你的稳定事实（不是此刻的想法）",
+    "importance": "重要度",
+    "empty": "还没有记忆。先 ⌘K 跟 AI 聊几轮,它会自己从对话里提炼;你也可以手动加一条。",
+    "emptyFilter": "此类暂无条目。",
+    "clickToEdit": "点击编辑",
+    "noEmbeddingHint": "无向量,按重要度/新鲜度参与检索",
+    "kind": {
+      "preference": "偏好",
+      "habit": "习惯",
+      "goal": "目标",
+      "blindspot": "盲点",
+      "fact": "事实"
+    },
+    "source": {
+      "manual": "手动",
+      "extracted_refine": "对话抽取",
+      "derived": "数据衍生"
+    },
+    "filter": {
+      "all": "全部"
+    }
   },
   "settings": {
     "title": "设置",

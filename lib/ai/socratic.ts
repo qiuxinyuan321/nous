@@ -13,6 +13,7 @@ interface PromptContext {
   locale: 'zh-CN' | 'en-US'
   ideaTitle: string
   ideaContent: string
+  memoryBlock?: string
 }
 
 export function socraticSystemPrompt({
@@ -20,14 +21,15 @@ export function socraticSystemPrompt({
   locale,
   ideaTitle,
   ideaContent,
+  memoryBlock,
 }: PromptContext): string {
-  if (locale === 'en-US') return enPrompt(phase, ideaTitle, ideaContent)
-  return zhPrompt(phase, ideaTitle, ideaContent)
+  if (locale === 'en-US') return enPrompt(phase, ideaTitle, ideaContent, memoryBlock)
+  return zhPrompt(phase, ideaTitle, ideaContent, memoryBlock)
 }
 
 // ─────────────────── 中文 Prompt ───────────────────
 
-function zhPrompt(phase: Phase, title: string, content: string): string {
+function zhPrompt(phase: Phase, title: string, content: string, memoryBlock?: string): string {
   const phaseGuide: Record<Phase, string> = {
     intent: `
 【当前阶段：intent · 意图澄清】
@@ -69,7 +71,7 @@ function zhPrompt(phase: Phase, title: string, content: string): string {
 - 容易陷入分析瘫痪（"可能"、"也许"、"我再想想"连续出现）
 - 对宏大叙事冷感，对精巧结构着迷
 
-${phaseGuide[phase]}
+${memoryBlock ? memoryBlock + '\n\n' : ''}${phaseGuide[phase]}
 
 ## 话术铁律
 1. **一次只问一个**问题，绝不连问
@@ -79,6 +81,7 @@ ${phaseGuide[phase]}
 5. 用户说"我不知道"不是终点——给选项
 6. 不使用 Markdown 标题、不使用列表符号（用户不需要格式化的导师腔）
 7. 纯文本输出
+8. 如有「我记得的你」,用于**调整问法的角度**,但**不要直接念给用户听**
 
 ## 用户当前的想法
 标题：${title || '（无题）'}
@@ -91,7 +94,7 @@ ${content}
 
 // ─────────────────── English Prompt ───────────────────
 
-function enPrompt(phase: Phase, title: string, content: string): string {
+function enPrompt(phase: Phase, title: string, content: string, memoryBlock?: string): string {
   const phaseGuide: Record<Phase, string> = {
     intent: `
 [Current phase: intent]
@@ -133,7 +136,7 @@ Do not ask further questions.
 - Falls into analysis paralysis ("maybe", "perhaps", "let me think more")
 - Cold to grand narratives, in love with elegant structure
 
-${phaseGuide[phase]}
+${memoryBlock ? memoryBlock + '\n\n' : ''}${phaseGuide[phase]}
 
 ## Rules
 1. Ask ONE question at a time. Never stack questions.
@@ -142,6 +145,7 @@ ${phaseGuide[phase]}
 4. Do not summarize what the user just said. Just ask the next question.
 5. "I don't know" is not the end — give options.
 6. Plain text. No markdown headers, no bullet lists.
+7. If "What I remember about you" is present, use it to tune your angle, but never quote it back.
 
 ## User's current idea
 Title: ${title || '(untitled)'}

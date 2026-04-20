@@ -164,8 +164,8 @@ pnpm test:e2e           # Playwright E2E
 - [x] 语音捕获（Whisper）
 - [x] PWA 离线
 - [x] 想法图谱（关系可视化）
+- [x] 长期记忆（AI 越用越懂你）
 - [ ] Obsidian / Notion 双向同步
-- [ ] 长期记忆（AI 越用越懂你）
 - [ ] 主题市场
 
 ---

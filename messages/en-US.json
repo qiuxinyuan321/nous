@@ -16,6 +16,7 @@
     "inbox": "Ideas",
     "focus": "Today",
     "graph": "Graph",
+    "memory": "Memory",
     "journal": "Journal",
     "settings": "Settings",
     "logout": "Log out"
@@ -209,6 +210,33 @@
       "openPlan": "Open plan"
     },
     "tagDescription": "{count} idea(s) share this tag"
+  },
+  "memory": {
+    "title": "Long-term memory",
+    "intro": "Nous quietly notes stable facts about you — preferences, habits, goals, blindspots — and uses them to tune how it asks questions. Everything here is visible, editable and deletable.",
+    "save": "Save",
+    "delete": "Delete",
+    "placeholder": "One sentence about a stable fact about you (not a momentary thought)",
+    "importance": "Importance",
+    "empty": "No memories yet. Chat a few rounds with ⌘K — AI will extract them; or add one manually.",
+    "emptyFilter": "Nothing in this kind yet.",
+    "clickToEdit": "Click to edit",
+    "noEmbeddingHint": "No vector; ranked by importance & recency",
+    "kind": {
+      "preference": "Preference",
+      "habit": "Habit",
+      "goal": "Goal",
+      "blindspot": "Blindspot",
+      "fact": "Fact"
+    },
+    "source": {
+      "manual": "manual",
+      "extracted_refine": "from dialogue",
+      "derived": "derived"
+    },
+    "filter": {
+      "all": "All"
+    }
   },
   "settings": {
     "title": "Settings",
