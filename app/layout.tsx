@@ -3,6 +3,7 @@ import { getLocale } from 'next-intl/server'
 import { Fraunces, JetBrains_Mono, Noto_Serif_SC } from 'next/font/google'
 import type { ReactNode } from 'react'
 import { ServiceWorkerRegister } from '@/components/layout/ServiceWorkerRegister'
+import { applyThemeScript } from '@/lib/themes/catalog'
 import './globals.css'
 
 const serifCn = Noto_Serif_SC({
@@ -77,6 +78,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       lang={locale}
       className={`${serifCn.variable} ${serifEn.variable} ${mono.variable} h-full antialiased`}
     >
+      <head>
+        {/* 主题 CSS 变量 inline 注入,避免切换主题时首帧闪白 */}
+        <script dangerouslySetInnerHTML={{ __html: applyThemeScript() }} />
+      </head>
       <body className="bg-paper-rice text-ink-heavy font-serif-cn flex min-h-full flex-col">
         {children}
         <ServiceWorkerRegister />

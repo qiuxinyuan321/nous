@@ -247,6 +247,53 @@
     "themes": {
       "rice": "宣纸",
       "ink": "墨色"
+    },
+    "nav": {
+      "profile": "个人",
+      "apiKeys": "API Key",
+      "language": "语言",
+      "themes": "主题",
+      "sync": "同步"
+    }
+  },
+  "themes": {
+    "title": "主题市场",
+    "intro": "Nous 的视觉语言是可替换的。挑一款喜欢的,它会立即应用到整站,并随你跨设备同步。",
+    "apply": "应用",
+    "active": "使用中",
+    "footnote": "所有内置主题基于同一套 CSS 变量,自定义主题支持计划在后续开放。"
+  },
+  "sync": {
+    "title": "同步",
+    "intro": "把 Nous 的想法和方案带出去——导出为 Obsidian 笔记、或一键推送到你自己的 Notion 数据库。双向实时同步还在路上。",
+    "obsidian": {
+      "title": "Obsidian · 单向 Markdown",
+      "desc": "导出所有非归档想法为 zip,每条一份 .md 含 YAML frontmatter(含标签、状态、对话、方案),可直接拖进 Vault。",
+      "exportBtn": "导出 zip",
+      "exportHint": "按状态分子目录 · 含方案与对话记录",
+      "importBtn": "导入 .md 文件",
+      "importHint": "支持多选 .md · 会解析 frontmatter,带 source: nous 且 id 已存在时自动去重",
+      "importDone": "已导入 {created} 条,跳过 {skipped} 条"
+    },
+    "notion": {
+      "title": "Notion · 单向推送",
+      "desc": "绑定一个 Internal Integration token + 目标 database,把选中的想法推成页面。标签、状态、目标、首步都会落到对应属性。",
+      "tokenLabel": "Integration Token",
+      "tokenHint": "在 notion.so/my-integrations 创建一个内部集成,复制 token。请把该集成加到你要写入的 database 的 Connections 里。",
+      "databaseLabel": "Database ID",
+      "databaseHint": "Notion 数据库 URL 中 ?v= 前的那段 32 位字符。",
+      "connect": "连接",
+      "connected": "已连接,测试通过。",
+      "connectedTo": "已连接到",
+      "lastPushed": "上次推送:{at}",
+      "disconnect": "断开",
+      "disconnectConfirm": "断开 Notion 连接?已推送的页面不会被删除。",
+      "savedButUnreachable": "已保存但无法访问 database:{error}",
+      "pushSelected": "推送选中",
+      "pushResult": "成功 {ok} · 失败 {failed}",
+      "noIdeas": "暂无想法可推。",
+      "schemaTitle": "推荐的 database schema",
+      "schemaHint": "只有 Name (title) 是必需的,其余缺失时 Notion 会忽略对应字段。"
     }
   },
   "quota": {

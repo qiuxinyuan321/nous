@@ -247,6 +247,53 @@
     "themes": {
       "rice": "Rice paper",
       "ink": "Ink dark"
+    },
+    "nav": {
+      "profile": "Profile",
+      "apiKeys": "API Keys",
+      "language": "Language",
+      "themes": "Themes",
+      "sync": "Sync"
+    }
+  },
+  "themes": {
+    "title": "Theme Market",
+    "intro": "Nous' visual language is swappable. Pick one — it applies instantly site-wide and follows you across devices.",
+    "apply": "Apply",
+    "active": "Active",
+    "footnote": "All built-in themes share the same CSS-variable contract. Custom-theme upload is coming later."
+  },
+  "sync": {
+    "title": "Sync",
+    "intro": "Take your ideas out of Nous — export as Obsidian notes or push to your own Notion database. Two-way realtime sync is on the roadmap.",
+    "obsidian": {
+      "title": "Obsidian · one-way Markdown",
+      "desc": "Export every non-archived idea as a zip; each idea is one .md with YAML frontmatter (tags, status, dialogue, plan). Drop the folder into your Vault.",
+      "exportBtn": "Export zip",
+      "exportHint": "Sub-folders by status · includes plan & dialogue",
+      "importBtn": "Import .md files",
+      "importHint": "Multi-select .md. frontmatter is parsed; entries with source: nous + existing id are deduped.",
+      "importDone": "Imported {created}, skipped {skipped}"
+    },
+    "notion": {
+      "title": "Notion · one-way push",
+      "desc": "Connect an Internal Integration token + a target database. Selected ideas become pages; tags, status, goal, first-action map to properties.",
+      "tokenLabel": "Integration Token",
+      "tokenHint": "Create an internal integration at notion.so/my-integrations and copy the token. Don't forget to add the integration to the target database via Connections.",
+      "databaseLabel": "Database ID",
+      "databaseHint": "The 32-char segment before ?v= in your Notion database URL.",
+      "connect": "Connect",
+      "connected": "Connected, test passed.",
+      "connectedTo": "Connected to",
+      "lastPushed": "Last push: {at}",
+      "disconnect": "Disconnect",
+      "disconnectConfirm": "Disconnect Notion? Pages already pushed will remain.",
+      "savedButUnreachable": "Saved, but can't reach database: {error}",
+      "pushSelected": "Push selected",
+      "pushResult": "{ok} ok · {failed} failed",
+      "noIdeas": "No ideas to push yet.",
+      "schemaTitle": "Recommended database schema",
+      "schemaHint": "Only Name (title) is required; Notion silently ignores missing properties."
     }
   },
   "quota": {
