@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2100 600" aria-hidden="true" role="img">
+  <title>Nous workflow · capture → refine → plan → focus → review</title>
+  <defs>
+    <linearGradient id="wash-bottom" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3E5871" stop-opacity="0.22"/>
+      <stop offset="45%" stop-color="#8C7A8F" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#B8372F" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="paper-tint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAF7EF"/>
+      <stop offset="100%" stop-color="#F2EBD8"/>
+    </linearGradient>
+    <filter id="ink-bleed" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="0.5"/>
+    </filter>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+  </defs>
+
+  <!-- 宣纸底 -->
+  <rect width="2100" height="600" fill="url(#paper-tint)"/>
+
+  <!-- 底部水彩拉通 -->
+  <rect x="0" y="460" width="2100" height="140" fill="url(#wash-bottom)" filter="url(#soft)"/>
+
+  <!-- 贯穿地平线墨 -->
+  <path d="M80 500 Q 540 492 1050 500 T 2020 500" stroke="#1C1B19" stroke-width="1" fill="none" opacity="0.38"/>
+
+  <!-- ============ 1 · Capture · 墨滴涟漪 ============ -->
+  <g transform="translate(160, 240)" filter="url(#ink-bleed)">
+    <path d="M120 -160 Q 118 -80 120 -20" stroke="#1C1B19" stroke-width="1.4" fill="none" opacity="0.32"/>
+    <ellipse cx="120" cy="-20" rx="13" ry="19" fill="#1C1B19" opacity="0.95"/>
+    <ellipse cx="120" cy="120" rx="48" ry="14" stroke="#1C1B19" stroke-width="1.6" fill="none" opacity="0.78"/>
+    <ellipse cx="120" cy="120" rx="80" ry="22" stroke="#1C1B19" stroke-width="1.1" fill="none" opacity="0.48"/>
+    <ellipse cx="120" cy="120" rx="114" ry="30" stroke="#1C1B19" stroke-width="0.9" fill="none" opacity="0.26"/>
+    <ellipse cx="120" cy="120" rx="6.5" ry="2.4" fill="#1C1B19"/>
+    <g transform="translate(-10, 210) rotate(-6)">
+      <rect x="0" y="0" width="30" height="30" rx="2.5" fill="#B8372F" opacity="0.95"/>
+      <text x="15" y="22" text-anchor="middle" fill="#FAF7EF" font-family="Georgia, serif" font-size="16" font-weight="600">1</text>
+    </g>
+  </g>
+
+  <!-- ============ 2 · Refine · 不闭合 enso + 穿越笔 ============ -->
+  <g transform="translate(540, 260)">
+    <path d="M150 20 Q 50 20, 50 120 Q 50 210, 140 215 Q 230 210, 240 140"
+          stroke="#1C1B19" stroke-width="12" fill="none" stroke-linecap="round" filter="url(#ink-bleed)" opacity="0.92"/>
+    <!-- 笔尾飞白 -->
+    <path d="M240 140 Q 248 128 258 122" stroke="#1C1B19" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <path d="M246 134 Q 254 126 262 122" stroke="#1C1B19" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.35"/>
+    <!-- 追问虚线 -->
+    <path d="M140 60 Q 200 75 250 100" stroke="#1C1B19" stroke-width="1.6" fill="none" stroke-dasharray="5 6" opacity="0.7"/>
+    <circle cx="252" cy="100" r="3.5" fill="#1C1B19" opacity="0.8"/>
+    <g transform="translate(104, 200) rotate(-6)">
+      <rect x="0" y="0" width="30" height="30" rx="2.5" fill="#B8372F" opacity="0.95"/>
+      <text x="15" y="22" text-anchor="middle" fill="#FAF7EF" font-family="Georgia, serif" font-size="16" font-weight="600">2</text>
+    </g>
+  </g>
+
+  <!-- ============ 3 · Plan · 三节点树 ============ -->
+  <g transform="translate(960, 210)" filter="url(#ink-bleed)">
+    <circle cx="130" cy="20" r="12" fill="#1C1B19" opacity="0.95"/>
+    <path d="M130 32 Q 70 70 50 150" stroke="#1C1B19" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <path d="M130 32 Q 130 90 130 150" stroke="#1C1B19" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <path d="M130 32 Q 190 70 210 150" stroke="#1C1B19" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <circle cx="50" cy="160" r="8" fill="#1C1B19" opacity="0.9"/>
+    <circle cx="130" cy="160" r="8" fill="#1C1B19" opacity="0.9"/>
+    <circle cx="210" cy="160" r="8" fill="#1C1B19" opacity="0.9"/>
+    <!-- 首动作高亮 青釉晕 -->
+    <circle cx="130" cy="160" r="16" stroke="#6B8E7A" stroke-width="1.8" fill="none" opacity="0.75"/>
+    <circle cx="130" cy="160" r="22" stroke="#6B8E7A" stroke-width="0.9" fill="none" opacity="0.35"/>
+    <g transform="translate(110, 235) rotate(-6)">
+      <rect x="0" y="0" width="30" height="30" rx="2.5" fill="#B8372F" opacity="0.95"/>
+      <text x="15" y="22" text-anchor="middle" fill="#FAF7EF" font-family="Georgia, serif" font-size="16" font-weight="600">3</text>
+    </g>
+  </g>
+
+  <!-- ============ 4 · Focus · 竹 + 番茄钟印 ============ -->
+  <g transform="translate(1380, 210)" filter="url(#ink-bleed)">
+    <!-- 竹竿 主笔触,稍顿挫 -->
+    <path d="M150 290 Q 148 150 158 30" stroke="#1C1B19" stroke-width="3.6" fill="none" stroke-linecap="round" opacity="0.92"/>
+    <!-- 竹节 -->
+    <path d="M142 225 Q 150 222 160 225" stroke="#1C1B19" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.85"/>
+    <path d="M146 145 Q 153 142 163 145" stroke="#1C1B19" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.82"/>
+    <path d="M150 72 Q 156 70 166 72" stroke="#1C1B19" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.78"/>
+    <!-- 竹叶 水墨写意 -->
+    <path d="M155 105 Q 195 98 238 95" stroke="#1C1B19" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.82"/>
+    <path d="M158 108 Q 180 132 212 152" stroke="#1C1B19" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.72"/>
+    <path d="M152 55 Q 112 48 80 40" stroke="#1C1B19" stroke-width="2.8" fill="none" stroke-linecap="round" opacity="0.82"/>
+    <path d="M153 195 Q 110 205 78 228" stroke="#1C1B19" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.72"/>
+    <path d="M156 195 Q 192 208 222 230" stroke="#1C1B19" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+    <!-- 番茄钟 朱砂点 -->
+    <circle cx="238" cy="95" r="5.5" fill="#B8372F" opacity="0.95"/>
+    <g transform="translate(130, 320) rotate(-6)">
+      <rect x="0" y="0" width="30" height="30" rx="2.5" fill="#B8372F" opacity="0.95"/>
+      <text x="15" y="22" text-anchor="middle" fill="#FAF7EF" font-family="Georgia, serif" font-size="16" font-weight="600">4</text>
+    </g>
+  </g>
+
+  <!-- ============ 5 · Review · 朱砂月 + 飞白 ============ -->
+  <g transform="translate(1780, 220)">
+    <circle cx="130" cy="120" r="46" fill="#B8372F" opacity="0.94"/>
+    <circle cx="130" cy="120" r="62" fill="none" stroke="#B8955A" stroke-width="0.8" opacity="0.6"/>
+    <circle cx="130" cy="120" r="78" fill="none" stroke="#B8955A" stroke-width="0.5" opacity="0.32"/>
+    <!-- 飞白墨痕 -->
+    <path d="M36 78 Q 72 74 102 80" stroke="#1C1B19" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.65"/>
+    <path d="M26 110 Q 64 105 92 112" stroke="#1C1B19" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.52"/>
+    <path d="M40 142 Q 72 138 94 144" stroke="#1C1B19" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.4"/>
+    <path d="M52 172 Q 78 168 94 172" stroke="#1C1B19" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.28"/>
+    <!-- 飞鸟 -->
+    <path d="M178 58 Q 188 52 198 58 Q 208 52 218 58" stroke="#1C1B19" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.65"/>
+    <path d="M200 86 Q 206 82 212 86" stroke="#1C1B19" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <g transform="translate(110, 230) rotate(-6)">
+      <rect x="0" y="0" width="30" height="30" rx="2.5" fill="#B8372F" opacity="0.95"/>
+      <text x="15" y="22" text-anchor="middle" fill="#FAF7EF" font-family="Georgia, serif" font-size="16" font-weight="600">5</text>
+    </g>
+  </g>
+
+  <!-- 阶段间分隔墨点 -->
+  <g fill="#1C1B19" opacity="0.42">
+    <circle cx="500" cy="500" r="2.8"/>
+    <circle cx="920" cy="500" r="2.8"/>
+    <circle cx="1340" cy="500" r="2.8"/>
+    <circle cx="1750" cy="500" r="2.8"/>
+  </g>
+</svg>
+
