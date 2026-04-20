@@ -1,24 +1,28 @@
 @import 'tailwindcss';
 
 /* ═══════════════════════════════════════════════════════════════════
-   Nous · Ink Design System · 禅意纸墨风
+   Nous · Modern Premium Zen System
    ═══════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* Paper · 宣纸底色 */
-  --paper-rice: #faf7ef;
-  --paper-aged: #f2ebd8;
+  /* Paper · 宣纸底色 enhanced */
+  --paper-rice: #ffffff;
+  --paper-aged: #f8f6f0;
 
   /* Ink · 墨色文字 */
-  --ink-heavy: #1c1b19;
-  --ink-medium: #4a4842;
-  --ink-light: #8b8880;
+  --ink-heavy: #0f172a;
+  --ink-medium: #334155;
+  --ink-light: #64748b;
 
-  /* Accent · 点缀色 */
-  --cinnabar: #b8372f; /* 朱砂印 */
-  --celadon: #6b8e7a; /* 青釉 */
-  --indigo-stone: #3e5871; /* 青石 */
-  --gold-leaf: #b8955a; /* 泥金 */
+  /* Accent · 点缀色 (Vibrant and Modern) */
+  --cinnabar: #ef4444; /* 朱砂印, more vibrant red */
+  --celadon: #10b981; /* 青釉, vibrant emerald */
+  --indigo-stone: #3b82f6; /* 青石, vibrant blue */
+  --gold-leaf: #f59e0b; /* 泥金, vibrant amber */
+  
+  /* Glowing gradients */
+  --glow-primary: rgba(239, 68, 68, 0.15);
+  --glow-secondary: rgba(59, 130, 246, 0.15);
 
   /* Semantic */
   --background: var(--paper-rice);
@@ -26,15 +30,17 @@
 }
 
 .dark {
-  --paper-rice: #1a1814;
-  --paper-aged: #24211c;
-  --ink-heavy: #e8e3d5;
-  --ink-medium: #b9b4a6;
-  --ink-light: #7a7669;
-  --cinnabar: #d0554d;
-  --celadon: #89ae9b;
-  --indigo-stone: #6f8aa8;
-  --gold-leaf: #d7b580;
+  --paper-rice: #0b0f19;
+  --paper-aged: #111827;
+  --ink-heavy: #f8fafc;
+  --ink-medium: #cbd5e1;
+  --ink-light: #94a3b8;
+  --cinnabar: #f87171;
+  --celadon: #34d399;
+  --indigo-stone: #60a5fa;
+  --gold-leaf: #fbbf24;
+  --glow-primary: rgba(248, 113, 113, 0.1);
+  --glow-secondary: rgba(96, 165, 250, 0.1);
   --background: var(--paper-rice);
   --foreground: var(--ink-heavy);
 }
@@ -57,36 +63,90 @@
   --font-mono: var(--font-mono), 'JetBrains Mono', 'IBM Plex Mono', monospace;
 }
 
-/* ─── 宣纸纹理 ─── */
+/* ─── Premium Background ─── */
 body {
   background-color: var(--paper-rice);
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(139, 136, 128, 0.04) 0, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(184, 149, 90, 0.03) 0, transparent 40%),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
-  background-blend-mode: multiply;
+  background-image: 
+    radial-gradient(circle at 15% 50%, var(--glow-primary), transparent 25%),
+    radial-gradient(circle at 85% 30%, var(--glow-secondary), transparent 25%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.25'/%3E%3C/svg%3E");
+  background-attachment: fixed;
   color: var(--foreground);
+  transition: background-color 0.5s ease;
+}
+
+.dark body {
+  background-image: 
+    radial-gradient(circle at 20% 40%, var(--glow-primary), transparent 30%),
+    radial-gradient(circle at 80% 60%, var(--glow-secondary), transparent 30%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");
+}
+
+/* ─── Glassmorphism Utilities ─── */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+}
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 /* ─── 选区颜色 ─── */
 ::selection {
   background-color: var(--cinnabar);
-  color: var(--paper-rice);
+  color: #fff;
 }
 
 /* ─── 滚动条 ─── */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--ink-light);
-  border-radius: 4px;
-  opacity: 0.3;
+  border-radius: 8px;
+  opacity: 0.5;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--ink-medium);
+}
+
+/* ─── Animations ─── */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+@keyframes pulse-glow-dark {
+  0% { box-shadow: 0 0 0 0 rgba(248, 113, 113, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(248, 113, 113, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(248, 113, 113, 0); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+.dark .animate-pulse-glow {
+  animation: pulse-glow-dark 2s infinite;
 }

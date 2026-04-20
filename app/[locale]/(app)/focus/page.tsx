@@ -37,7 +37,7 @@ export default async function FocusPage({ params }: { params: Promise<{ locale: 
     },
   })
 
-  const items: FocusTaskItem[] = tasks.map((t) => ({
+  const items: FocusTaskItem[] = tasks.map((t: typeof tasks[0]) => ({
     id: t.id,
     title: t.title,
     description: t.description,
