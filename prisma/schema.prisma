@@ -30,6 +30,7 @@ model User {
   settings    UserSettings?
   demoUsage   DemoUsage[]
   reflections Reflection[]
+  memories    Memory[]
 }
 
 /// NextAuth.js: 第三方登录凭证
@@ -224,4 +225,29 @@ model Reflection {
 
   @@index([userId, kind, createdAt])
   @@index([ideaId, createdAt])
+}
+
+// ───────────────── Memory · 长期记忆（AI 越用越懂你）─────────────────
+
+/// 用户画像片段:偏好/习惯/目标/盲点/事实。
+/// 每次苏格拉底对话前按语义相似度注入 system prompt;
+/// 对话结束后由 AI 抽取新事实入库。
+model Memory {
+  id         String    @id @default(cuid())
+  userId     String
+  kind       String // preference | habit | goal | blindspot | fact
+  content    String    @db.Text
+  embedding  Json? // number[];embed API 不可用时为空,降级按 importance 排序
+  importance Int       @default(3) // 1-5
+  source     String // manual | extracted-refine | derived
+  sourceRef  String? // ideaId / messageId,便于追溯
+  lastUsedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, kind])
+  @@index([userId, importance])
+  @@index([userId, createdAt])
 }

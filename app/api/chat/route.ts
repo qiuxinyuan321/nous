@@ -9,6 +9,8 @@ import { phaseForMessageCount, socraticSystemPrompt } from '@/lib/ai/socratic'
 import { QuotaExceededError, RateLimitError, type ResolvedProvider } from '@/lib/ai/types'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
+import { memoriesToPromptBlock, searchMemories } from '@/lib/memory/store'
+import { extractMemories } from '@/lib/memory/extract'
 
 export const runtime = 'nodejs'
 
@@ -100,11 +102,22 @@ export async function POST(req: Request) {
     },
   })
 
+  // 检索长期记忆 (top-K),查询文本 = idea + 用户最新发言
+  const queryText = `${idea.title ?? ''} ${idea.rawContent}\n${lastMessage.content}`.slice(0, 2000)
+  let memoryBlock = ''
+  try {
+    const memories = await searchMemories(userId, queryText, 5)
+    memoryBlock = memoriesToPromptBlock(memories, locale)
+  } catch (err) {
+    console.warn('[chat] memory search failed:', err)
+  }
+
   const systemPrompt = socraticSystemPrompt({
     phase,
     locale,
     ideaTitle: idea.title ?? '',
     ideaContent: idea.rawContent,
+    memoryBlock: memoryBlock || undefined,
   })
 
   const result = streamText({
@@ -134,6 +147,21 @@ export async function POST(req: Request) {
             data: { status: 'refining' },
           })
         }
+
+        // fire-and-forget: 从本轮对话抽取长期记忆
+        // 只在 detail / boundary 阶段抽 (intent 轮信号稀薄, ready 已总结完)
+        if (phase === 'detail' || phase === 'boundary') {
+          void extractMemories(userId, ideaId, {
+            provider,
+            locale,
+            userMessage: lastMessage.content,
+            assistantMessage: text,
+            recentContext: messages.slice(-4).map((m) => ({
+              role: m.role === 'system' ? 'assistant' : m.role,
+              content: m.content,
+            })),
+          })
+        }
       } catch (err) {
         console.error('[chat onFinish] persist failed:', err)
       }
@@ -144,6 +172,7 @@ export async function POST(req: Request) {
     headers: {
       'X-Phase': phase,
       'X-Source': provider.source,
+      ...(memoryBlock ? { 'X-Memory-Injected': '1' } : {}),
     },
   })
 }
