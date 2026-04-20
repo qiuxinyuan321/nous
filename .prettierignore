@@ -1,0 +1,7 @@
+.next
+.vercel
+node_modules
+pnpm-lock.yaml
+public/fonts
+messages/*.lock.json
+*.md

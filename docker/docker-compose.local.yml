@@ -1,0 +1,7 @@
+# Local WSL override - app 3000 expose, no nginx/SSL
+services:
+  app:
+    ports:
+      - "3000:3000"
+  nginx:
+    profiles: ["disabled"]

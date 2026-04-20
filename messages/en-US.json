@@ -1,0 +1,174 @@
+{
+  "common": {
+    "appName": "Nous",
+    "tagline": "Turn thoughts into action",
+    "subtitle": "An AI execution tool crafted for INTP-style deep thinkers",
+    "loading": "Loading…",
+    "error": "Something went wrong",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "retry": "Retry"
+  },
+  "nav": {
+    "inbox": "Ideas",
+    "focus": "Today",
+    "journal": "Journal",
+    "settings": "Settings",
+    "logout": "Log out"
+  },
+  "auth": {
+    "login": "Sign in",
+    "register": "Sign up",
+    "email": "Email",
+    "magicLink": "Send magic link",
+    "continueWithGithub": "Continue with GitHub",
+    "continueWithGoogle": "Continue with Google",
+    "alreadyHaveAccount": "Already have an account?",
+    "noAccount": "No account yet?",
+    "welcomeBack": "Welcome back"
+  },
+  "marketing": {
+    "hero": {
+      "title": "Turn thoughts into action",
+      "subtitle": "For INTPs: execution is not willpower, it's being asked the right questions.",
+      "cta": "Get started",
+      "learnMore": "Learn more"
+    },
+    "features": {
+      "capture": {
+        "title": "⌘K Capture",
+        "desc": "Zero-friction input, no idea lost"
+      },
+      "socratic": {
+        "title": "Socratic dialogue",
+        "desc": "Gentle AI inquiry to clarify your intent"
+      },
+      "plan": {
+        "title": "One-click plan",
+        "desc": "From milestones to today's first step"
+      }
+    },
+    "flow": {
+      "title": "How it works",
+      "steps": {
+        "capture": {
+          "title": "Capture",
+          "desc": "Hit ⌘K, drop a messy thought. No naming, no tagging, no folders."
+        },
+        "refine": {
+          "title": "Dialogue",
+          "desc": "AI asks through four phases — intent, detail, boundary, ready. One question at a time, no fluff."
+        },
+        "plan": {
+          "title": "Plan",
+          "desc": "Turns the dialogue into a visible plan tree: goal, first action, milestones, tasks, risks, MoSCoW priorities."
+        },
+        "focus": {
+          "title": "Execute",
+          "desc": "Pick today's few from the tree. Run a pomodoro. Tick them off."
+        },
+        "review": {
+          "title": "Review",
+          "desc": "One click on Sunday to see what you did, where you stalled, and what to focus next week."
+        }
+      }
+    },
+    "faq": {
+      "title": "FAQ",
+      "items": {
+        "byok": {
+          "q": "Do I have to pay?",
+          "a": "No. Built-in Demo Key gives every new user 20 free calls per day — enough to run a full idea through the flow. Configure your own API key (OpenAI, Anthropic, DeepSeek, Kimi, Doubao, or any OpenAI-compatible endpoint) for unlimited use on your own bill."
+        },
+        "privacy": {
+          "q": "Are my keys and data safe?",
+          "a": "Keys are encrypted with AES-256-GCM before hitting the database. Master key lives in server env vars only. Ideas, messages and plans stay under your account. Code is MIT-licensed — self-host for full control."
+        },
+        "selfhost": {
+          "q": "Can I self-host?",
+          "a": "Yes. A single docker-compose file spins up the full stack (PostgreSQL + Redis + Next.js + Nginx). Your server, your domain, your keys, zero external dependencies."
+        },
+        "free": {
+          "q": "Is it free?",
+          "a": "The code is MIT-licensed and free forever. The hosted version is free for now; AI cost is covered by BYOK."
+        }
+      }
+    },
+    "selfhost": {
+      "title": "Self-host in 5 minutes",
+      "desc": "One docker-compose. One .env.prod. Your ECS, your domain, your keys.",
+      "docs": "Read the deploy guide"
+    }
+  },
+  "inbox": {
+    "title": "Idea Inbox",
+    "empty": "Quiet here. Press ⌘K to capture your first thought.",
+    "quickCapture": {
+      "placeholder": "Drop whatever's on your mind…",
+      "save": "Save"
+    },
+    "sections": {
+      "raw": "Unsorted",
+      "refining": "In dialogue",
+      "planned": "Planned",
+      "executing": "Executing",
+      "done": "Done"
+    }
+  },
+  "refine": {
+    "thinking": "Thinking…",
+    "quickReplies": "Quick replies",
+    "readyToPlan": "Generate plan"
+  },
+  "plan": {
+    "goal": "Goal",
+    "successCriteria": "Success criteria",
+    "milestones": "Milestones",
+    "risks": "Risks",
+    "firstAction": "First step",
+    "priority": {
+      "must": "Must",
+      "should": "Should",
+      "could": "Could",
+      "wont": "Won't"
+    },
+    "status": {
+      "todo": "Todo",
+      "doing": "Doing",
+      "done": "Done",
+      "skipped": "Skipped"
+    }
+  },
+  "focus": {
+    "today": "Today's focus",
+    "pomodoro": "Pomodoro",
+    "start": "Start",
+    "pause": "Pause",
+    "stuck": "I'm stuck",
+    "empty": "No tasks today. Check the Inbox."
+  },
+  "journal": {
+    "title": "Journal",
+    "weekly": "This week",
+    "generate": "Generate review"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "apiKeys": "API keys",
+    "language": "Language",
+    "theme": "Theme",
+    "themes": {
+      "rice": "Rice paper",
+      "ink": "Ink dark"
+    }
+  },
+  "quota": {
+    "remaining": "{count} free calls left today",
+    "exhausted": "You've used all free calls for today",
+    "configureKey": "Configure your own API key for unlimited use"
+  }
+}

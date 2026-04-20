@@ -1,0 +1,92 @@
+@import 'tailwindcss';
+
+/* ═══════════════════════════════════════════════════════════════════
+   Nous · Ink Design System · 禅意纸墨风
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Paper · 宣纸底色 */
+  --paper-rice: #faf7ef;
+  --paper-aged: #f2ebd8;
+
+  /* Ink · 墨色文字 */
+  --ink-heavy: #1c1b19;
+  --ink-medium: #4a4842;
+  --ink-light: #8b8880;
+
+  /* Accent · 点缀色 */
+  --cinnabar: #b8372f; /* 朱砂印 */
+  --celadon: #6b8e7a; /* 青釉 */
+  --indigo-stone: #3e5871; /* 青石 */
+  --gold-leaf: #b8955a; /* 泥金 */
+
+  /* Semantic */
+  --background: var(--paper-rice);
+  --foreground: var(--ink-heavy);
+}
+
+.dark {
+  --paper-rice: #1a1814;
+  --paper-aged: #24211c;
+  --ink-heavy: #e8e3d5;
+  --ink-medium: #b9b4a6;
+  --ink-light: #7a7669;
+  --cinnabar: #d0554d;
+  --celadon: #89ae9b;
+  --indigo-stone: #6f8aa8;
+  --gold-leaf: #d7b580;
+  --background: var(--paper-rice);
+  --foreground: var(--ink-heavy);
+}
+
+@theme inline {
+  --color-paper-rice: var(--paper-rice);
+  --color-paper-aged: var(--paper-aged);
+  --color-ink-heavy: var(--ink-heavy);
+  --color-ink-medium: var(--ink-medium);
+  --color-ink-light: var(--ink-light);
+  --color-cinnabar: var(--cinnabar);
+  --color-celadon: var(--celadon);
+  --color-indigo-stone: var(--indigo-stone);
+  --color-gold-leaf: var(--gold-leaf);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-serif-cn: var(--font-serif-cn), 'Source Han Serif SC', 'Noto Serif CJK SC', serif;
+  --font-serif-en: var(--font-serif-en), 'Fraunces', 'EB Garamond', serif;
+  --font-mono: var(--font-mono), 'JetBrains Mono', 'IBM Plex Mono', monospace;
+}
+
+/* ─── 宣纸纹理 ─── */
+body {
+  background-color: var(--paper-rice);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(139, 136, 128, 0.04) 0, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(184, 149, 90, 0.03) 0, transparent 40%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  background-blend-mode: multiply;
+  color: var(--foreground);
+}
+
+/* ─── 选区颜色 ─── */
+::selection {
+  background-color: var(--cinnabar);
+  color: var(--paper-rice);
+}
+
+/* ─── 滚动条 ─── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-light);
+  border-radius: 4px;
+  opacity: 0.3;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-medium);
+}
