@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="t">
+  <title id="t">Nous · 结构化方案树</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAF7EF"/>
+      <stop offset="100%" stop-color="#F2EBD8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bg)"/>
+
+  <!-- 目标卡片 -->
+  <g transform="translate(80, 48)">
+    <rect x="0" y="0" width="640" height="70" rx="8" fill="#FAF7EF" stroke="#1C1B19" stroke-opacity="0.15"/>
+    <text x="20" y="26" font-family="Noto Serif SC, serif" font-size="11" fill="#8B8880" letter-spacing="3">GOAL</text>
+    <text x="20" y="52" font-family="Noto Serif SC, serif" font-size="18" fill="#1C1B19" font-weight="500">
+      把 Nous 打造成 INTP 思考者的 AI 执行力外设
+    </text>
+    <!-- 首步徽标 -->
+    <g transform="translate(474, 20)">
+      <rect x="0" y="0" width="150" height="34" rx="4" fill="#6B8E7A" opacity="0.2" stroke="#6B8E7A" stroke-opacity="0.7"/>
+      <text x="12" y="14" font-family="Noto Serif SC, serif" font-size="10" fill="#6B8E7A" letter-spacing="2">FIRST ACTION</text>
+      <text x="12" y="28" font-family="Noto Serif SC, serif" font-size="12" fill="#243028">写一条落地页的 hero 文案</text>
+    </g>
+  </g>
+
+  <!-- 里程碑 + 任务树 -->
+  <!-- M1 -->
+  <g transform="translate(80, 148)">
+    <!-- 里程碑头 -->
+    <circle cx="12" cy="14" r="12" fill="#1C1B19"/>
+    <text x="12" y="19" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#FAF7EF" font-weight="500">1</text>
+    <text x="34" y="20" font-family="Noto Serif SC, serif" font-size="15" fill="#1C1B19" font-weight="500">
+      视觉基建
+    </text>
+    <text x="140" y="20" font-family="system-ui, sans-serif" font-size="11" fill="#8B8880">Due · 周五</text>
+
+    <!-- 任务 -->
+    <g transform="translate(34, 38)">
+      <!-- must -->
+      <rect x="0" y="0" width="3" height="18" fill="#B8372F"/>
+      <rect x="12" y="3" width="12" height="12" rx="2" fill="#6B8E7A"/>
+      <path d="M14 9 L17 12 L22 6" stroke="#FAF7EF" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="32" y="14" font-family="Noto Serif SC, serif" font-size="13" fill="#4A4842" text-decoration="line-through">Hero 主视觉 (hero.jpg)</text>
+      <text x="280" y="14" font-family="system-ui" font-size="10" fill="#8B8880">~45m</text>
+    </g>
+    <g transform="translate(34, 62)">
+      <rect x="0" y="0" width="3" height="18" fill="#B8372F"/>
+      <rect x="12" y="3" width="12" height="12" rx="2" fill="none" stroke="#1C1B19" stroke-opacity="0.6"/>
+      <text x="32" y="14" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19">5 张功能 mockup SVG</text>
+      <text x="280" y="14" font-family="system-ui" font-size="10" fill="#8B8880">~90m</text>
+    </g>
+    <g transform="translate(34, 86)">
+      <rect x="0" y="0" width="3" height="18" fill="#B8955A"/>
+      <rect x="12" y="3" width="12" height="12" rx="2" fill="none" stroke="#1C1B19" stroke-opacity="0.6"/>
+      <text x="32" y="14" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19">架构图 SVG</text>
+      <text x="280" y="14" font-family="system-ui" font-size="10" fill="#8B8880">~30m</text>
+    </g>
+  </g>
+
+  <!-- M2 -->
+  <g transform="translate(80, 286)">
+    <circle cx="12" cy="14" r="12" fill="none" stroke="#1C1B19" stroke-width="1.5"/>
+    <text x="12" y="19" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#1C1B19">2</text>
+    <text x="34" y="20" font-family="Noto Serif SC, serif" font-size="15" fill="#1C1B19" font-weight="500">
+      文档叙事
+    </text>
+    <text x="140" y="20" font-family="system-ui, sans-serif" font-size="11" fill="#8B8880">Due · 周日</text>
+
+    <g transform="translate(34, 38)">
+      <rect x="0" y="0" width="3" height="18" fill="#B8372F"/>
+      <rect x="12" y="3" width="12" height="12" rx="2" fill="none" stroke="#1C1B19" stroke-opacity="0.6"/>
+      <text x="32" y="14" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19">README 重写为"商品级"</text>
+      <text x="280" y="14" font-family="system-ui" font-size="10" fill="#8B8880">~60m</text>
+    </g>
+    <g transform="translate(34, 62)">
+      <rect x="0" y="0" width="3" height="18" fill="#B8955A"/>
+      <rect x="12" y="3" width="12" height="12" rx="2" fill="none" stroke="#1C1B19" stroke-opacity="0.6"/>
+      <text x="32" y="14" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19">ARCHITECTURE.md</text>
+      <text x="280" y="14" font-family="system-ui" font-size="10" fill="#8B8880">~30m</text>
+    </g>
+  </g>
+
+  <!-- MoSCoW 图例 -->
+  <g transform="translate(580, 200)">
+    <text x="0" y="0" font-family="Noto Serif SC, serif" font-size="11" fill="#8B8880" letter-spacing="3">MOSCOW</text>
+    <g transform="translate(0, 16)">
+      <rect x="0" y="0" width="10" height="10" fill="#B8372F"/>
+      <text x="18" y="9" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">必做</text>
+    </g>
+    <g transform="translate(0, 34)">
+      <rect x="0" y="0" width="10" height="10" fill="#B8955A"/>
+      <text x="18" y="9" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">应做</text>
+    </g>
+    <g transform="translate(0, 52)">
+      <rect x="0" y="0" width="10" height="10" fill="#6B8E7A"/>
+      <text x="18" y="9" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">可做</text>
+    </g>
+    <g transform="translate(0, 70)">
+      <rect x="0" y="0" width="10" height="10" fill="#8B8880"/>
+      <text x="18" y="9" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">不做</text>
+    </g>
+  </g>
+
+  <!-- 进度条 -->
+  <g transform="translate(580, 380)">
+    <text x="0" y="0" font-family="Noto Serif SC, serif" font-size="11" fill="#8B8880" letter-spacing="3">本周完成</text>
+    <rect x="0" y="14" width="140" height="6" rx="3" fill="#8B8880" fill-opacity="0.2"/>
+    <rect x="0" y="14" width="44" height="6" rx="3" fill="#1C1B19"/>
+    <text x="0" y="36" font-family="Georgia, serif" font-size="14" fill="#1C1B19">1 / 5</text>
+  </g>
+
+  <!-- 朱砂印 "划" -->
+  <g transform="translate(690, 50) rotate(-6)">
+    <rect x="0" y="0" width="42" height="42" rx="3" fill="#B8372F" opacity="0.92"/>
+    <text x="21" y="30" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="20" font-weight="500" fill="#FAF7EF">划</text>
+  </g>
+</svg>

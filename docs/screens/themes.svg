@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="t">
+  <title id="t">Nous · 主题市场</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAF7EF"/>
+      <stop offset="100%" stop-color="#F2EBD8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+
+  <!-- 标题 -->
+  <text x="80" y="60" font-family="Noto Serif SC, serif" font-size="24" fill="#1C1B19">主题市场</text>
+  <path d="M80 72 Q 100 69, 160 72" stroke="#1C1B19" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <text x="80" y="104" font-family="Noto Serif SC, serif" font-size="13" fill="#4A4842">挑一款喜欢的,它会立即应用到整站,并随你跨设备同步。</text>
+
+  <!-- 卡片 1: 宣纸 (active) -->
+  <g transform="translate(80, 150)">
+    <rect x="0" y="0" width="200" height="280" rx="10" fill="#FAF7EF" stroke="#1C1B19" stroke-width="1.5"/>
+    <!-- 预览 -->
+    <g>
+      <rect x="0" y="0" width="200" height="140" fill="#FAF7EF"/>
+      <!-- 水墨笔 -->
+      <path d="M18 110 Q 70 80 110 90 T 190 60" stroke="#1C1B19" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.85"/>
+      <!-- enso -->
+      <path d="M40 60 Q 28 80 48 95 Q 70 100 80 85 Q 85 70 70 60" stroke="#1C1B19" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+      <!-- 印 -->
+      <rect x="148" y="18" width="22" height="22" rx="1.5" fill="#B8372F" opacity="0.92" transform="rotate(-6 159 29)"/>
+      <text x="159" y="34" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" fill="#FAF7EF" transform="rotate(-6 159 29)">思</text>
+      <!-- active 徽标 -->
+      <rect x="142" y="108" width="48" height="18" rx="9" fill="#1C1B19"/>
+      <text x="166" y="121" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#FAF7EF" letter-spacing="1">ACTIVE</text>
+    </g>
+    <!-- meta -->
+    <g>
+      <rect x="0" y="140" width="200" height="140" fill="#F2EBD8" fill-opacity="0.4"/>
+      <text x="16" y="167" font-family="Noto Serif SC, serif" font-size="16" fill="#1C1B19" font-weight="500">宣纸</text>
+      <text x="150" y="165" font-family="Georgia, serif" font-size="9" fill="#8B8880" letter-spacing="2">LIGHT</text>
+      <text x="16" y="193" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">
+        <tspan x="16">默认亮色 · 宣纸米白 +</tspan>
+        <tspan x="16" dy="14">浓墨 + 朱砂</tspan>
+      </text>
+      <text x="16" y="252" font-family="Georgia, serif" font-size="9" fill="#8B8880">by Nous</text>
+      <text x="184" y="252" text-anchor="end" font-family="Noto Serif SC, serif" font-size="11" fill="#8B8880">使用中</text>
+    </g>
+  </g>
+
+  <!-- 卡片 2: 深墨 -->
+  <g transform="translate(300, 150)">
+    <rect x="0" y="0" width="200" height="280" rx="10" fill="#FAF7EF" stroke="#1C1B19" stroke-opacity="0.25"/>
+    <g>
+      <rect x="0" y="0" width="200" height="140" fill="#1A1814"/>
+      <path d="M18 110 Q 70 80 110 90 T 190 60" stroke="#E8E3D5" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.85"/>
+      <path d="M40 60 Q 28 80 48 95 Q 70 100 80 85 Q 85 70 70 60" stroke="#E8E3D5" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+      <rect x="148" y="18" width="22" height="22" rx="1.5" fill="#D0554D" opacity="0.92" transform="rotate(-6 159 29)"/>
+      <text x="159" y="34" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" fill="#1A1814" transform="rotate(-6 159 29)">思</text>
+    </g>
+    <g>
+      <rect x="0" y="140" width="200" height="140" fill="#F2EBD8" fill-opacity="0.4"/>
+      <text x="16" y="167" font-family="Noto Serif SC, serif" font-size="16" fill="#1C1B19" font-weight="500">深墨</text>
+      <text x="150" y="165" font-family="Georgia, serif" font-size="9" fill="#8B8880" letter-spacing="2">DARK</text>
+      <text x="16" y="193" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">
+        <tspan x="16">默认暗色 · 夜墨底 +</tspan>
+        <tspan x="16" dy="14">月白字</tspan>
+      </text>
+      <text x="16" y="252" font-family="Georgia, serif" font-size="9" fill="#8B8880">by Nous</text>
+      <!-- 应用按钮 -->
+      <rect x="148" y="240" width="40" height="20" rx="3" fill="#1C1B19"/>
+      <text x="168" y="253" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="10" fill="#FAF7EF">应用</text>
+    </g>
+  </g>
+
+  <!-- 卡片 3: 青瓷 -->
+  <g transform="translate(520, 150)">
+    <rect x="0" y="0" width="200" height="280" rx="10" fill="#FAF7EF" stroke="#1C1B19" stroke-opacity="0.25"/>
+    <g>
+      <rect x="0" y="0" width="200" height="140" fill="#EEF1EC"/>
+      <path d="M18 110 Q 70 80 110 90 T 190 60" stroke="#243028" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.85"/>
+      <path d="M40 60 Q 28 80 48 95 Q 70 100 80 85 Q 85 70 70 60" stroke="#243028" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+      <rect x="148" y="18" width="22" height="22" rx="1.5" fill="#6B8E7A" opacity="0.92" transform="rotate(-6 159 29)"/>
+      <text x="159" y="34" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" fill="#EEF1EC" transform="rotate(-6 159 29)">思</text>
+    </g>
+    <g>
+      <rect x="0" y="140" width="200" height="140" fill="#F2EBD8" fill-opacity="0.4"/>
+      <text x="16" y="167" font-family="Noto Serif SC, serif" font-size="16" fill="#1C1B19" font-weight="500">青瓷</text>
+      <text x="150" y="165" font-family="Georgia, serif" font-size="9" fill="#8B8880" letter-spacing="2">LIGHT</text>
+      <text x="16" y="193" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">
+        <tspan x="16">宋代青釉 · 冷静理性,</tspan>
+        <tspan x="16" dy="14">适合深度思考</tspan>
+      </text>
+      <text x="16" y="252" font-family="Georgia, serif" font-size="9" fill="#8B8880">by Nous</text>
+      <rect x="148" y="240" width="40" height="20" rx="3" fill="#1C1B19"/>
+      <text x="168" y="253" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="10" fill="#FAF7EF">应用</text>
+    </g>
+  </g>
+
+  <!-- 底部暗示还有更多 -->
+  <text x="400" y="465" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" fill="#8B8880">朱金 · 烟竹 · 自定义主题 → 进入页面查看全部</text>
+</svg>

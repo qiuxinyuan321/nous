@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="t">
+  <title id="t">Nous · 想法图谱</title>
+  <defs>
+    <radialGradient id="bg" cx="0.5" cy="0.5" r="0.75">
+      <stop offset="0%" stop-color="#FAF7EF"/>
+      <stop offset="100%" stop-color="#F2EBD8"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bg)"/>
+
+  <!-- 筛选 chips (顶栏) -->
+  <g transform="translate(80, 38)">
+    <g>
+      <rect x="0" y="0" width="52" height="22" rx="11" fill="#1C1B19"/>
+      <text x="26" y="15" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" fill="#FAF7EF">全部</text>
+    </g>
+    <g transform="translate(60, 0)">
+      <rect x="0" y="0" width="66" height="22" rx="11" fill="none" stroke="#8B8880" stroke-opacity="0.5"/>
+      <circle cx="12" cy="11" r="3" fill="#8B8880"/>
+      <text x="40" y="15" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">未整理</text>
+    </g>
+    <g transform="translate(134, 0)">
+      <rect x="0" y="0" width="66" height="22" rx="11" fill="none" stroke="#8B8880" stroke-opacity="0.5"/>
+      <circle cx="12" cy="11" r="3" fill="#3E5871"/>
+      <text x="40" y="15" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">对话中</text>
+    </g>
+    <g transform="translate(208, 0)">
+      <rect x="0" y="0" width="66" height="22" rx="11" fill="none" stroke="#8B8880" stroke-opacity="0.5"/>
+      <circle cx="12" cy="11" r="3" fill="#B8955A"/>
+      <text x="40" y="15" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">已规划</text>
+    </g>
+    <g transform="translate(282, 0)">
+      <rect x="0" y="0" width="66" height="22" rx="11" fill="none" stroke="#8B8880" stroke-opacity="0.5"/>
+      <circle cx="12" cy="11" r="3" fill="#6B8E7A"/>
+      <text x="40" y="15" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">执行中</text>
+    </g>
+  </g>
+
+  <!-- 统计 -->
+  <text x="80" y="100" font-family="Noto Serif SC, serif" font-size="12" fill="#8B8880" letter-spacing="2">32 个想法 · 11 个标签 · 4 个未归类</text>
+
+  <!-- 边 (先画,在节点下面) -->
+  <g stroke="#1C1B19" stroke-opacity="0.28" stroke-width="0.9">
+    <!-- tag "产品" 到其周围 ideas -->
+    <line x1="250" y1="240" x2="160" y2="180"/>
+    <line x1="250" y1="240" x2="180" y2="300"/>
+    <line x1="250" y1="240" x2="120" y2="260"/>
+    <line x1="250" y1="240" x2="220" y2="380"/>
+    <line x1="250" y1="240" x2="330" y2="190"/>
+
+    <!-- tag "阅读" -->
+    <line x1="540" y1="200" x2="460" y2="160"/>
+    <line x1="540" y1="200" x2="620" y2="150"/>
+    <line x1="540" y1="200" x2="600" y2="240"/>
+    <line x1="540" y1="200" x2="450" y2="260"/>
+
+    <!-- tag "写作" -->
+    <line x1="600" y1="360" x2="550" y2="310"/>
+    <line x1="600" y1="360" x2="690" y2="310"/>
+    <line x1="600" y1="360" x2="680" y2="410"/>
+    <line x1="600" y1="360" x2="520" y2="400"/>
+
+    <!-- 跨 tag 桥 -->
+    <line x1="330" y1="190" x2="460" y2="160"/>
+    <line x1="460" y1="160" x2="550" y2="310"/>
+  </g>
+
+  <!-- Tag 朱砂印 -->
+  <g>
+    <g transform="translate(250, 240) rotate(-6)">
+      <rect x="-22" y="-22" width="44" height="44" rx="3" fill="#B8372F" opacity="0.93"/>
+      <text text-anchor="middle" dominant-baseline="central" fill="#FAF7EF" font-family="Georgia, serif" font-size="14" font-weight="500">产品</text>
+    </g>
+    <g transform="translate(540, 200) rotate(-6)">
+      <rect x="-20" y="-20" width="40" height="40" rx="3" fill="#B8372F" opacity="0.93"/>
+      <text text-anchor="middle" dominant-baseline="central" fill="#FAF7EF" font-family="Georgia, serif" font-size="13" font-weight="500">阅读</text>
+    </g>
+    <g transform="translate(600, 360) rotate(-6)">
+      <rect x="-20" y="-20" width="40" height="40" rx="3" fill="#B8372F" opacity="0.93"/>
+      <text text-anchor="middle" dominant-baseline="central" fill="#FAF7EF" font-family="Georgia, serif" font-size="13" font-weight="500">写作</text>
+    </g>
+  </g>
+
+  <!-- Idea 节点 (按 status 着色) -->
+  <g>
+    <!-- 产品簇 -->
+    <circle cx="160" cy="180" r="12" fill="#B8955A" opacity="0.12"/>
+    <circle cx="160" cy="180" r="8" fill="#B8955A"/>
+    <circle cx="160" cy="180" r="5" fill="none" stroke="#FAF7EF" stroke-width="1" opacity="0.7"/>
+    <text x="160" y="206" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="10" fill="#4A4842">开源 Nous</text>
+
+    <circle cx="180" cy="300" r="10" fill="#3E5871" opacity="0.12"/>
+    <circle cx="180" cy="300" r="7" fill="#3E5871"/>
+
+    <circle cx="120" cy="260" r="9" fill="#8B8880" opacity="0.12"/>
+    <circle cx="120" cy="260" r="6" fill="#8B8880"/>
+
+    <circle cx="220" cy="380" r="11" fill="#6B8E7A" opacity="0.12"/>
+    <circle cx="220" cy="380" r="7.5" fill="#6B8E7A"/>
+    <circle cx="220" cy="380" r="4.5" fill="none" stroke="#FAF7EF" stroke-width="1" opacity="0.7"/>
+
+    <circle cx="330" cy="190" r="10" fill="#1C1B19" opacity="0.12"/>
+    <circle cx="330" cy="190" r="7" fill="#1C1B19"/>
+
+    <!-- 阅读簇 -->
+    <circle cx="460" cy="160" r="9" fill="#3E5871" opacity="0.12"/>
+    <circle cx="460" cy="160" r="6.5" fill="#3E5871"/>
+    <circle cx="620" cy="150" r="8" fill="#8B8880" opacity="0.12"/>
+    <circle cx="620" cy="150" r="5.5" fill="#8B8880"/>
+    <circle cx="600" cy="240" r="10" fill="#1C1B19" opacity="0.12"/>
+    <circle cx="600" cy="240" r="6.5" fill="#1C1B19"/>
+    <circle cx="450" cy="260" r="9" fill="#B8955A" opacity="0.12"/>
+    <circle cx="450" cy="260" r="6" fill="#B8955A"/>
+    <circle cx="450" cy="260" r="3.5" fill="none" stroke="#FAF7EF" stroke-width="1" opacity="0.7"/>
+
+    <!-- 写作簇 -->
+    <circle cx="550" cy="310" r="9" fill="#6B8E7A" opacity="0.12"/>
+    <circle cx="550" cy="310" r="6.5" fill="#6B8E7A"/>
+    <circle cx="690" cy="310" r="8" fill="#3E5871" opacity="0.12"/>
+    <circle cx="690" cy="310" r="5.5" fill="#3E5871"/>
+    <circle cx="680" cy="410" r="10" fill="#8B8880" opacity="0.12"/>
+    <circle cx="680" cy="410" r="7" fill="#8B8880"/>
+    <circle cx="520" cy="400" r="9" fill="#1C1B19" opacity="0.12"/>
+    <circle cx="520" cy="400" r="6.5" fill="#1C1B19"/>
+  </g>
+
+  <!-- hint -->
+  <g transform="translate(80, 450)">
+    <rect x="0" y="0" width="280" height="24" rx="3" fill="none" stroke="#8B8880" stroke-opacity="0.4"/>
+    <text x="10" y="16" font-family="system-ui" font-size="10" fill="#8B8880">拖动节点 · 滚轮缩放 · 点空白平移</text>
+  </g>
+</svg>
