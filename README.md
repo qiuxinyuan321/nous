@@ -163,7 +163,7 @@ pnpm test:e2e           # Playwright E2E
 - [x] 水墨落地页 + Hero 主视觉
 - [x] 语音捕获（Whisper）
 - [x] PWA 离线
-- [ ] 想法图谱（关系可视化）
+- [x] 想法图谱（关系可视化）
 - [ ] Obsidian / Notion 双向同步
 - [ ] 长期记忆（AI 越用越懂你）
 - [ ] 主题市场
