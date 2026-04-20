@@ -15,6 +15,7 @@
   "nav": {
     "inbox": "想法",
     "focus": "今日",
+    "graph": "图谱",
     "journal": "复盘",
     "settings": "设置",
     "logout": "退出"
@@ -175,6 +176,39 @@
     "title": "复盘日志",
     "weekly": "本周复盘",
     "generate": "生成复盘"
+  },
+  "graph": {
+    "title": "想法图谱",
+    "summary": "{ideas} 个想法 · {tags} 个标签 · {untagged} 个未归类",
+    "empty": "还没有想法。先 ⌘K 落几笔，再来看它们的联系。",
+    "hint": "拖动节点 · 滚轮缩放 · 点空白平移",
+    "close": "关闭",
+    "filter": {
+      "all": "全部",
+      "raw": "未整理",
+      "refining": "对话中",
+      "planned": "已规划",
+      "executing": "执行中",
+      "done": "已完成"
+    },
+    "status": {
+      "raw": "未整理",
+      "refining": "对话中",
+      "planned": "已规划",
+      "executing": "执行中",
+      "done": "已完成",
+      "archived": "已归档"
+    },
+    "stats": {
+      "tags": "标签",
+      "messages": "对话",
+      "plan": "方案"
+    },
+    "actions": {
+      "openRefine": "继续对话",
+      "openPlan": "查看方案"
+    },
+    "tagDescription": "该标签下有 {count} 个想法"
   },
   "settings": {
     "title": "设置",

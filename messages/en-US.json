@@ -15,6 +15,7 @@
   "nav": {
     "inbox": "Ideas",
     "focus": "Today",
+    "graph": "Graph",
     "journal": "Journal",
     "settings": "Settings",
     "logout": "Log out"
@@ -175,6 +176,39 @@
     "title": "Journal",
     "weekly": "This week",
     "generate": "Generate review"
+  },
+  "graph": {
+    "title": "Idea Graph",
+    "summary": "{ideas} ideas · {tags} tags · {untagged} untagged",
+    "empty": "No ideas yet. Drop a few with ⌘K, then come see how they connect.",
+    "hint": "Drag nodes · Scroll to zoom · Drag canvas to pan",
+    "close": "Close",
+    "filter": {
+      "all": "All",
+      "raw": "Unsorted",
+      "refining": "Refining",
+      "planned": "Planned",
+      "executing": "Executing",
+      "done": "Done"
+    },
+    "status": {
+      "raw": "Unsorted",
+      "refining": "Refining",
+      "planned": "Planned",
+      "executing": "Executing",
+      "done": "Done",
+      "archived": "Archived"
+    },
+    "stats": {
+      "tags": "Tags",
+      "messages": "Messages",
+      "plan": "Plan"
+    },
+    "actions": {
+      "openRefine": "Continue dialogue",
+      "openPlan": "Open plan"
+    },
+    "tagDescription": "{count} idea(s) share this tag"
   },
   "settings": {
     "title": "Settings",

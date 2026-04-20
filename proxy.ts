@@ -7,7 +7,7 @@ import { routing } from '@/lib/i18n/routing'
 const { auth } = NextAuth(authConfig)
 const intlMiddleware = createIntlMiddleware(routing)
 
-const PROTECTED = ['/inbox', '/refine', '/plan', '/focus', '/journal', '/settings']
+const PROTECTED = ['/inbox', '/refine', '/plan', '/focus', '/graph', '/journal', '/settings']
 
 /** 剥离 locale 前缀，便于和 PROTECTED 白名单匹配。 */
 function stripLocale(pathname: string): { locale: string; path: string } {
