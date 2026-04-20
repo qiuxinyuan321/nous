@@ -1,0 +1,49 @@
+{
+  "name": "Nous · 让想法，落地",
+  "short_name": "Nous",
+  "description": "Turn thoughts into action, the INTP way — an AI-powered thought-to-action translator.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FAF7EF",
+  "theme_color": "#FAF7EF",
+  "lang": "zh-CN",
+  "categories": ["productivity", "lifestyle", "utilities"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "落一笔",
+      "short_name": "落笔",
+      "description": "快速记录一个想法",
+      "url": "/inbox?capture=1",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "今日聚焦",
+      "short_name": "今日",
+      "description": "打开今日番茄钟面板",
+      "url": "/focus",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

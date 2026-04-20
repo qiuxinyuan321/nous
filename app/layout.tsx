@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { getLocale } from 'next-intl/server'
 import { Fraunces, JetBrains_Mono, Noto_Serif_SC } from 'next/font/google'
 import type { ReactNode } from 'react'
+import { ServiceWorkerRegister } from '@/components/layout/ServiceWorkerRegister'
 import './globals.css'
 
 const serifCn = Noto_Serif_SC({
@@ -33,10 +34,25 @@ export const metadata: Metadata = {
   description: '专为 INTP 深度思考者设计的 AI 执行力工具。捕获想法，苏格拉底追问，一键规划。',
   keywords: ['INTP', 'productivity', 'AI', 'Socratic', 'planning', '执行力', '想法管理'],
   authors: [{ name: 'Nous contributors' }],
+  manifest: '/manifest.webmanifest',
+  applicationName: 'Nous',
+  appleWebApp: {
+    capable: true,
+    title: 'Nous',
+    statusBarStyle: 'default',
+  },
+  icons: {
+    icon: [
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
   openGraph: {
     title: 'Nous',
     description: '让想法，落地',
     type: 'website',
+    images: ['/hero.jpg'],
   },
 }
 
@@ -63,6 +79,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     >
       <body className="bg-paper-rice text-ink-heavy font-serif-cn flex min-h-full flex-col">
         {children}
+        <ServiceWorkerRegister />
       </body>
     </html>
   )
