@@ -161,9 +161,9 @@ pnpm test:e2e           # Playwright E2E
 - [x] 中英双语 UI + Prompt
 - [x] Docker 一键部署 + Nginx + SSL
 - [x] 水墨落地页 + Hero 主视觉
+- [x] 语音捕获（Whisper）
+- [x] PWA 离线
 - [ ] 想法图谱（关系可视化）
-- [ ] 语音捕获（Whisper）
-- [ ] PWA 离线
 - [ ] Obsidian / Notion 双向同步
 - [ ] 长期记忆（AI 越用越懂你）
 - [ ] 主题市场

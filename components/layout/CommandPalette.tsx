@@ -5,12 +5,14 @@ import { useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
 import { usePaletteStore } from '@/lib/stores/palette'
 import { useCreateIdea } from '@/lib/hooks/useIdeas'
+import { VoiceButton } from '@/components/features/inbox/VoiceButton'
 
 /**
  * ⌘K CommandPalette —— 零摩擦捕获。
  * - 全局 ⌘K / Ctrl+K 唤起
  * - Enter 保存，Shift+Enter 换行，Esc 关闭
  * - 水墨晕染入场（clip-path + blur）
+ * - 麦克风按钮: 语音 → Whisper → 填入 textarea
  */
 export function CommandPalette() {
   const t = useTranslations('inbox.quickCapture')
@@ -58,6 +60,13 @@ export function CommandPalette() {
     }
   }
 
+  function handleTranscript(text: string | null) {
+    if (!text) return
+    // 若输入框已有内容则换行追加,否则直接填入
+    setValue((prev) => (prev.trim() ? `${prev.trimEnd()}\n${text}` : text))
+    textareaRef.current?.focus()
+  }
+
   return (
     <AnimatePresence>
       {open && (
@@ -91,28 +100,27 @@ export function CommandPalette() {
               placeholder={t('placeholder')}
               className="font-serif-cn text-ink-heavy w-full resize-none bg-transparent px-6 py-5 text-lg leading-relaxed outline-none placeholder:text-[color:var(--ink-light)]"
             />
-            <div className="border-ink-light/20 text-ink-light flex items-center justify-between border-t px-6 py-3 text-xs">
-              <span>
-                <kbd className="border-ink-light/40 rounded border px-1.5 py-0.5 font-mono text-[10px]">
-                  Enter
-                </kbd>{' '}
-                落笔 ·{' '}
-                <kbd className="border-ink-light/40 rounded border px-1.5 py-0.5 font-mono text-[10px]">
-                  ⇧Enter
-                </kbd>{' '}
-                换行 ·{' '}
-                <kbd className="border-ink-light/40 rounded border px-1.5 py-0.5 font-mono text-[10px]">
-                  Esc
-                </kbd>{' '}
-                离开
-              </span>
-              <button
-                type="submit"
-                disabled={!value.trim() || isPending}
-                className="bg-ink-heavy hover:bg-ink-medium rounded px-3 py-1 text-[color:var(--paper-rice)] transition disabled:opacity-40"
-              >
-                {isPending ? '…' : t('save')}
-              </button>
+            <div className="border-ink-light/20 flex flex-wrap items-center gap-3 border-t px-4 py-3">
+              <VoiceButton onTranscript={handleTranscript} />
+              <div className="text-ink-light ml-auto flex items-center gap-3 text-xs">
+                <span className="hidden sm:inline">
+                  <kbd className="border-ink-light/40 rounded border px-1.5 py-0.5 font-mono text-[10px]">
+                    Enter
+                  </kbd>{' '}
+                  落笔 ·{' '}
+                  <kbd className="border-ink-light/40 rounded border px-1.5 py-0.5 font-mono text-[10px]">
+                    Esc
+                  </kbd>{' '}
+                  离开
+                </span>
+                <button
+                  type="submit"
+                  disabled={!value.trim() || isPending}
+                  className="bg-ink-heavy hover:bg-ink-medium rounded px-3 py-1 text-xs text-[color:var(--paper-rice)] transition disabled:opacity-40"
+                >
+                  {isPending ? '…' : t('save')}
+                </button>
+              </div>
             </div>
           </motion.form>
         </motion.div>

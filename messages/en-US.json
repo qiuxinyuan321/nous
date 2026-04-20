@@ -119,6 +119,18 @@
       "placeholder": "Drop whatever's on your mind…",
       "save": "Save"
     },
+    "voice": {
+      "start": "Start recording",
+      "stop": "Stop recording",
+      "cancel": "Cancel",
+      "hint": "or tap mic to speak",
+      "transcribing": "Transcribing…",
+      "permissionDenied": "Microphone permission denied",
+      "notSupported": "Your browser doesn't support recording",
+      "providerUnsupported": "Your AI provider doesn't support speech — switch to an OpenAI-compatible key",
+      "quotaExceeded": "Today's free calls are used up",
+      "failed": "Transcription failed, try again"
+    },
     "sections": {
       "raw": "Unsorted",
       "refining": "In dialogue",

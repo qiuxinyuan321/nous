@@ -119,6 +119,18 @@
       "placeholder": "脑子里的东西，先放进来……",
       "save": "落笔"
     },
+    "voice": {
+      "start": "开始录音",
+      "stop": "停止录音",
+      "cancel": "取消",
+      "hint": "或按麦克风说话",
+      "transcribing": "转写中…",
+      "permissionDenied": "未授权使用麦克风",
+      "notSupported": "此浏览器不支持录音",
+      "providerUnsupported": "当前 AI 提供商不支持语音，请切换 OpenAI 兼容 Key",
+      "quotaExceeded": "今日体验额度已用完",
+      "failed": "转写失败，稍后再试"
+    },
     "sections": {
       "raw": "未整理",
       "refining": "对话中",
