@@ -37,3 +37,21 @@ export function useCreateIdea() {
     },
   })
 }
+
+async function deleteIdeaRequest(id: string): Promise<void> {
+  const res = await fetch(`/api/ideas/${id}`, { method: 'DELETE' })
+  if (!res.ok) {
+    const err = (await res.json().catch(() => ({}))) as { error?: string }
+    throw new Error(err.error ?? `DELETE /api/ideas/${id} failed: ${res.status}`)
+  }
+}
+
+export function useDeleteIdea() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: deleteIdeaRequest,
+    onSuccess: (_data, id) => {
+      qc.setQueryData<Idea[]>(['ideas'], (prev) => prev?.filter((i) => i.id !== id) ?? [])
+    },
+  })
+}
