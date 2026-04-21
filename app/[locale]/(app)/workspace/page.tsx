@@ -73,7 +73,7 @@ export default async function WorkspacePage({
     prisma.task.count({
       where: {
         status: 'done',
-        updatedAt: { gte: weekStart },
+        completedAt: { gte: weekStart },
         milestone: { plan: { idea: { userId: session.user.id } } },
       },
     }),
