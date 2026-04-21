@@ -209,6 +209,7 @@ model Task {
   focusedOn    DateTime? @db.Date // 被选入某日「今日聚焦」
 
   milestone Milestone @relation(fields: [milestoneId], references: [id], onDelete: Cascade)
+  notes     Note[]    // 任务关联的笔记（隐式 M:N → _NoteToTask）
 
   @@index([milestoneId, orderIdx])
   @@index([focusedOn])
@@ -295,6 +296,7 @@ model Note {
   idea     Idea?       @relation(fields: [ideaId], references: [id], onDelete: SetNull)
   outLinks NoteLink[]  @relation("source")
   inLinks  NoteLink[]  @relation("target")
+  tasks    Task[]      // 反向：被任务关联（隐式 M:N → _NoteToTask）
 
   @@index([userId, folderId])
   @@index([userId, updatedAt])
