@@ -17,7 +17,7 @@ async function fetchNotes(params?: Record<string, string>): Promise<NotesRespons
 
 async function fetchNote(
   id: string,
-): Promise<NoteDTO & { outLinks?: unknown[]; inLinks?: unknown[]; folder?: unknown }> {
+): Promise<NoteDTO & { outLinks?: unknown[]; inLinks?: unknown[]; folder?: unknown; idea?: { id: string; title: string | null; status: string } | null }> {
   const res = await fetch(`/api/notes/${id}`)
   if (!res.ok) throw new Error(`GET /api/notes/${id} failed: ${res.status}`)
   return res.json()
