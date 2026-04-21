@@ -35,6 +35,9 @@ services:
       NODE_ENV: production
       ADMIN_PASSWORD: '${ADMIN_PASSWORD:-}'
       SUPER_ADMIN_EMAIL: '${SUPER_ADMIN_EMAIL:-}'
+      # Cloudflare Flexible SSL: 回源 HTTP，cookie 不能 Secure
+      AUTH_COOKIE_SECURE: '${AUTH_COOKIE_SECURE:-true}'
+      AUTH_TRUST_HOST: '${AUTH_TRUST_HOST:-true}'
     expose:
       - '3000'
     depends_on:
