@@ -1,4 +1,4 @@
-import { timingSafeEqual } from 'node:crypto'
+import { compare } from 'bcryptjs'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
@@ -9,11 +9,10 @@ import { authConfig } from '@/lib/auth.config'
 
 const hasEmailServer = !!(process.env.EMAIL_SERVER && process.env.EMAIL_SERVER.trim())
 const hasGitHub = !!(process.env.GITHUB_ID && process.env.GITHUB_SECRET)
-const hasAdminPassword = !!(process.env.ADMIN_PASSWORD && process.env.ADMIN_PASSWORD.trim())
 
 /**
  * NextAuth v5 完整配置（Node runtime）。
- * - Credentials：自托管密码登录（ADMIN_PASSWORD env）
+ * - Credentials：账号密码登录（per-user bcrypt hash）
  * - Magic Link：未配 EMAIL_SERVER 时开发友好——链接打印到控制台
  * - GitHub：env 填了才启用
  * - session 用 JWT 以兼容 edge middleware，但 Account/VerificationToken 仍走 Prisma
@@ -22,35 +21,27 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
   adapter: PrismaAdapter(prisma),
   providers: [
-    // ── 密码登录（自托管友好）──
-    ...(hasAdminPassword
-      ? [
-          Credentials({
-            name: 'password',
-            credentials: {
-              email: { label: '邮箱', type: 'email' },
-              password: { label: '密码', type: 'password' },
-            },
-            async authorize(credentials) {
-              const email = credentials?.email as string
-              const password = credentials?.password as string
-              if (!email || !password) return null
-              const expected = Buffer.from(process.env.ADMIN_PASSWORD!)
-              const actual = Buffer.from(password)
-              if (expected.length !== actual.length || !timingSafeEqual(expected, actual))
-                return null
+    // ── 账号密码登录 ──
+    Credentials({
+      name: 'password',
+      credentials: {
+        email: { label: '邮箱', type: 'email' },
+        password: { label: '密码', type: 'password' },
+      },
+      async authorize(credentials) {
+        const email = credentials?.email as string
+        const password = credentials?.password as string
+        if (!email || !password) return null
 
-              // 找到或创建用户
-              const user = await prisma.user.upsert({
-                where: { email },
-                create: { email },
-                update: {},
-              })
-              return { id: user.id, email: user.email, name: user.name, image: user.image }
-            },
-          }),
-        ]
-      : []),
+        const user = await prisma.user.findUnique({ where: { email } })
+        if (!user?.password) return null
+
+        const valid = await compare(password, user.password)
+        if (!valid) return null
+
+        return { id: user.id, email: user.email, name: user.name, image: user.image }
+      },
+    }),
 
     // ── Magic Link ──
     Nodemailer({
