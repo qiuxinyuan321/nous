@@ -27,6 +27,9 @@ function fmt(sec: number) {
  * transcribing 态: 三点墨滴 loading
  */
 export function VoiceButton({ onTranscript, className, language }: VoiceButtonProps) {
+  // 临时禁用语音功能（当前 provider 不支持 Whisper）
+  return null
+
   const t = useTranslations('inbox.voice')
   const v = useVoiceCapture({ language })
 

@@ -18,6 +18,8 @@
     "graph": "图谱",
     "memory": "记忆",
     "journal": "复盘",
+    "notes": "笔记",
+    "executor": "执行器",
     "settings": "设置",
     "logout": "退出"
   },

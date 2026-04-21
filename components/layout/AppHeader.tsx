@@ -11,27 +11,21 @@ export async function AppHeader({ user }: { user: NonNullable<Session['user']> }
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
         <div className="flex items-center gap-8">
           <Link
-            href="/inbox"
+            href="/notes"
             className="font-serif-en text-ink-heavy text-xl tracking-wide"
             aria-label="Nous"
           >
             Nous
           </Link>
           <nav className="text-ink-medium flex items-center gap-6 text-sm">
+            <Link href="/notes" className="hover:text-ink-heavy transition">
+              {t('nav.notes')}
+            </Link>
             <Link href="/inbox" className="hover:text-ink-heavy transition">
-              {t('nav.inbox')}
-            </Link>
-            <Link href="/focus" className="hover:text-ink-heavy transition">
-              {t('nav.focus')}
-            </Link>
-            <Link href="/graph" className="hover:text-ink-heavy transition">
-              {t('nav.graph')}
+              {t('nav.executor')}
             </Link>
             <Link href="/memory" className="hover:text-ink-heavy transition">
               {t('nav.memory')}
-            </Link>
-            <Link href="/journal" className="hover:text-ink-heavy transition">
-              {t('nav.journal')}
             </Link>
           </nav>
         </div>

@@ -32,6 +32,9 @@ model User {
   reflections Reflection[]
   memories    Memory[]
   notion      NotionConnection?
+  notes       Note[]
+  noteFolders NoteFolder[]
+  aiDigests   AiDigest[]
 }
 
 /// NextAuth.js: 第三方登录凭证
@@ -268,4 +271,73 @@ model NotionConnection {
   updatedAt     DateTime @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ───────────────── Note · 双链笔记系统 ─────────────────
+
+model Note {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String   @default("无题")
+  content   String   @db.Text @default("")
+  folderId  String?
+  tags      String[]
+  pinned    Boolean  @default(false)
+  archived  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user     User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  folder   NoteFolder? @relation(fields: [folderId], references: [id], onDelete: SetNull)
+  outLinks NoteLink[]  @relation("source")
+  inLinks  NoteLink[]  @relation("target")
+
+  @@index([userId, folderId])
+  @@index([userId, updatedAt])
+  @@index([userId, pinned])
+}
+
+model NoteFolder {
+  id        String   @id @default(cuid())
+  userId    String
+  name      String
+  parentId  String?
+  orderIdx  Int      @default(0)
+  icon      String?
+  createdAt DateTime @default(now())
+
+  user     User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parent   NoteFolder?  @relation("children", fields: [parentId], references: [id], onDelete: SetNull)
+  children NoteFolder[] @relation("children")
+  notes    Note[]
+
+  @@index([userId, parentId])
+}
+
+model NoteLink {
+  id        String   @id @default(cuid())
+  sourceId  String
+  targetId  String
+  context   String?
+  createdAt DateTime @default(now())
+
+  source Note @relation("source", fields: [sourceId], references: [id], onDelete: Cascade)
+  target Note @relation("target", fields: [targetId], references: [id], onDelete: Cascade)
+
+  @@unique([sourceId, targetId])
+  @@index([targetId])
+}
+
+model AiDigest {
+  id            String   @id @default(cuid())
+  userId        String
+  noteIds       String[]
+  prompt        String?
+  result        String   @db.Text
+  savedAsNoteId String?
+  createdAt     DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
 }
