@@ -57,9 +57,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
         aria-hidden="true"
       >
-        <div className="bg-cinnabar/10 absolute top-[-8rem] right-[-6rem] h-[28rem] w-[28rem] rounded-full blur-3xl" />
-        <div className="bg-indigo-stone/10 absolute top-[24rem] left-[-8rem] h-[24rem] w-[24rem] rounded-full blur-3xl" />
-        <div className="bg-celadon/8 absolute top-[70rem] right-[-4rem] h-[20rem] w-[20rem] rounded-full blur-3xl" />
+        <div className="bg-cinnabar/20 dark:bg-cinnabar/30 absolute top-[-10rem] right-[-10rem] h-[32rem] w-[32rem] rounded-full mix-blend-multiply blur-[100px] transition-colors duration-700 dark:mix-blend-screen" />
+        <div className="bg-indigo-stone/20 dark:bg-indigo-stone/30 absolute top-[20rem] left-[-12rem] h-[28rem] w-[28rem] rounded-full mix-blend-multiply blur-[100px] transition-colors duration-700 dark:mix-blend-screen" />
+        <div className="bg-celadon/20 dark:bg-celadon/30 absolute top-[70rem] right-[-8rem] h-[24rem] w-[24rem] rounded-full mix-blend-multiply blur-[100px] transition-colors duration-700 dark:mix-blend-screen" />
+        <div className="bg-gold-leaf/15 dark:bg-gold-leaf/20 absolute top-[45rem] left-[20%] h-[20rem] w-[20rem] rounded-full mix-blend-multiply blur-[80px] transition-colors duration-700 dark:mix-blend-screen" />
       </div>
 
       {/* ─── Hero ─── */}
@@ -186,9 +187,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* ─── 自托管引导 ─── */}
       <section className="py-24 md:py-28">
         <Reveal>
-          <div className="border-ink-heavy/25 from-paper-aged/60 to-paper-rice/40 relative mx-auto max-w-3xl overflow-hidden rounded-xl border bg-gradient-to-br p-8 shadow-[0_30px_60px_-40px_rgba(28,27,25,0.3)] md:p-10">
+          <div className="from-paper-aged/80 to-paper-rice/60 dark:from-paper-aged/10 dark:to-paper-rice/5 relative mx-auto max-w-3xl overflow-hidden rounded-xl border border-white/40 bg-gradient-to-br p-8 shadow-[0_30px_60px_-40px_rgba(28,27,25,0.3)] backdrop-blur-xl md:p-10 dark:border-white/10 dark:shadow-[0_30px_60px_-40px_rgba(0,0,0,0.5)]">
             <span
-              className="bg-cinnabar/15 pointer-events-none absolute -top-20 -right-20 h-56 w-56 rounded-full blur-3xl"
+              className="bg-cinnabar/25 dark:bg-cinnabar/30 pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full blur-[80px]"
               aria-hidden
             />
 
