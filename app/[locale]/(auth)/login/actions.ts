@@ -1,7 +1,6 @@
 'use server'
 
 import { AuthError } from 'next-auth'
-import { redirect } from 'next/navigation'
 import { z } from 'zod'
 import { signIn } from '@/lib/auth'
 
@@ -68,16 +67,18 @@ export async function signInWithPassword(
     await signIn('credentials', {
       email: parsed.data.email,
       password: parsed.data.password,
-      redirect: false,
+      redirectTo: redirectUrl,
     })
   } catch (error) {
     if (error instanceof AuthError) {
-      return { ok: false, error: '邮箱或密码错误' }
+      if (error.type === 'CredentialsSignin') {
+        return { ok: false, error: '邮箱或密码错误' }
+      }
     }
     throw error
   }
 
-  redirect(redirectUrl)
+  return { ok: true, error: null }
 }
 
 export async function signInWithGitHub(callbackUrl?: string) {
