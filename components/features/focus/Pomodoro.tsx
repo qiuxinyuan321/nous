@@ -1,8 +1,16 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { formatRemaining, usePomodoroStore } from '@/lib/stores/pomodoro'
+
+const POMODORO_CHEERS = [
+  '一轮完成！你的专注力正在积累。',
+  '又一个番茄收入囊中。',
+  '25 分钟的深度工作，值得骄傲。',
+  '休息一下，回来继续乘胜追击。',
+  '专注是一种超能力，你正在练习它。',
+]
 
 interface PomodoroProps {
   activeTaskTitle?: string | null
@@ -27,7 +35,9 @@ export function Pomodoro({ activeTaskTitle }: PomodoroProps) {
     return () => window.clearInterval(h)
   }, [running, tick])
 
-  // mode 切换时推送通知 + 声音
+  const [pomodoroToast, setPomodoroToast] = useState<string | null>(null)
+
+  // mode 切换时推送通知 + 声音 + 激励
   useEffect(() => {
     if (prevMode.current === mode) return
     const from = prevMode.current
@@ -35,6 +45,9 @@ export function Pomodoro({ activeTaskTitle }: PomodoroProps) {
     if (from === 'work' && mode === 'break') {
       notify('一轮专注完成', '休息 5 分钟')
       beep()
+      const msg = POMODORO_CHEERS[Math.floor(Math.random() * POMODORO_CHEERS.length)]
+      setPomodoroToast(msg)
+      setTimeout(() => setPomodoroToast(null), 3000)
     } else if (from === 'break' && mode === 'work') {
       notify('休息结束', '开始下一轮')
       beep()
@@ -153,6 +166,20 @@ export function Pomodoro({ activeTaskTitle }: PomodoroProps) {
             </button>
           )}
         </div>
+
+        {/* 番茄钟完成激励 */}
+        <AnimatePresence>
+          {pomodoroToast && (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              className="bg-celadon/10 border-celadon/30 text-celadon font-serif-cn mt-4 rounded-sm border px-4 py-2 text-center text-xs"
+            >
+              🍅 {pomodoroToast}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   )
