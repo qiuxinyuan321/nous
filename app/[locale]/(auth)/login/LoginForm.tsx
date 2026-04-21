@@ -1,9 +1,9 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useState, useActionState } from 'react'
 import { useFormStatus } from 'react-dom'
 import { useTranslations } from 'next-intl'
-import { sendMagicLink, signInWithPassword } from './actions'
+import { signInWithPassword } from './actions'
 import type { LoginActionState } from './actions'
 
 const initial: LoginActionState = { ok: false, error: null }
@@ -11,23 +11,60 @@ const initial: LoginActionState = { ok: false, error: null }
 export function LoginForm({
   callbackUrl,
   hasGitHub,
-  hasPassword,
 }: {
   callbackUrl?: string
   hasGitHub: boolean
-  hasPassword: boolean
 }) {
   const t = useTranslations()
-  const [magicState, magicAction] = useActionState(sendMagicLink, initial)
+  const [mode, setMode] = useState<'login' | 'register'>('login')
   const [pwState, pwAction] = useActionState(signInWithPassword, initial)
+  const [regError, setRegError] = useState<string | null>(null)
+  const [regPending, setRegPending] = useState(false)
+
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setRegError(null)
+    setRegPending(true)
+
+    const form = new FormData(e.currentTarget)
+    const email = form.get('email') as string
+    const password = form.get('password') as string
+    const name = form.get('name') as string
+
+    try {
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password, name: name || undefined }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setRegError(data.error || '注册失败')
+        setRegPending(false)
+        return
+      }
+      // 注册成功，自动切换到登录
+      setMode('login')
+      setRegError(null)
+    } catch {
+      setRegError('网络错误，请重试')
+    }
+    setRegPending(false)
+  }
 
   return (
     <div className="flex flex-col gap-6">
-      {/* 密码登录（优先） */}
-      {hasPassword && (
+      <h2 className="font-serif-cn text-ink-heavy text-center text-3xl">
+        {mode === 'login' ? '登录' : '注册'}
+      </h2>
+      <p className="text-ink-light text-center text-sm">
+        {mode === 'login' ? '输入邮箱和密码登录' : '创建一个新账号'}
+      </p>
+
+      {mode === 'login' ? (
         <form action={pwAction} className="flex flex-col gap-3">
           <label className="text-ink-medium text-sm" htmlFor="pw-email">
-            {t('auth.email')}
+            邮箱
           </label>
           <input
             id="pw-email"
@@ -54,16 +91,24 @@ export function LoginForm({
           <SubmitButton label="登录" />
           {pwState.error && <p className="text-cinnabar text-center text-sm">{pwState.error}</p>}
         </form>
-      )}
-
-      {/* Magic Link */}
-      {!hasPassword && (
-        <form action={magicAction} className="flex flex-col gap-3">
-          <label className="text-ink-medium text-sm" htmlFor="email">
-            {t('auth.email')}
+      ) : (
+        <form onSubmit={handleRegister} className="flex flex-col gap-3">
+          <label className="text-ink-medium text-sm" htmlFor="reg-name">
+            昵称
           </label>
           <input
-            id="email"
+            id="reg-name"
+            type="text"
+            name="name"
+            placeholder="你的名字（可选）"
+            autoComplete="name"
+            className="border-ink-light/50 bg-paper-rice/60 text-ink-heavy focus:border-ink-heavy rounded-sm border px-4 py-3 transition outline-none placeholder:text-[color:var(--ink-light)]"
+          />
+          <label className="text-ink-medium text-sm" htmlFor="reg-email">
+            邮箱
+          </label>
+          <input
+            id="reg-email"
             type="email"
             name="email"
             required
@@ -71,11 +116,59 @@ export function LoginForm({
             autoComplete="email"
             className="border-ink-light/50 bg-paper-rice/60 text-ink-heavy focus:border-ink-heavy rounded-sm border px-4 py-3 transition outline-none placeholder:text-[color:var(--ink-light)]"
           />
-          <input type="hidden" name="callbackUrl" value={callbackUrl ?? ''} />
-          <SubmitButton label={t('auth.magicLink')} />
-          {magicState.error && <p className="text-cinnabar text-center text-sm">{magicState.error}</p>}
+          <label className="text-ink-medium text-sm" htmlFor="reg-password">
+            密码
+          </label>
+          <input
+            id="reg-password"
+            type="password"
+            name="password"
+            required
+            minLength={6}
+            placeholder="至少 6 位"
+            autoComplete="new-password"
+            className="border-ink-light/50 bg-paper-rice/60 text-ink-heavy focus:border-ink-heavy rounded-sm border px-4 py-3 transition outline-none placeholder:text-[color:var(--ink-light)]"
+          />
+          <button
+            type="submit"
+            disabled={regPending}
+            className="bg-ink-heavy hover:bg-ink-medium mt-2 rounded-sm px-4 py-3 text-[color:var(--paper-rice)] transition disabled:opacity-50"
+          >
+            {regPending ? '注册中…' : '注册'}
+          </button>
+          {regError && <p className="text-cinnabar text-center text-sm">{regError}</p>}
         </form>
       )}
+
+      {/* 切换登录/注册 */}
+      <p className="text-ink-light text-center text-sm">
+        {mode === 'login' ? (
+          <>
+            还没有账号？{' '}
+            <button
+              type="button"
+              onClick={() => {
+                setMode('register')
+                setRegError(null)
+              }}
+              className="text-ink-heavy hover:text-ink-medium underline underline-offset-2 transition"
+            >
+              注册
+            </button>
+          </>
+        ) : (
+          <>
+            已有账号？{' '}
+            <button
+              type="button"
+              onClick={() => setMode('login')}
+              className="text-ink-heavy hover:text-ink-medium underline underline-offset-2 transition"
+            >
+              登录
+            </button>
+          </>
+        )}
+      </p>
 
       {hasGitHub && (
         <>
