@@ -17,6 +17,7 @@ services:
       REDIS_URL: 'redis://redis:6379'
       NEXTAUTH_URL: '${NEXTAUTH_URL}'
       NEXTAUTH_SECRET: '${NEXTAUTH_SECRET}'
+      AUTH_SECRET: '${NEXTAUTH_SECRET}'
       CRYPTO_KEY: '${CRYPTO_KEY}'
       # Demo Key (可选)
       DEMO_BASE_URL: '${DEMO_BASE_URL:-}'
