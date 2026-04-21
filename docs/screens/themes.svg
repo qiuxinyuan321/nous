@@ -12,7 +12,15 @@
   <!-- 标题 -->
   <text x="80" y="60" font-family="Noto Serif SC, serif" font-size="24" fill="#1C1B19">主题市场</text>
   <path d="M80 72 Q 100 69, 160 72" stroke="#1C1B19" stroke-width="1.5" fill="none" opacity="0.5"/>
-  <text x="80" y="104" font-family="Noto Serif SC, serif" font-size="13" fill="#4A4842">挑一款喜欢的,它会立即应用到整站,并随你跨设备同步。</text>
+  <text x="80" y="104" font-family="Noto Serif SC, serif" font-size="13" fill="#4A4842">挑一款。立即生效,跨设备同步。</text>
+  <!-- ⌘K 入口提示 -->
+  <g transform="translate(520, 92)">
+    <rect x="0" y="0" width="200" height="20" rx="10" fill="#1C1B19" fill-opacity="0.06" stroke="#1C1B19" stroke-opacity="0.18"/>
+    <text x="12" y="14" font-size="10" fill="#4A4842">
+      <tspan font-family="'Segoe UI Symbol', 'Apple Symbols', system-ui">⌘K</tspan>
+      <tspan font-family="Noto Serif SC, serif"> → 切换主题,不用翻这一页</tspan>
+    </text>
+  </g>
 
   <!-- 卡片 1: 宣纸 (active) -->
   <g transform="translate(80, 150)">
@@ -96,4 +104,10 @@
 
   <!-- 底部暗示还有更多 -->
   <text x="400" y="465" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" fill="#8B8880">朱金 · 烟竹 · 自定义主题 → 进入页面查看全部</text>
+
+  <!-- 朱砂印 "染" -->
+  <g transform="translate(694, 54) rotate(-7)">
+    <rect x="0" y="0" width="42" height="42" rx="3" fill="#B8372F" opacity="0.92"/>
+    <text x="21" y="30" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="20" font-weight="500" fill="#FAF7EF">染</text>
+  </g>
 </svg>

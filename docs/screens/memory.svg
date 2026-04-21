@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="t">
+  <title id="t">Nous · 长期记忆 · 越用越懂你</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAF7EF"/>
+      <stop offset="100%" stop-color="#F2EBD8"/>
+    </linearGradient>
+    <filter id="blur-sm"><feGaussianBlur stdDeviation="0.4"/></filter>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bg)"/>
+
+  <!-- 标题 -->
+  <text x="80" y="54" font-family="Noto Serif SC, serif" font-size="11" fill="#8B8880" letter-spacing="3">MEMORY</text>
+  <text x="80" y="82" font-family="Noto Serif SC, serif" font-size="19" fill="#1C1B19" font-weight="500">越用越懂你</text>
+  <path d="M80 94 Q 100 91, 144 94" stroke="#1C1B19" stroke-width="1.2" fill="none" opacity="0.5"/>
+
+  <text x="80" y="116" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">
+    32 条稳定事实 · 对话结束后后台抽取 · 下一轮按余弦相似度取 top-K
+  </text>
+
+  <!-- ═════════════ 左栏 · 记忆卡片 ═════════════ -->
+  <g transform="translate(80, 148)">
+
+    <!-- 卡 1 · 偏好 · 被选中注入 -->
+    <g>
+      <rect x="0" y="0" width="380" height="70" rx="6" fill="#FAF7EF" stroke="#B8372F" stroke-width="1.2"/>
+      <!-- 类型 chip -->
+      <rect x="14" y="12" width="44" height="18" rx="9" fill="#B8372F" fill-opacity="0.12" stroke="#B8372F" stroke-opacity="0.55"/>
+      <text x="36" y="25" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="10" fill="#B8372F" letter-spacing="2">偏好</text>
+      <!-- importance -->
+      <g transform="translate(318, 18)" fill="#B8372F">
+        <circle cx="0" cy="0" r="2.2"/>
+        <circle cx="8" cy="0" r="2.2"/>
+        <circle cx="16" cy="0" r="2.2"/>
+        <circle cx="24" cy="0" r="2.2"/>
+        <circle cx="32" cy="0" r="2.2" opacity="0.25"/>
+      </g>
+      <!-- 内容 -->
+      <text x="14" y="50" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19">习惯一次只专注一件事 · 多任务反而卡住</text>
+      <!-- meta -->
+      <text x="14" y="64" font-family="system-ui" font-size="9" fill="#8B8880">importance 0.82 · 9 次对话累积</text>
+      <!-- 被注入的小标 -->
+      <g transform="translate(320, 48)">
+        <rect x="0" y="0" width="48" height="14" rx="2" fill="#B8372F"/>
+        <text x="24" y="10" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="9" fill="#FAF7EF" letter-spacing="1">注入</text>
+      </g>
+    </g>
+
+    <!-- 卡 2 · 盲点 · 被选中注入 -->
+    <g transform="translate(0, 82)">
+      <rect x="0" y="0" width="380" height="70" rx="6" fill="#FAF7EF" stroke="#B8372F" stroke-width="1.2"/>
+      <rect x="14" y="12" width="44" height="18" rx="9" fill="#B8372F" fill-opacity="0.12" stroke="#B8372F" stroke-opacity="0.55"/>
+      <text x="36" y="25" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="10" fill="#B8372F" letter-spacing="2">盲点</text>
+      <g transform="translate(318, 18)" fill="#B8372F">
+        <circle cx="0" cy="0" r="2.2"/>
+        <circle cx="8" cy="0" r="2.2"/>
+        <circle cx="16" cy="0" r="2.2"/>
+        <circle cx="24" cy="0" r="2.2" opacity="0.5"/>
+        <circle cx="32" cy="0" r="2.2" opacity="0.25"/>
+      </g>
+      <text x="14" y="50" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19">开始前总想先把所有情况都想清楚</text>
+      <text x="14" y="64" font-family="system-ui" font-size="9" fill="#8B8880">importance 0.76 · 关联 "分析瘫痪" 触发</text>
+      <g transform="translate(320, 48)">
+        <rect x="0" y="0" width="48" height="14" rx="2" fill="#B8372F"/>
+        <text x="24" y="10" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="9" fill="#FAF7EF" letter-spacing="1">注入</text>
+      </g>
+    </g>
+
+    <!-- 卡 3 · 目标 · 相关度中，未注入 -->
+    <g transform="translate(0, 164)">
+      <rect x="0" y="0" width="380" height="60" rx="6" fill="#FAF7EF" stroke="#1C1B19" stroke-opacity="0.2"/>
+      <rect x="14" y="12" width="44" height="18" rx="9" fill="#B8955A" fill-opacity="0.15" stroke="#B8955A" stroke-opacity="0.55"/>
+      <text x="36" y="25" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="10" fill="#B8955A" letter-spacing="2">目标</text>
+      <g transform="translate(318, 18)" fill="#8B8880">
+        <circle cx="0" cy="0" r="2.2"/>
+        <circle cx="8" cy="0" r="2.2"/>
+        <circle cx="16" cy="0" r="2.2"/>
+        <circle cx="24" cy="0" r="2.2" opacity="0.3"/>
+        <circle cx="32" cy="0" r="2.2" opacity="0.2"/>
+      </g>
+      <text x="14" y="50" font-family="Noto Serif SC, serif" font-size="13" fill="#4A4842">年底前把 Nous 推到 1.0</text>
+    </g>
+
+    <!-- 卡 4 · 习惯 · 更淡，列表延续 -->
+    <g transform="translate(0, 236)" opacity="0.7">
+      <rect x="0" y="0" width="380" height="48" rx="6" fill="#FAF7EF" stroke="#1C1B19" stroke-opacity="0.15"/>
+      <rect x="14" y="10" width="44" height="18" rx="9" fill="#6B8E7A" fill-opacity="0.15" stroke="#6B8E7A" stroke-opacity="0.55"/>
+      <text x="36" y="23" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="10" fill="#6B8E7A" letter-spacing="2">习惯</text>
+      <text x="14" y="42" font-family="Noto Serif SC, serif" font-size="13" fill="#4A4842">晚上 11 点后做不了深度思考</text>
+    </g>
+
+    <!-- 省略号 -->
+    <text x="190" y="306" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="12" fill="#8B8880">· · ·   还有 28 条   · · ·</text>
+  </g>
+
+  <!-- ═════════════ 右栏 · 当前对话 · 注入可视化 ═════════════ -->
+  <g transform="translate(500, 148)">
+    <!-- 面板底 -->
+    <rect x="0" y="0" width="220" height="304" rx="6" fill="#FAF7EF" stroke="#1C1B19" stroke-opacity="0.12"/>
+
+    <text x="16" y="24" font-family="Noto Serif SC, serif" font-size="10" fill="#8B8880" letter-spacing="3">本轮对话</text>
+
+    <!-- 思 头像 + 气泡 -->
+    <g transform="translate(16, 40)">
+      <circle cx="12" cy="12" r="12" fill="#1C1B19"/>
+      <text x="12" y="17" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" fill="#FAF7EF">思</text>
+    </g>
+
+    <g transform="translate(38, 40)">
+      <rect x="0" y="0" width="166" height="70" rx="6" fill="#F2EBD8" fill-opacity="0.5" stroke="#1C1B19" stroke-opacity="0.12"/>
+      <text x="10" y="18" font-family="Noto Serif SC, serif" font-size="11" fill="#1C1B19">那就别都要做,</text>
+      <text x="10" y="34" font-family="Noto Serif SC, serif" font-size="11" fill="#1C1B19">挑一件做到能交的</text>
+      <text x="10" y="50" font-family="Noto Serif SC, serif" font-size="11" fill="#1C1B19">程度。今晚哪一件?</text>
+    </g>
+
+    <!-- 提示: 基于 2 条记忆调整了角度 -->
+    <g transform="translate(16, 136)">
+      <rect x="0" y="0" width="188" height="36" rx="4" fill="#B8372F" fill-opacity="0.08" stroke="#B8372F" stroke-opacity="0.5"/>
+      <text x="10" y="15" font-family="Noto Serif SC, serif" font-size="10" fill="#B8372F" letter-spacing="1">基于 2 条记忆</text>
+      <text x="10" y="28" font-family="Noto Serif SC, serif" font-size="10" fill="#4A4842">·绕开了"都想清楚"的盲点</text>
+    </g>
+
+    <!-- 小字解释 -->
+    <text x="16" y="198" font-family="Noto Serif SC, serif" font-size="10" fill="#8B8880" letter-spacing="2">工作方式</text>
+
+    <g transform="translate(16, 212)" font-family="system-ui" font-size="10" fill="#4A4842">
+      <text x="0" y="0">onFinish · 抽取稳定事实</text>
+      <text x="0" y="18">embed · cosine top-K</text>
+      <text x="0" y="36">fail-soft · 失败降级</text>
+      <text x="0" y="54"><tspan fill="#B8372F">/memory</tspan> 页面可读可删</text>
+      <text x="0" y="72">永不共享,只挂在你账号下</text>
+    </g>
+  </g>
+
+  <!-- 虚线: 左边被注入的两张卡 → 右边提示 -->
+  <g stroke="#B8372F" stroke-width="0.9" fill="none" stroke-dasharray="3 4" opacity="0.55">
+    <path d="M460 172 Q 486 210, 512 290"/>
+    <path d="M460 254 Q 482 270, 512 296"/>
+  </g>
+
+  <!-- 朱砂印: "忆" -->
+  <g transform="translate(694, 56) rotate(-7)" filter="url(#blur-sm)">
+    <rect x="0" y="0" width="42" height="42" rx="3" fill="#B8372F" opacity="0.93"/>
+    <text x="21" y="30" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="20" font-weight="500" fill="#FAF7EF">忆</text>
+  </g>
+</svg>

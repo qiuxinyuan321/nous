@@ -21,8 +21,13 @@
         <text x="12" y="42" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">意图</text>
       </g>
       <line x1="24" y1="12" x2="90" y2="12" stroke="#1C1B19" stroke-width="1.2"/>
-      <!-- detail (当前) -->
+      <!-- detail (当前 · 带 ping 脉冲) -->
       <g transform="translate(90, 0)">
+        <!-- ping 脉冲外圈 -->
+        <circle cx="12" cy="12" r="12" fill="#B8372F" opacity="0.35">
+          <animate attributeName="r" values="12;20;12" dur="1.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.45;0;0.45" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
         <circle cx="12" cy="12" r="12" fill="#B8372F"/>
         <circle cx="12" cy="12" r="4" fill="#FAF7EF"/>
         <text x="12" y="42" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" font-weight="600" fill="#1C1B19">细节</text>
@@ -96,7 +101,7 @@
       <rect x="0" y="0" width="108" height="26" rx="13" fill="none" stroke="#1C1B19" stroke-opacity="0.6"/>
       <text x="54" y="17" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="12" fill="#1C1B19">零摩擦输入</text>
       <rect x="118" y="0" width="102" height="26" rx="13" fill="none" stroke="#1C1B19" stroke-opacity="0.6"/>
-      <text x="169" y="17" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="12" fill="#1C1B19">AI 执行力</text>
+      <text x="169" y="17" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="12" fill="#1C1B19">落地能力</text>
       <rect x="230" y="0" width="90" height="26" rx="13" fill="none" stroke="#1C1B19" stroke-opacity="0.6"/>
       <text x="275" y="17" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="12" fill="#1C1B19">都要</text>
     </g>

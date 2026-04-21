@@ -131,4 +131,10 @@
     <rect x="0" y="0" width="280" height="24" rx="3" fill="none" stroke="#8B8880" stroke-opacity="0.4"/>
     <text x="10" y="16" font-family="system-ui" font-size="10" fill="#8B8880">拖动节点 · 滚轮缩放 · 点空白平移</text>
   </g>
+
+  <!-- 朱砂印 "织" -->
+  <g transform="translate(694, 52) rotate(-7)">
+    <rect x="0" y="0" width="42" height="42" rx="3" fill="#B8372F" opacity="0.92"/>
+    <text x="21" y="30" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="20" font-weight="500" fill="#FAF7EF">织</text>
+  </g>
 </svg>

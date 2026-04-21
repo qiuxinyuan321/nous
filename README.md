@@ -60,6 +60,45 @@ Nous 做这个。
 
 ---
 
+## 几处界面
+
+<table>
+<tr>
+<td width="50%">
+<img src="./docs/screens/capture.svg" alt="⌘K 命令面板" />
+<p align="center"><sub><b>捕</b> · <code>⌘K</code> · cmdk 三模式 · 想法 / 笔记 / 操作 / 跳转 分组</sub></p>
+</td>
+<td width="50%">
+<img src="./docs/screens/refine.svg" alt="苏格拉底对话" />
+<p align="center"><sub><b>问</b> · 意图 / 细节 / 边界 / 就绪 · 一次只问一个</sub></p>
+</td>
+</tr>
+<tr>
+<td>
+<img src="./docs/screens/plan.svg" alt="方案树" />
+<p align="center"><sub><b>划</b> · 目标 / 里程碑 / 任务树 / MoSCoW · 15 分钟第一步</sub></p>
+</td>
+<td>
+<img src="./docs/screens/graph.svg" alt="想法图谱" />
+<p align="center"><sub><b>织</b> · 力导向显示 Idea ↔ Tag · 拖拽 · 滚轮缩放</sub></p>
+</td>
+</tr>
+<tr>
+<td>
+<img src="./docs/screens/memory.svg" alt="长期记忆" />
+<p align="center"><sub><b>忆</b> · 对话结束抽取稳定事实 · 下轮按余弦相似度注入 · <code>/memory</code> 可读可删</sub></p>
+</td>
+<td>
+<img src="./docs/screens/themes.svg" alt="主题" />
+<p align="center"><sub><b>染</b> · 5 款内置 · CSS 变量驱动 · inline script 防 FOUC</sub></p>
+</td>
+</tr>
+</table>
+
+<sub><em>全部为原生 SVG，Git 里能 diff，浏览器里无抗锯齿衰减。</em></sub>
+
+---
+
 ## 设计
 
 水墨。宣纸底、浓墨字、朱砂印落决断。
