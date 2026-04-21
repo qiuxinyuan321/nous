@@ -6,12 +6,12 @@ import { z } from 'zod'
 import { signIn } from '@/lib/auth'
 
 const emailSchema = z.object({
-  email: z.email('请输入有效的邮箱地址'),
+  email: z.string().email('请输入有效的邮箱地址'),
   callbackUrl: z.string().optional(),
 })
 
 const credentialsSchema = z.object({
-  email: z.email('请输入有效的邮箱地址'),
+  email: z.string().email('请输入有效的邮箱地址'),
   password: z.string().min(1, '请输入密码'),
   callbackUrl: z.string().optional(),
 })
