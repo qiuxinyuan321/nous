@@ -49,7 +49,7 @@
   <!-- ⌘K -->
   <g transform="translate(310, 80)">
     <rect x="0" y="0" width="180" height="60" rx="6" fill="#FAF7EF" stroke="#1C1B19" stroke-width="1"/>
-    <text x="14" y="22" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">⌘K CommandPalette</text>
+    <text x="14" y="22" font-size="13" fill="#1C1B19" font-weight="500"><tspan font-family="'Segoe UI Symbol', 'Apple Symbols', system-ui, sans-serif">⌘K</tspan><tspan font-family="Noto Serif SC, serif"> CommandPalette</tspan></text>
     <text x="14" y="42" font-family="system-ui" font-size="10" fill="#4A4842">捕获输入 · MediaRecorder</text>
     <text x="14" y="54" font-family="system-ui" font-size="10" fill="#8B8880">Zustand · React Query</text>
   </g>
