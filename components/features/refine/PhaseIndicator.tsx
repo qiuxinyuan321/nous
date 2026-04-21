@@ -19,14 +19,22 @@ export function PhaseIndicator({ phase }: { phase: Phase }) {
         return (
           <div key={p.key} className="flex items-center gap-3">
             <div className="flex flex-col items-center gap-1">
-              <span
-                className={cn(
-                  'h-2 w-2 rounded-full transition-all',
-                  isDone && 'bg-ink-medium',
-                  isActive && 'bg-cinnabar scale-125',
-                  !isDone && !isActive && 'bg-ink-light/40',
+              <span className="relative flex h-2 w-2 items-center justify-center">
+                {isActive && (
+                  <span
+                    className="bg-cinnabar absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"
+                    aria-hidden="true"
+                  />
                 )}
-              />
+                <span
+                  className={cn(
+                    'relative h-2 w-2 rounded-full transition-all',
+                    isDone && 'bg-ink-medium',
+                    isActive && 'bg-cinnabar scale-125',
+                    !isDone && !isActive && 'bg-ink-light/40',
+                  )}
+                />
+              </span>
               <span
                 className={cn(
                   'font-serif-cn text-[11px] transition',

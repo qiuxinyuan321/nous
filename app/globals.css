@@ -81,6 +81,51 @@ body {
   color: var(--paper-rice);
 }
 
+/* ─── AI 流式打字光标 ─── */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ─── Magic · 禅意流光边框 ─── */
+@property --ink-beam-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes inkBeamSpin {
+  to {
+    --ink-beam-angle: 360deg;
+  }
+}
+
+/* ─── Magic · 按钮流光扫过 ─── */
+@keyframes inkShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ─── Magic · 文字极光渐变 ─── */
+@keyframes inkAuroraFlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 /* ─── 滚动条 ─── */
 ::-webkit-scrollbar {
   width: 8px;

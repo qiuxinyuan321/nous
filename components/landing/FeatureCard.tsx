@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { NumberTicker } from './magic/NumberTicker'
 
 type Accent = 'cinnabar' | 'celadon' | 'indigo-stone'
 
@@ -54,7 +55,7 @@ export function FeatureCard({ index, title, desc, accent }: FeatureCardProps) {
           accentBg[accent],
         )}
       >
-        {String(index).padStart(2, '0')}
+        <NumberTicker value={index} decimals={0} prefix="0" duration={1.5} />
       </span>
 
       <h3 className="font-serif-cn text-ink-heavy relative mt-1 mb-3 pr-12 text-lg font-medium">

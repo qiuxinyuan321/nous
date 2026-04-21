@@ -1,5 +1,4 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { Link } from '@/lib/i18n/navigation'
 import { InkStroke } from '@/components/ink/InkStroke'
 import { Reveal } from '@/components/landing/Reveal'
 import { HeroVisual } from '@/components/landing/HeroVisual'
@@ -7,6 +6,9 @@ import { FeatureCard } from '@/components/landing/FeatureCard'
 import { FlowTimeline } from '@/components/landing/FlowTimeline'
 import { FaqAccordion } from '@/components/landing/FaqAccordion'
 import { CodeBlock } from '@/components/landing/CodeBlock'
+import { AuroraInkText } from '@/components/landing/magic/AuroraInkText'
+import { InkBorderBeam } from '@/components/landing/magic/InkBorderBeam'
+import { ShimmerInkButton } from '@/components/landing/magic/ShimmerInkButton'
 import { auth } from '@/lib/auth'
 
 const FAQ_KEYS = ['byok', 'privacy', 'selfhost', 'free'] as const
@@ -83,8 +85,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </Reveal>
 
           <Reveal delay={0.22}>
-            <p className="font-serif-cn text-ink-medium mt-8 text-2xl leading-snug md:text-3xl">
-              {t('marketing.hero.title')}
+            <p className="font-serif-cn mt-8 text-2xl leading-snug md:text-3xl">
+              <AuroraInkText duration={12}>{t('marketing.hero.title')}</AuroraInkText>
             </p>
           </Reveal>
 
@@ -96,18 +98,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
           <Reveal delay={0.4}>
             <div className="mt-12 flex flex-wrap gap-4">
-              <Link
-                href={ctaHref}
-                className="group bg-ink-heavy hover:bg-ink-medium relative inline-flex items-center gap-2 overflow-hidden rounded-md px-7 py-3.5 text-[color:var(--paper-rice)] shadow-[0_20px_40px_-20px_rgba(28,27,25,0.45)] transition-all duration-300"
-              >
-                <span>{t('marketing.hero.cta')}</span>
-                <span
-                  aria-hidden
-                  className="translate-x-0 transition-transform duration-300 group-hover:translate-x-1"
-                >
-                  →
-                </span>
-              </Link>
+              <ShimmerInkButton href={ctaHref}>{t('marketing.hero.cta')}</ShimmerInkButton>
               <a
                 href="https://github.com/qiuxinyuan321/nous"
                 target="_blank"
@@ -188,6 +179,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="py-24 md:py-28">
         <Reveal>
           <div className="from-paper-aged/80 to-paper-rice/60 dark:from-paper-aged/10 dark:to-paper-rice/5 relative mx-auto max-w-3xl overflow-hidden rounded-xl border border-white/40 bg-gradient-to-br p-8 shadow-[0_30px_60px_-40px_rgba(28,27,25,0.3)] backdrop-blur-xl md:p-10 dark:border-white/10 dark:shadow-[0_30px_60px_-40px_rgba(0,0,0,0.5)]">
+            <InkBorderBeam duration={14} />
             <span
               className="bg-cinnabar/25 dark:bg-cinnabar/30 pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full blur-[80px]"
               aria-hidden
