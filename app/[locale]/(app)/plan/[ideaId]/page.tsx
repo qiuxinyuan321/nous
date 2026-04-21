@@ -119,6 +119,12 @@ export default async function PlanPage({
         >
           ← 回到对话
         </Link>
+        <Link
+          href="/focus"
+          className="bg-cinnabar/10 text-cinnabar hover:bg-cinnabar/20 rounded-sm px-4 py-2 text-sm transition"
+        >
+          今日聚焦 · 番茄钟 →
+        </Link>
         <Link href="/inbox" className="text-ink-light hover:text-ink-heavy text-xs transition">
           ↑ 所有想法
         </Link>

@@ -24,7 +24,11 @@ export function FocusToggle({ taskId, focused, size = 'sm' }: FocusToggleProps) 
           method: next ? 'POST' : 'DELETE',
         })
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
-        router.refresh()
+        if (next) {
+          router.push('/focus')
+        } else {
+          router.refresh()
+        }
       } catch {
         setOptimistic(!next) // 回滚
       }
