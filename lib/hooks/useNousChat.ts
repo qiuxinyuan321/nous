@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import type { ChatMessage, Phase } from '@/lib/ai/types'
 
 export type ChatStatus = 'idle' | 'sending' | 'streaming' | 'error'
@@ -26,13 +26,24 @@ export function useNousChat({
   const [error, setError] = useState<string | null>(null)
   const [phase, setPhase] = useState<Phase>(initialPhase)
 
+  const messagesRef = useRef(messages)
+  const statusRef = useRef(status)
+
+  useEffect(() => {
+    messagesRef.current = messages
+  }, [messages])
+
+  useEffect(() => {
+    statusRef.current = status
+  }, [status])
+
   const send = useCallback(
     async (text: string) => {
       const trimmed = text.trim()
-      if (!trimmed || status === 'sending' || status === 'streaming') return
+      if (!trimmed || statusRef.current === 'sending' || statusRef.current === 'streaming') return
 
       const userMsg: ChatMessage = { role: 'user', content: trimmed }
-      const next = [...messages, userMsg]
+      const next = [...messagesRef.current, userMsg]
       setMessages(next)
       setStreaming('')
       setStatus('sending')
@@ -88,7 +99,7 @@ export function useNousChat({
         onError?.((e as Error).message)
       }
     },
-    [ideaId, messages, locale, onError, status],
+    [ideaId, locale, onError],
   )
 
   return { messages, streaming, status, error, phase, send, setPhase }

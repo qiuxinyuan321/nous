@@ -93,7 +93,7 @@ model UserSettings {
 model ApiKey {
   id        String   @id @default(cuid())
   userId    String
-  provider  String // openai | anthropic | deepseek | kimi | doubao | openai-compatible
+  provider  String // openai | anthropic | deepseek | doubao | openai-compatible
   label     String?
   baseUrl   String?
   keyCipher String // 加密后的密钥
