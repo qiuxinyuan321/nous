@@ -84,7 +84,8 @@ export function RefineView({
   }
 
   const hasConversation = messages.length > 0 || streaming
-  const canPlan = phase === 'ready' || hasPlan
+  const userMsgCount = messages.filter((m) => m.role === 'user').length
+  const canPlan = phase === 'ready' || hasPlan || userMsgCount >= 3
   const displayError = error ?? planError
 
   return (
