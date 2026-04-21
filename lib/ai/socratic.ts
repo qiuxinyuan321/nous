@@ -6,8 +6,8 @@ import type { Phase } from './types'
  */
 export function phaseForMessageCount(userMessageCount: number): Phase {
   if (userMessageCount <= 1) return 'intent'
-  if (userMessageCount <= 3) return 'detail'
-  if (userMessageCount <= 5) return 'boundary'
+  if (userMessageCount <= 2) return 'detail'
+  if (userMessageCount <= 3) return 'boundary'
   return 'ready'
 }
 
