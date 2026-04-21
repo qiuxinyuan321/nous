@@ -38,12 +38,6 @@ Nous 做这个。
   <img src="./docs/flow.svg" alt="捕获 → 精炼 → 规划 → 专注 → 复盘" width="100%" />
 </div>
 
-<div align="center">
-<sub>
-<code>⌘K</code>&nbsp;捕获&nbsp;·&nbsp;对话精炼&nbsp;·&nbsp;结构化规划&nbsp;·&nbsp;今日专注&nbsp;·&nbsp;周末复盘
-</sub>
-</div>
-
 ---
 
 ## 能做什么

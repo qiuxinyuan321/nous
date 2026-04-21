@@ -124,5 +124,19 @@
     <circle cx="1340" cy="500" r="2.8"/>
     <circle cx="1750" cy="500" r="2.8"/>
   </g>
+
+  <!-- 阶段名 · 墨色小字，落于底部墨线下方 -->
+  <g fill="#1C1B19" font-family="'Source Han Serif SC', 'Noto Serif SC', 'Songti SC', Georgia, serif" font-size="22" letter-spacing="6" text-anchor="middle">
+    <text x="280" y="548" opacity="0.72">捕 获</text>
+    <text x="700" y="548" opacity="0.72">精 炼</text>
+    <text x="1120" y="548" opacity="0.72">规 划</text>
+    <text x="1600" y="548" opacity="0.72">专 注</text>
+    <text x="1910" y="548" opacity="0.72">复 盘</text>
+  </g>
+  <!-- 首尾纸边两道极细朱砂竖线，暗示卷轴 -->
+  <g stroke="#B8372F" stroke-width="0.6" opacity="0.55">
+    <line x1="48" y1="28" x2="48" y2="572"/>
+    <line x1="2052" y1="28" x2="2052" y2="572"/>
+  </g>
 </svg>
 
