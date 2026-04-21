@@ -1,12 +1,8 @@
 'use client'
 
-import { useState, useActionState } from 'react'
-import { useFormStatus } from 'react-dom'
+import { useState } from 'react'
+import { signIn } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { signInWithPassword } from './actions'
-import type { LoginActionState } from './actions'
-
-const initial: LoginActionState = { ok: false, error: null }
 
 export function LoginForm({
   callbackUrl,
@@ -17,9 +13,39 @@ export function LoginForm({
 }) {
   const t = useTranslations()
   const [mode, setMode] = useState<'login' | 'register'>('login')
-  const [pwState, pwAction] = useActionState(signInWithPassword, initial)
+  const [loginError, setLoginError] = useState<string | null>(null)
+  const [loginPending, setLoginPending] = useState(false)
   const [regError, setRegError] = useState<string | null>(null)
   const [regPending, setRegPending] = useState(false)
+
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setLoginError(null)
+    setLoginPending(true)
+
+    const form = new FormData(e.currentTarget)
+    const email = form.get('email') as string
+    const password = form.get('password') as string
+
+    try {
+      const result = await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+      })
+
+      if (result?.error) {
+        setLoginError('邮箱或密码错误')
+        setLoginPending(false)
+        return
+      }
+
+      window.location.href = callbackUrl || '/inbox'
+    } catch {
+      setLoginError('登录失败，请重试')
+      setLoginPending(false)
+    }
+  }
 
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -62,7 +88,7 @@ export function LoginForm({
       </p>
 
       {mode === 'login' ? (
-        <form action={pwAction} className="flex flex-col gap-3">
+        <form onSubmit={handleLogin} className="flex flex-col gap-3">
           <label className="text-ink-medium text-sm" htmlFor="pw-email">
             邮箱
           </label>
@@ -87,9 +113,14 @@ export function LoginForm({
             autoComplete="current-password"
             className="border-ink-light/50 bg-paper-rice/60 text-ink-heavy focus:border-ink-heavy rounded-sm border px-4 py-3 transition outline-none placeholder:text-[color:var(--ink-light)]"
           />
-          <input type="hidden" name="callbackUrl" value={callbackUrl ?? ''} />
-          <SubmitButton label="登录" />
-          {pwState.error && <p className="text-cinnabar text-center text-sm">{pwState.error}</p>}
+          <button
+            type="submit"
+            disabled={loginPending}
+            className="bg-ink-heavy hover:bg-ink-medium mt-2 rounded-sm px-4 py-3 text-[color:var(--paper-rice)] transition disabled:opacity-50"
+          >
+            {loginPending ? '落笔中…' : '登录'}
+          </button>
+          {loginError && <p className="text-cinnabar text-center text-sm">{loginError}</p>}
         </form>
       ) : (
         <form onSubmit={handleRegister} className="flex flex-col gap-3">
@@ -189,18 +220,5 @@ export function LoginForm({
         </>
       )}
     </div>
-  )
-}
-
-function SubmitButton({ label }: { label: string }) {
-  const { pending } = useFormStatus()
-  return (
-    <button
-      type="submit"
-      disabled={pending}
-      className="bg-ink-heavy hover:bg-ink-medium mt-2 rounded-sm px-4 py-3 text-[color:var(--paper-rice)] transition disabled:opacity-50"
-    >
-      {pending ? '落笔中…' : label}
-    </button>
   )
 }
