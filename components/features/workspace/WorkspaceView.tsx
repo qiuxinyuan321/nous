@@ -12,19 +12,33 @@ import { useIdeas } from '@/lib/hooks/useIdeas'
 import { usePaletteStore } from '@/lib/stores/palette'
 import { usePomodoroStore } from '@/lib/stores/pomodoro'
 import type { FocusTaskItem } from '@/components/features/focus/FocusView'
+import { StatCard } from './StatCard'
+import { SparkLine } from './SparkLine'
 
-interface WeeklyStats {
-  ideasCreated: number
-  tasksDone: number
+interface DashboardStats {
+  /** 今日聚焦任务总数 */
+  todayTotal: number
+  /** 今日已完成任务数 */
+  todayDone: number
+  /** 本周新增想法数 */
+  weekIdeas: number
+  /** 上周同期想法数（用于对比） */
+  prevWeekIdeas: number
+  /** 本周完成任务数 */
+  weekTasksDone: number
+  /** 连续打卡天数 */
+  streak: number
+  /** 本周每日完成数（7 天，周一起） */
+  weeklyTrend: number[]
 }
 
 interface WorkspaceViewProps {
   focusTasks: FocusTaskItem[]
   dateLabel: string
-  weeklyStats: WeeklyStats
+  stats: DashboardStats
 }
 
-export function WorkspaceView({ focusTasks, dateLabel, weeklyStats }: WorkspaceViewProps) {
+export function WorkspaceView({ focusTasks, dateLabel, stats }: WorkspaceViewProps) {
   const t = useTranslations('inbox')
   const tCommon = useTranslations('common')
   const { data: ideas, isLoading, error } = useIdeas()
@@ -32,8 +46,18 @@ export function WorkspaceView({ focusTasks, dateLabel, weeklyStats }: WorkspaceV
   const isMac = typeof navigator !== 'undefined' && /Mac/.test(navigator.platform)
   const kbd = isMac ? '⌘K' : 'Ctrl+K'
 
+  const ideaDelta = stats.weekIdeas - stats.prevWeekIdeas
+  const streakHint =
+    stats.streak >= 7
+      ? '节奏稳了'
+      : stats.streak >= 3
+        ? '习惯成形'
+        : stats.streak > 0
+          ? '势在开启'
+          : '今日一步'
+
   return (
-    <main className="mx-auto max-w-6xl px-6 py-10">
+    <main className="mx-auto max-w-7xl px-6 py-10">
       {/* 头部 */}
       <header className="mb-8 flex items-end justify-between">
         <div>
@@ -52,40 +76,73 @@ export function WorkspaceView({ focusTasks, dateLabel, weeklyStats }: WorkspaceV
         </button>
       </header>
 
-      {/* 本周进度 */}
-      {(weeklyStats.ideasCreated > 0 || weeklyStats.tasksDone > 0) && (
-        <div className="border-ink-light/15 bg-paper-aged/20 mb-8 flex items-center gap-6 rounded-lg border px-6 py-4">
-          <span className="text-ink-light text-xs">本周</span>
-          <div className="flex items-center gap-1.5">
-            <span className="text-ink-heavy font-mono text-lg font-semibold">{weeklyStats.ideasCreated}</span>
-            <span className="text-ink-light text-xs">个想法</span>
-          </div>
-          <span className="bg-ink-light/20 h-4 w-px" />
-          <div className="flex items-center gap-1.5">
-            <span className="text-celadon font-mono text-lg font-semibold">{weeklyStats.tasksDone}</span>
-            <span className="text-ink-light text-xs">个任务完成</span>
-          </div>
-          <Link
-            href="/journal"
-            className="text-ink-light hover:text-ink-heavy ml-auto text-xs transition"
-          >
-            查看复盘 →
-          </Link>
-        </div>
-      )}
+      {/* Dashboard 4 卡 */}
+      <section className="mb-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+        <StatCard
+          label="今日聚焦"
+          accent="cinnabar"
+          value={stats.todayDone}
+          suffix={stats.todayTotal > 0 ? `/ ${stats.todayTotal}` : '件'}
+          delta={
+            stats.todayTotal > 0
+              ? {
+                  direction: stats.todayDone >= stats.todayTotal ? 'up' : 'flat',
+                  label:
+                    stats.todayDone >= stats.todayTotal
+                      ? '全部完成'
+                      : `剩余 ${stats.todayTotal - stats.todayDone} 件`,
+                }
+              : undefined
+          }
+        />
+
+        <StatCard
+          label="本周想法"
+          accent="indigo-stone"
+          value={stats.weekIdeas}
+          suffix="个"
+          delta={
+            stats.prevWeekIdeas > 0 || ideaDelta !== 0
+              ? {
+                  direction: ideaDelta > 0 ? 'up' : ideaDelta < 0 ? 'down' : 'flat',
+                  label: `较上周 ${ideaDelta >= 0 ? '+' : ''}${ideaDelta}`,
+                }
+              : undefined
+          }
+        />
+
+        <StatCard
+          label="本周完成"
+          accent="celadon"
+          value={stats.weekTasksDone}
+          suffix="件"
+          footer={
+            <SparkLine
+              data={stats.weeklyTrend}
+              stroke="var(--celadon)"
+              fill
+              width={96}
+              height={28}
+            />
+          }
+        />
+
+        <StatCard
+          label="连续"
+          accent="gold-leaf"
+          value={stats.streak}
+          suffix="天"
+          delta={{ direction: 'flat', label: streakHint }}
+        />
+      </section>
 
       {/* 双栏布局 */}
       <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
         {/* 左栏：收件箱 */}
         <section>
           <div className="mb-5 flex items-center justify-between">
-            <h2 className="font-serif-cn text-ink-heavy text-xl font-medium">
-              {t('title')}
-            </h2>
-            <Link
-              href="/inbox"
-              className="text-ink-light hover:text-ink-heavy text-xs transition"
-            >
+            <h2 className="font-serif-cn text-ink-heavy text-xl font-medium">{t('title')}</h2>
+            <Link href="/inbox" className="text-ink-light hover:text-ink-heavy text-xs transition">
               查看全部 →
             </Link>
           </div>
@@ -180,10 +237,7 @@ function FocusPanel({ tasks }: { tasks: FocusTaskItem[]; dateLabel: string }) {
     <div className="border-ink-light/20 bg-paper-aged/20 rounded-lg border p-5">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="font-serif-cn text-ink-heavy text-lg font-medium">今日聚焦</h2>
-        <Link
-          href="/focus"
-          className="text-ink-light hover:text-ink-heavy text-xs transition"
-        >
+        <Link href="/focus" className="text-ink-light hover:text-ink-heavy text-xs transition">
           展开 →
         </Link>
       </div>
@@ -211,9 +265,7 @@ function FocusPanel({ tasks }: { tasks: FocusTaskItem[]; dateLabel: string }) {
       {tasks.length === 0 ? (
         <div className="py-8 text-center">
           <p className="text-ink-light text-sm">今日尚无任务</p>
-          <p className="text-ink-light/70 mt-2 text-xs">
-            去方案页点「加入今日」选任务
-          </p>
+          <p className="text-ink-light/70 mt-2 text-xs">去方案页点「加入今日」选任务</p>
           <Link
             href="/inbox"
             className="text-indigo-stone hover:text-ink-heavy mt-3 inline-block text-xs underline-offset-4 transition hover:underline"
