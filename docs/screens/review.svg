@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="t">
+  <title id="t">Nous · 周复盘</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAF7EF"/>
+      <stop offset="100%" stop-color="#F2EBD8"/>
+    </linearGradient>
+    <linearGradient id="spark-fill-r" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6B8E7A" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#6B8E7A" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur-sm"><feGaussianBlur stdDeviation="0.4"/></filter>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bg)"/>
+
+  <!-- 标题 -->
+  <text x="80" y="54" font-family="Noto Serif SC, serif" font-size="11" fill="#8B8880" letter-spacing="3">WEEKLY REVIEW</text>
+  <text x="80" y="82" font-family="Noto Serif SC, serif" font-size="19" fill="#1C1B19" font-weight="500">周复盘</text>
+  <path d="M80 94 Q 100 91, 136 94" stroke="#1C1B19" stroke-width="1.2" fill="none" opacity="0.5"/>
+  <text x="80" y="116" font-family="system-ui" font-size="11" fill="#8B8880">2026 · 04 · 14 — 04 · 20 · 周一 → 周日</text>
+
+  <!-- ═════════════ 顶部完成率 + SparkLine ═════════════ -->
+  <g transform="translate(80, 144)">
+    <!-- 左侧完成率环 -->
+    <g>
+      <text x="0" y="0" font-family="Noto Serif SC, serif" font-size="10" fill="#8B8880" letter-spacing="3">完成率</text>
+      <g transform="translate(0, 10)">
+        <!-- 背环 -->
+        <circle cx="36" cy="36" r="28" fill="none" stroke="#1C1B19" stroke-opacity="0.1" stroke-width="6"/>
+        <!-- 前景环 · 9/12 ≈ 75% → 132 dash -->
+        <circle cx="36" cy="36" r="28" fill="none" stroke="#6B8E7A" stroke-width="6"
+                stroke-dasharray="132 176" stroke-linecap="round"
+                transform="rotate(-90 36 36)">
+          <animate attributeName="stroke-dasharray" from="0 176" to="132 176" dur="1.2s" fill="freeze"/>
+        </circle>
+        <text x="36" y="34" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1C1B19" font-weight="500">9</text>
+        <text x="36" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#8B8880">/ 12</text>
+      </g>
+    </g>
+
+    <!-- 右侧 SparkLine 一周 -->
+    <g transform="translate(120, 4)">
+      <text x="0" y="0" font-family="Noto Serif SC, serif" font-size="10" fill="#8B8880" letter-spacing="3">本周任务完成节奏</text>
+      <g transform="translate(0, 14)">
+        <!-- 面积 -->
+        <path d="M0 50 L 0 36 L 40 28 L 80 34 L 120 18 L 160 30 L 200 12 L 240 22 L 240 50 Z"
+              fill="url(#spark-fill-r)"/>
+        <!-- 线 -->
+        <path d="M0 36 L 40 28 L 80 34 L 120 18 L 160 30 L 200 12 L 240 22"
+              stroke="#6B8E7A" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"
+              stroke-dasharray="350" stroke-dashoffset="350">
+          <animate attributeName="stroke-dashoffset" from="350" to="0" dur="1.4s" fill="freeze"/>
+        </path>
+        <!-- 7 点 -->
+        <g fill="#6B8E7A">
+          <circle cx="0" cy="36" r="2.4"/>
+          <circle cx="40" cy="28" r="2.4"/>
+          <circle cx="80" cy="34" r="2.4"/>
+          <circle cx="120" cy="18" r="2.4"/>
+          <circle cx="160" cy="30" r="2.4"/>
+          <circle cx="200" cy="12" r="2.4"/>
+        </g>
+        <!-- 末端朱砂 · 脉冲 -->
+        <circle cx="240" cy="22" r="3" fill="#B8372F">
+          <animate attributeName="r" values="3;4.5;3" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
+        <!-- 星期标签 -->
+        <g font-family="system-ui" font-size="9" fill="#8B8880">
+          <text x="0" y="64" text-anchor="middle">一</text>
+          <text x="40" y="64" text-anchor="middle">二</text>
+          <text x="80" y="64" text-anchor="middle">三</text>
+          <text x="120" y="64" text-anchor="middle">四</text>
+          <text x="160" y="64" text-anchor="middle">五</text>
+          <text x="200" y="64" text-anchor="middle">六</text>
+          <text x="240" y="64" text-anchor="middle" fill="#B8372F">日</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- 顶部右 · streak 徽标 -->
+    <g transform="translate(480, 24)">
+      <rect x="0" y="0" width="128" height="36" rx="18" fill="#B8955A" fill-opacity="0.1" stroke="#B8955A" stroke-opacity="0.5"/>
+      <circle cx="18" cy="18" r="4" fill="#B8955A"/>
+      <text x="32" y="15" font-family="Noto Serif SC, serif" font-size="10" fill="#B8955A" letter-spacing="2">streak</text>
+      <text x="32" y="30" font-family="Georgia, serif" font-size="13" fill="#1C1B19">连续 7 天</text>
+    </g>
+  </g>
+
+  <!-- ═════════════ 四段 · 做了 / 卡在 / 洞察 / 下周一件 ═════════════ -->
+  <g transform="translate(80, 252)">
+
+    <!-- 做了 -->
+    <g>
+      <rect x="0" y="0" width="3" height="82" fill="#6B8E7A" opacity="0.6"/>
+      <text x="14" y="14" font-family="Noto Serif SC, serif" font-size="10" fill="#6B8E7A" letter-spacing="3">做了</text>
+      <g font-family="Noto Serif SC, serif" font-size="12" fill="#1C1B19">
+        <text x="14" y="34">· 把 Nous 打磨到 v0.3.0（Landing 动效 + 工作台 + 命令面板 v2）</text>
+        <text x="14" y="54">· 读完《Simple Made Easy》，写了 decomplect 的笔记</text>
+        <text x="14" y="74">· 部署 Cloudflare CDN</text>
+      </g>
+    </g>
+
+    <!-- 卡在 -->
+    <g transform="translate(380, 0)">
+      <rect x="0" y="0" width="3" height="82" fill="#B8372F" opacity="0.6"/>
+      <text x="14" y="14" font-family="Noto Serif SC, serif" font-size="10" fill="#B8372F" letter-spacing="3">卡在</text>
+      <g font-family="Noto Serif SC, serif" font-size="12" fill="#1C1B19">
+        <text x="14" y="34">· 三个组件写了但还没接回主线</text>
+        <text x="14" y="54">· 命令面板那 4 条 E2E 还需要 auth fixture</text>
+        <text x="14" y="74">· 移动端没认真测过</text>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(80, 356)">
+    <!-- 洞察 · blockquote 风 -->
+    <g>
+      <rect x="0" y="0" width="640" height="64" rx="4" fill="#B8955A" fill-opacity="0.07"/>
+      <rect x="0" y="0" width="3" height="64" fill="#B8955A"/>
+      <text x="20" y="22" font-family="Noto Serif SC, serif" font-size="10" fill="#B8955A" letter-spacing="3">一句话洞察</text>
+      <text x="20" y="46" font-family="Noto Serif SC, serif" font-size="14" fill="#1C1B19" font-style="italic">"先收口，再开新的。想法不怕多，怕都停在一半。"</text>
+    </g>
+  </g>
+
+  <g transform="translate(80, 436)">
+    <!-- 下周聚焦一件 -->
+    <rect x="0" y="0" width="640" height="40" rx="4" fill="#1C1B19"/>
+    <text x="16" y="18" font-family="Noto Serif SC, serif" font-size="10" fill="#B9B4A6" letter-spacing="3">下周聚焦一件事</text>
+    <text x="16" y="32" font-family="Noto Serif SC, serif" font-size="13" fill="#FAF7EF">把 SedimentPanel / PlanConfirmDialog / TaskNotesPopover 接回主线</text>
+    <!-- 回车确认 -->
+    <g transform="translate(576, 10)">
+      <rect x="0" y="0" width="48" height="20" rx="3" stroke="#B9B4A6" stroke-opacity="0.5" fill="none"/>
+      <text x="24" y="14" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#B9B4A6">↵ 立定</text>
+    </g>
+  </g>
+
+  <!-- 朱砂印 "省" -->
+  <g transform="translate(694, 56) rotate(-7)" filter="url(#blur-sm)">
+    <rect x="0" y="0" width="42" height="42" rx="3" fill="#B8372F" opacity="0.93"/>
+    <text x="21" y="30" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="20" font-weight="500" fill="#FAF7EF">省</text>
+  </g>
+</svg>

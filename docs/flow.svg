@@ -117,12 +117,20 @@
     </g>
   </g>
 
-  <!-- 阶段间分隔墨点 -->
-  <g fill="#1C1B19" opacity="0.42">
-    <circle cx="500" cy="500" r="2.8"/>
-    <circle cx="920" cy="500" r="2.8"/>
-    <circle cx="1340" cy="500" r="2.8"/>
-    <circle cx="1750" cy="500" r="2.8"/>
+  <!-- 阶段间分隔墨点 · 依次呼吸 -->
+  <g fill="#1C1B19">
+    <circle cx="500" cy="500" r="2.8" opacity="0.42">
+      <animate attributeName="opacity" values="0.22;0.75;0.22" dur="4s" begin="0s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="920" cy="500" r="2.8" opacity="0.42">
+      <animate attributeName="opacity" values="0.22;0.75;0.22" dur="4s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1340" cy="500" r="2.8" opacity="0.42">
+      <animate attributeName="opacity" values="0.22;0.75;0.22" dur="4s" begin="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1750" cy="500" r="2.8" opacity="0.42">
+      <animate attributeName="opacity" values="0.22;0.75;0.22" dur="4s" begin="3s" repeatCount="indefinite"/>
+    </circle>
   </g>
 
   <!-- 阶段名 · 墨色小字，落于底部墨线下方 -->
