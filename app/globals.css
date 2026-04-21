@@ -52,6 +52,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
+  --font-sans-cn: var(--font-sans-cn), 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-sans-en: var(--font-sans-en), 'Inter', system-ui, sans-serif;
   --font-serif-cn: var(--font-serif-cn), 'Source Han Serif SC', 'Noto Serif CJK SC', serif;
   --font-serif-en: var(--font-serif-en), 'Fraunces', 'EB Garamond', serif;
   --font-mono: var(--font-mono), 'JetBrains Mono', 'IBM Plex Mono', monospace;

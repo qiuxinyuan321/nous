@@ -7,12 +7,20 @@ import Placeholder from '@tiptap/extension-placeholder'
 import LinkExtension from '@tiptap/extension-link'
 import { cn } from '@/lib/utils'
 import { useUpdateNote } from '@/lib/hooks/useNotes'
+import { Link } from '@/lib/i18n/navigation'
+
+interface LinkedIdea {
+  id: string
+  title: string | null
+  status: string
+}
 
 interface NoteEditorProps {
   noteId: string
   initialTitle: string
   initialContent: string
   initialPinned?: boolean
+  linkedIdea?: LinkedIdea | null
   onTitleChange?: (title: string) => void
 }
 
@@ -21,6 +29,7 @@ export function NoteEditor({
   initialTitle,
   initialContent,
   initialPinned,
+  linkedIdea,
   onTitleChange,
 }: NoteEditorProps) {
   const updateNote = useUpdateNote()
@@ -35,6 +44,7 @@ export function NoteEditor({
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle')
 
   const editor = useEditor({
+    immediatelyRender: false,
     extensions: [
       StarterKit.configure({
         heading: { levels: [1, 2, 3] },
@@ -201,7 +211,21 @@ export function NoteEditor({
           </div>
         </div>
 
-        <div className="px-6 pt-5 pb-6">
+          {/* 关联想法标签 */}
+          {linkedIdea && (
+            <div className="border-ink-light/10 border-b px-5 py-2">
+              <Link
+                href={linkedIdea.status === 'planned' || linkedIdea.status === 'executing' || linkedIdea.status === 'done' ? `/plan/${linkedIdea.id}` : `/refine/${linkedIdea.id}`}
+                className="bg-indigo-stone/10 text-indigo-stone hover:bg-indigo-stone/20 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs transition"
+              >
+                <span>💡</span>
+                <span>{linkedIdea.title || '关联想法'}</span>
+                <span className="text-[10px] opacity-60">→</span>
+              </Link>
+            </div>
+          )}
+
+          <div className="px-6 pt-5 pb-6">
           <input
             ref={titleRef}
             defaultValue={initialTitle}

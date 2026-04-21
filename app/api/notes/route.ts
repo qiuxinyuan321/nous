@@ -39,6 +39,7 @@ export async function GET(req: Request) {
       title: true,
       content: true,
       folderId: true,
+      ideaId: true,
       tags: true,
       pinned: true,
       archived: true,
@@ -75,6 +76,7 @@ export async function POST(req: Request) {
       title: parsed.data.title ?? '无题',
       content: parsed.data.content ?? '',
       folderId: parsed.data.folderId ?? null,
+      ideaId: parsed.data.ideaId ?? null,
       tags: parsed.data.tags ?? [],
     },
   })

@@ -11,13 +11,13 @@ import { useDeleteIdea } from '@/lib/hooks/useIdeas'
 dayjs.extend(relativeTime)
 dayjs.locale('zh-cn')
 
-const statusLabel: Record<string, string> = {
-  raw: '未整理',
-  refining: '对话中',
-  planned: '已规划',
-  executing: '执行中',
-  done: '已完成',
-  archived: '已归档',
+const statusConfig: Record<string, { label: string; color: string; action: string }> = {
+  raw: { label: '未整理', color: 'bg-ink-light/20 text-ink-medium', action: '开始对话 →' },
+  refining: { label: '对话中', color: 'bg-gold-leaf/15 text-gold-leaf', action: '继续对话 →' },
+  planned: { label: '已规划', color: 'bg-indigo-stone/15 text-indigo-stone', action: '查看方案 →' },
+  executing: { label: '执行中', color: 'bg-celadon/15 text-celadon', action: '查看进度 →' },
+  done: { label: '已完成', color: 'bg-celadon/20 text-celadon', action: '已完成 ✓' },
+  archived: { label: '已归档', color: 'bg-ink-light/10 text-ink-light', action: '已归档' },
 }
 
 export function IdeaCard({ idea }: { idea: Idea }) {
@@ -30,7 +30,7 @@ export function IdeaCard({ idea }: { idea: Idea }) {
     idea.status === 'planned' || idea.status === 'executing' || idea.status === 'done'
       ? `/plan/${idea.id}`
       : `/refine/${idea.id}`
-  const hoverLabel = href.startsWith('/plan/') ? '查看方案 →' : '进入对话 →'
+  const cfg = statusConfig[idea.status] ?? statusConfig.raw!
 
   const handleDelete = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -49,20 +49,20 @@ export function IdeaCard({ idea }: { idea: Idea }) {
   }
 
   return (
-    <div className="border-ink-light/30 bg-paper-aged/40 hover:border-ink-heavy/60 hover:bg-paper-aged/70 group relative rounded-sm border p-5 transition">
+    <div className="border-ink-light/20 bg-paper-aged/30 hover:border-ink-light/50 hover:bg-paper-aged/50 group relative rounded-md border p-6 shadow-sm transition hover:shadow-md">
       <Link href={href} className="block">
         <header className="flex items-start justify-between gap-3">
-          <h3 className="font-serif-cn text-ink-heavy line-clamp-1 text-base font-medium">
+          <h3 className="font-serif-cn text-ink-heavy line-clamp-1 text-lg font-semibold">
             {idea.title || idea.rawContent.split('\n')[0]?.slice(0, 40) || '无题'}
           </h3>
-          <span className="text-ink-light shrink-0 text-xs">
-            {statusLabel[idea.status] ?? idea.status}
+          <span className={`shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-medium ${cfg.color}`}>
+            {cfg.label}
           </span>
         </header>
-        <p className="text-ink-medium mt-3 text-sm leading-relaxed whitespace-pre-wrap">
+        <p className="text-ink-medium mt-3 text-[15px] leading-relaxed whitespace-pre-wrap">
           {preview}
         </p>
-        <div className="mt-4 flex items-center justify-between">
+        <div className="mt-5 flex items-center justify-between">
           <div className="flex flex-wrap items-center gap-2">
             {idea.tags.length > 0 &&
               idea.tags.map((tag) => (
@@ -75,8 +75,8 @@ export function IdeaCard({ idea }: { idea: Idea }) {
               ))}
             <span className="text-ink-light/60 text-[11px]">{dayjs(idea.createdAt).fromNow()}</span>
           </div>
-          <span className="text-indigo-stone text-xs opacity-0 transition group-hover:opacity-100">
-            {hoverLabel}
+          <span className="bg-ink-heavy/5 text-ink-heavy hover:bg-ink-heavy hover:text-paper-rice inline-flex items-center gap-1 rounded-md px-3 py-1.5 text-xs font-medium transition">
+            {cfg.action}
           </span>
         </div>
       </Link>

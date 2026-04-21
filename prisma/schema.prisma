@@ -145,6 +145,7 @@ model Idea {
   messages    Message[]
   plan        Plan?
   reflections Reflection[]
+  notes       Note[]
 
   @@index([userId, status])
   @@index([userId, createdAt])
@@ -282,6 +283,7 @@ model Note {
   title     String   @default("无题")
   content   String   @db.Text @default("")
   folderId  String?
+  ideaId    String?
   tags      String[]
   pinned    Boolean  @default(false)
   archived  Boolean  @default(false)
@@ -290,12 +292,14 @@ model Note {
 
   user     User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   folder   NoteFolder? @relation(fields: [folderId], references: [id], onDelete: SetNull)
+  idea     Idea?       @relation(fields: [ideaId], references: [id], onDelete: SetNull)
   outLinks NoteLink[]  @relation("source")
   inLinks  NoteLink[]  @relation("target")
 
   @@index([userId, folderId])
   @@index([userId, updatedAt])
   @@index([userId, pinned])
+  @@index([ideaId])
 }
 
 model NoteFolder {

@@ -344,7 +344,7 @@ function EmptyState() {
         href="/inbox"
         className="text-ink-medium hover:text-ink-heavy border-ink-heavy/40 hover:bg-ink-heavy/5 mt-6 inline-block rounded-sm border px-5 py-2 text-sm transition"
       >
-        去想法列表 →
+        去收件箱 →
       </Link>
     </div>
   )

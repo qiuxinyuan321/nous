@@ -49,6 +49,7 @@ export function NotesView() {
               initialTitle={note.title}
               initialContent={note.content}
               initialPinned={note.pinned}
+              linkedIdea={note.idea ?? null}
             />
             <BacklinkPanel noteId={note.id} onNavigate={setSelectedNoteId} />
           </>

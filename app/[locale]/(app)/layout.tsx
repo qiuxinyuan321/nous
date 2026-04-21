@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import type { ReactNode } from 'react'
 import { AppHeader } from '@/components/layout/AppHeader'
 import { CommandPalette } from '@/components/layout/CommandPalette'
+import { OnboardingGuide } from '@/components/layout/OnboardingGuide'
 import { QueryProvider } from '@/components/providers/QueryProvider'
 import { auth } from '@/lib/auth'
 
@@ -23,6 +24,7 @@ export default async function AppLayout({
       <AppHeader user={session.user} />
       <div className="flex-1">{children}</div>
       <CommandPalette />
+      <OnboardingGuide />
     </QueryProvider>
   )
 }

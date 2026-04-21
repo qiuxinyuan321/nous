@@ -12,6 +12,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ id: str
     where: { id, userId: session.user.id },
     include: {
       folder: { select: { id: true, name: true, icon: true } },
+      idea: { select: { id: true, title: true, status: true } },
       outLinks: {
         select: {
           target: { select: { id: true, title: true } },

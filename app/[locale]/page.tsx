@@ -37,7 +37,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   setRequestLocale(locale)
   const t = await getTranslations()
   const session = await auth()
-  const ctaHref = session?.user ? '/inbox' : '/login'
+  const ctaHref = session?.user ? '/workspace' : '/login'
 
   const flowSteps = FLOW_KEYS.map((k) => ({
     key: k,

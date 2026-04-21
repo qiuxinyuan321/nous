@@ -13,13 +13,14 @@
     "retry": "Retry"
   },
   "nav": {
-    "inbox": "Ideas",
-    "focus": "Today",
+    "workspace": "Workspace",
+    "inbox": "Inbox",
+    "focus": "Focus",
     "graph": "Graph",
     "memory": "Memory",
     "journal": "Journal",
     "notes": "Notes",
-    "executor": "Executor",
+    "executor": "Inbox",
     "settings": "Settings",
     "logout": "Log out"
   },

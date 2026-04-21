@@ -178,7 +178,7 @@ export async function POST(req: Request) {
         review.completed.length
           ? `## 完成\n${review.completed.map((c) => `- ${c}`).join('\n')}`
           : '',
-        `## 卡点\n${review.stuckPatterns}`,
+        `## 节奏与阻力\n${review.stuckPatterns}`,
         `## 下周聚焦\n${review.nextWeekFocus}`,
       ]
         .filter(Boolean)

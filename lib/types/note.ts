@@ -5,6 +5,7 @@ export const noteSchema = z.object({
   title: z.string(),
   content: z.string(),
   folderId: z.string().nullable(),
+  ideaId: z.string().nullable().optional(),
   tags: z.array(z.string()),
   pinned: z.boolean(),
   archived: z.boolean(),
@@ -29,6 +30,7 @@ export const createNoteSchema = z.object({
   title: z.string().max(200).optional(),
   content: z.string().optional(),
   folderId: z.string().optional(),
+  ideaId: z.string().nullable().optional(),
   tags: z.array(z.string()).optional(),
 })
 
@@ -36,6 +38,7 @@ export const updateNoteSchema = z.object({
   title: z.string().max(200).optional(),
   content: z.string().optional(),
   folderId: z.string().nullable().optional(),
+  ideaId: z.string().nullable().optional(),
   tags: z.array(z.string()).optional(),
   pinned: z.boolean().optional(),
   archived: z.boolean().optional(),

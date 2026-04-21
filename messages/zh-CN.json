@@ -13,13 +13,14 @@
     "retry": "重试"
   },
   "nav": {
-    "inbox": "想法",
-    "focus": "今日",
+    "workspace": "工作台",
+    "inbox": "收件箱",
+    "focus": "聚焦",
     "graph": "图谱",
     "memory": "记忆",
     "journal": "复盘",
     "notes": "笔记",
-    "executor": "执行器",
+    "executor": "收件箱",
     "settings": "设置",
     "logout": "退出"
   },

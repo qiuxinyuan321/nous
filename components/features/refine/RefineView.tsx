@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, useTransition } from 'react'
 import type { ChatMessage, Phase } from '@/lib/ai/types'
 import { useNousChat } from '@/lib/hooks/useNousChat'
 import { generatePlanAction } from '@/app/[locale]/(app)/refine/[id]/actions'
+import { useRouter } from 'next/navigation'
 import { MessageBubble } from './MessageBubble'
 import { PhaseIndicator } from './PhaseIndicator'
 import { QuotaBanner } from './QuotaBanner'
@@ -46,6 +47,7 @@ export function RefineView({
   const [isPlanning, startPlanning] = useTransition()
   const scrollRef = useRef<HTMLDivElement>(null)
 
+  const router = useRouter()
   const { messages, streaming, status, error, phase, send } = useNousChat({
     ideaId,
     initialMessages,
@@ -53,9 +55,22 @@ export function RefineView({
     locale,
   })
 
+  async function handleCreateNote() {
+    try {
+      const res = await fetch('/api/notes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: ideaTitle || '无题', ideaId }),
+      })
+      if (!res.ok) return
+      const note = await res.json()
+      router.push(`/notes?id=${note.id}`)
+    } catch { /* ignore */ }
+  }
+
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })
-  }, [messages.length, streaming])
+  }, [messages.length, streaming, status])
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -91,8 +106,18 @@ export function RefineView({
   return (
     <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-3xl flex-col px-6 py-10">
       <header className="mb-8">
-        <h1 className="font-serif-cn text-ink-heavy text-2xl">{ideaTitle || '无题'}</h1>
-        <p className="text-ink-light mt-2 line-clamp-2 text-xs">{ideaContent}</p>
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0 flex-1">
+            <h1 className="font-serif-cn text-ink-heavy text-2xl">{ideaTitle || '无题'}</h1>
+            <p className="text-ink-light mt-2 line-clamp-2 text-xs">{ideaContent}</p>
+          </div>
+          <button
+            onClick={handleCreateNote}
+            className="border-ink-light/40 text-ink-medium hover:border-ink-heavy hover:text-ink-heavy shrink-0 rounded-md border px-3 py-1.5 text-xs transition"
+          >
+            📓 记笔记
+          </button>
+        </div>
         <div className="mt-6">
           <PhaseIndicator phase={phase} />
         </div>
@@ -110,6 +135,16 @@ export function RefineView({
           <MessageBubble key={i} role={m.role} content={m.content} />
         ))}
         {streaming && <MessageBubble role="assistant" content={streaming} streaming />}
+        {status === 'sending' && !streaming && (
+          <div className="flex justify-start">
+            <div className="border-ink-light/30 bg-paper-aged/60 flex items-center gap-1.5 rounded-sm border px-4 py-3">
+              <span className="bg-ink-light/60 inline-block h-2 w-2 animate-bounce rounded-full [animation-delay:0ms]" />
+              <span className="bg-ink-light/60 inline-block h-2 w-2 animate-bounce rounded-full [animation-delay:150ms]" />
+              <span className="bg-ink-light/60 inline-block h-2 w-2 animate-bounce rounded-full [animation-delay:300ms]" />
+              <span className="text-ink-light ml-2 text-xs">思索中…</span>
+            </div>
+          </div>
+        )}
       </div>
 
       {displayError && (
@@ -131,7 +166,7 @@ export function RefineView({
           placeholder={
             status === 'streaming' ? t('thinking') : '回应一句…（Enter 送出，Shift+Enter 换行）'
           }
-          className="font-serif-cn text-ink-heavy w-full resize-none bg-transparent px-3 py-2 text-sm leading-relaxed outline-none placeholder:text-[color:var(--ink-light)] disabled:opacity-60"
+          className="text-ink-heavy w-full resize-none bg-transparent px-3 py-2 text-[15px] leading-relaxed outline-none placeholder:text-[color:var(--ink-light)] disabled:opacity-60"
         />
         <div className="flex items-center justify-between px-2 pt-1 pb-1">
           <span className="text-ink-light text-xs">

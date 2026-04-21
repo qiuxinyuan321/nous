@@ -1,11 +1,25 @@
 import type { Metadata, Viewport } from 'next'
 import { getLocale } from 'next-intl/server'
-import { Fraunces, JetBrains_Mono, Noto_Serif_SC } from 'next/font/google'
+import { Fraunces, Inter, JetBrains_Mono, Noto_Sans_SC, Noto_Serif_SC } from 'next/font/google'
 import type { ReactNode } from 'react'
 import { ServiceWorkerRegister } from '@/components/layout/ServiceWorkerRegister'
 import { CursorGlow } from '@/components/ui/CursorGlow'
 import { applyThemeScript } from '@/lib/themes/catalog'
 import './globals.css'
+
+const sansCn = Noto_Sans_SC({
+  variable: '--font-sans-cn',
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  display: 'swap',
+})
+
+const sansEn = Inter({
+  variable: '--font-sans-en',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+})
 
 const serifCn = Noto_Serif_SC({
   variable: '--font-serif-cn',
@@ -77,13 +91,14 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html
       lang={locale}
-      className={`${serifCn.variable} ${serifEn.variable} ${mono.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${sansCn.variable} ${sansEn.variable} ${serifCn.variable} ${serifEn.variable} ${mono.variable} h-full antialiased`}
     >
       <head>
         {/* 主题 CSS 变量 inline 注入,避免切换主题时首帧闪白 */}
         <script dangerouslySetInnerHTML={{ __html: applyThemeScript() }} />
       </head>
-      <body className="bg-paper-rice text-ink-heavy font-serif-cn flex min-h-full flex-col">
+      <body className="bg-paper-rice text-ink-heavy font-sans-cn flex min-h-full flex-col text-base leading-relaxed">
         {children}
         <CursorGlow />
         <ServiceWorkerRegister />

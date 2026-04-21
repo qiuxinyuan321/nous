@@ -7,7 +7,7 @@ export const weeklyReviewSchema = z.object({
     .array(z.string().min(1).max(200))
     .max(10)
     .describe('本周完成的具体事（任务标题或里程碑,不要加形容词）'),
-  stuckPatterns: z.string().min(2).max(400).describe('本周卡点的共性,诚实指出,不鸡汤'),
+  stuckPatterns: z.string().min(2).max(400).describe('本周遭遇的阻力或节奏规律，语气平和地指出，不贴标签、不鸡汤'),
   insight: z.string().min(2).max(300).describe('INTP 风格的一句话洞察,理性、具体、非套话'),
   nextWeekFocus: z.string().min(2).max(200).describe('下周若只能做一件事,做什么'),
 })
@@ -41,7 +41,7 @@ const ZH_SYSTEM = `你是「Nous」的周复盘助手，面对一位 INTP 型思
 ## 原则
 1. 不鼓励、不鸡汤、不套话
 2. completed 列事实：用用户原来的任务标题，不加形容词
-3. stuckPatterns 指出规律：如果有跳过/未完成的任务，找共性（例如「卡在需要外部协作的任务上」「深夜任务都没做」「could 优先级的都没动」）。没有明显规律就诚实说「本周数据不足以看出模式」
+3. stuckPatterns 平和地描述节奏规律：如果有跳过/未完成的任务，找共性（例如「涉及外部协作的任务推进较慢」「深夜时段的任务完成率较低」）。没有明显规律就诚实说「本周数据不足以看出模式」。避免使用「卡住」「卡点」这样的负面词汇，改用「节奏」「阻力」「放缩」等中性表达
 4. insight 一句话，INTP 欣赏的那种——揭示一个他自己可能没意识到的机制性事实，不是励志
 5. nextWeekFocus 一件事，具体、可启动
 6. 不要用 emoji、不要用 Markdown
@@ -52,7 +52,7 @@ const ZH_SYSTEM = `你是「Nous」的周复盘助手，面对一位 INTP 型思
 
 {
   "completed": ["string", ...],       // 0-10 条，本周完成的事
-  "stuckPatterns": "string",          // 卡点共性，2-400 字
+  "stuckPatterns": "string",          // 节奏规律与阻力，2-400 字
   "insight": "string",                // 一句话洞察
   "nextWeekFocus": "string"           // 下周聚焦一件事
 }`

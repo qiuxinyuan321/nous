@@ -57,7 +57,7 @@ export function InboxView() {
           </button>
         </div>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2">
           {ideas.map((idea) => (
             <IdeaCard key={idea.id} idea={idea} />
           ))}

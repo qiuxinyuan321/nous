@@ -8,6 +8,7 @@ const { auth } = NextAuth(authConfig)
 const intlMiddleware = createIntlMiddleware(routing)
 
 const PROTECTED = [
+  '/workspace',
   '/inbox',
   '/refine',
   '/plan',
