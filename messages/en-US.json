@@ -18,6 +18,8 @@
     "graph": "Graph",
     "memory": "Memory",
     "journal": "Journal",
+    "notes": "Notes",
+    "executor": "Executor",
     "settings": "Settings",
     "logout": "Log out"
   },
