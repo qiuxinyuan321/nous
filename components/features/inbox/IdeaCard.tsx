@@ -1,9 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import 'dayjs/locale/zh-cn'
 import { Link } from '@/lib/i18n/navigation'
 import type { Idea } from '@/lib/types/idea'
 import { useDeleteIdea } from '@/lib/hooks/useIdeas'
+
+dayjs.extend(relativeTime)
+dayjs.locale('zh-cn')
 
 const statusLabel: Record<string, string> = {
   raw: '未整理',
@@ -57,9 +63,9 @@ export function IdeaCard({ idea }: { idea: Idea }) {
           {preview}
         </p>
         <div className="mt-4 flex items-center justify-between">
-          {idea.tags.length > 0 ? (
-            <div className="flex flex-wrap gap-2">
-              {idea.tags.map((tag) => (
+          <div className="flex flex-wrap items-center gap-2">
+            {idea.tags.length > 0 &&
+              idea.tags.map((tag) => (
                 <span
                   key={tag}
                   className="border-ink-light/40 text-ink-light rounded-sm border px-2 py-0.5 text-xs"
@@ -67,10 +73,8 @@ export function IdeaCard({ idea }: { idea: Idea }) {
                   {tag}
                 </span>
               ))}
-            </div>
-          ) : (
-            <span />
-          )}
+            <span className="text-ink-light/60 text-[11px]">{dayjs(idea.createdAt).fromNow()}</span>
+          </div>
           <span className="text-indigo-stone text-xs opacity-0 transition group-hover:opacity-100">
             {hoverLabel}
           </span>

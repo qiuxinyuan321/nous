@@ -1,3 +1,4 @@
+import { timingSafeEqual } from 'node:crypto'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
@@ -34,7 +35,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
               const email = credentials?.email as string
               const password = credentials?.password as string
               if (!email || !password) return null
-              if (password !== process.env.ADMIN_PASSWORD) return null
+              const expected = Buffer.from(process.env.ADMIN_PASSWORD!)
+              const actual = Buffer.from(password)
+              if (expected.length !== actual.length || !timingSafeEqual(expected, actual))
+                return null
 
               // 找到或创建用户
               const user = await prisma.user.upsert({

@@ -84,7 +84,12 @@ export async function searchMemories(
   k = 5,
 ): Promise<MemoryRecord[]> {
   const queryVec = await embedText(userId, queryText)
-  const rows = await prisma.memory.findMany({ where: { userId } })
+  // 限制加载量，按 importance + 近期排序兜底，避免全量 OOM
+  const rows = await prisma.memory.findMany({
+    where: { userId },
+    orderBy: [{ importance: 'desc' }, { createdAt: 'desc' }],
+    take: 200,
+  })
 
   if (!queryVec) {
     // 降级
