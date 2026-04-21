@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 const STORAGE_KEY = 'nous-onboarding-seen'
 
@@ -39,14 +39,12 @@ const STEPS: Step[] = [
 ]
 
 export function OnboardingGuide() {
-  const [visible, setVisible] = useState(false)
+  // 用 lazy init 判定首次访问，避免在 effect 内 setState 触发级联渲染
+  const [visible, setVisible] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return !localStorage.getItem(STORAGE_KEY)
+  })
   const [step, setStep] = useState(0)
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-    const seen = localStorage.getItem(STORAGE_KEY)
-    if (!seen) setVisible(true)
-  }, [])
 
   const dismiss = useCallback(() => {
     setVisible(false)
@@ -71,23 +69,15 @@ export function OnboardingGuide() {
       <div className="bg-paper-rice border-ink-light/30 mx-4 w-full max-w-md rounded-sm border shadow-xl">
         {/* Header */}
         <div className="border-ink-light/20 border-b px-6 pt-6 pb-4">
-          <h2 className="font-serif-cn text-ink-heavy text-xl">
-            欢迎使用 Nous
-          </h2>
-          <p className="text-ink-light mt-1 text-sm">
-            让想法，落地 — 快速了解核心功能
-          </p>
+          <h2 className="font-serif-cn text-ink-heavy text-xl">欢迎使用 Nous</h2>
+          <p className="text-ink-light mt-1 text-sm">让想法，落地 — 快速了解核心功能</p>
         </div>
 
         {/* Content */}
         <div className="px-6 py-8 text-center">
           <div className="text-4xl">{current.icon}</div>
-          <h3 className="font-serif-cn text-ink-heavy mt-4 text-lg font-medium">
-            {current.title}
-          </h3>
-          <p className="text-ink-medium mt-3 text-sm leading-relaxed">
-            {current.desc}
-          </p>
+          <h3 className="font-serif-cn text-ink-heavy mt-4 text-lg font-medium">{current.title}</h3>
+          <p className="text-ink-medium mt-3 text-sm leading-relaxed">{current.desc}</p>
         </div>
 
         {/* Progress dots */}
@@ -97,9 +87,7 @@ export function OnboardingGuide() {
               key={i}
               onClick={() => setStep(i)}
               className={`h-2 rounded-full transition-all ${
-                i === step
-                  ? 'bg-ink-heavy w-6'
-                  : 'bg-ink-light/30 hover:bg-ink-light/50 w-2'
+                i === step ? 'bg-ink-heavy w-6' : 'bg-ink-light/30 hover:bg-ink-light/50 w-2'
               }`}
               aria-label={`Step ${i + 1}`}
             />

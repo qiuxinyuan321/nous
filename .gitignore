@@ -8,3 +8,16 @@ node_modules/
 dist/
 coverage/
 .turbo/
+
+# IDE / MCP 临时产物
+.serena/
+.playwright-mcp/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# 临时备份
+*.bak
