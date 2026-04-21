@@ -93,6 +93,20 @@ export function useNousChat({
         setMessages((m) => [...m, { role: 'assistant', content: full }])
         setStreaming('')
         setStatus('idle')
+
+        // 检测 AI 回复中是否包含方案就绪信号，自动提升到 ready
+        const readySignals = [
+          '生成详细方案',
+          '生成方案',
+          '可以开始了',
+          '准备好了',
+          'generate a plan',
+          'generate a detailed plan',
+          'Ready to go',
+        ]
+        if (readySignals.some((s) => full.includes(s))) {
+          setPhase('ready')
+        }
       } catch (e) {
         setStatus('error')
         setError((e as Error).message)

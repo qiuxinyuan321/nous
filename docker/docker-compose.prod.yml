@@ -18,6 +18,7 @@ services:
       NEXTAUTH_URL: '${NEXTAUTH_URL}'
       AUTH_URL: '${NEXTAUTH_URL}'
       NEXTAUTH_SECRET: '${NEXTAUTH_SECRET}'
+      AUTH_COOKIE_SECURE: '${AUTH_COOKIE_SECURE:-true}'
       AUTH_SECRET: '${NEXTAUTH_SECRET}'
       CRYPTO_KEY: '${CRYPTO_KEY}'
       # Demo Key (可选)
@@ -88,6 +89,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /etc/ssl/cloudflare:/etc/ssl/cloudflare:ro
       - nous-certbot-www:/var/www/certbot:ro
     depends_on:
       - app

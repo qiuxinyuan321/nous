@@ -36,7 +36,7 @@ export function FeatureCard({ index, title, desc, accent }: FeatureCardProps) {
       whileHover={{ y: -6 }}
       transition={{ type: 'spring', stiffness: 260, damping: 22 }}
       className={cn(
-        'group border-ink-light/25 bg-paper-rice/50 relative overflow-hidden rounded-xl border p-7 backdrop-blur-sm transition-colors duration-300',
+        'group bg-paper-rice/40 relative overflow-hidden rounded-xl border border-white/40 p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-lg transition-colors duration-300 dark:border-white/10 dark:bg-black/10 dark:shadow-[0_8px_30px_rgb(0,0,0,0.12)]',
         accentBorder[accent],
       )}
     >

@@ -1,12 +1,25 @@
 'use client'
 
-import { useMemo, useState, useTransition } from 'react'
+import { useCallback, useMemo, useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { Pomodoro } from './Pomodoro'
 import { PriorityBadge } from '@/components/features/plan/PriorityBadge'
 import { InkStroke } from '@/components/ink/InkStroke'
 import { Link } from '@/lib/i18n/navigation'
 import { usePomodoroStore } from '@/lib/stores/pomodoro'
+
+const MOTIVATIONS = [
+  '落一笔，少一件。',
+  '做完比做好更重要。',
+  '又近了一步。',
+  '稳步推进，不急不躁。',
+  '这件事，搞定了。',
+  '一件一件来，你在前进。',
+  '今天的你比昨天更强。',
+  '专注的力量，正在生效。',
+  '完成即是胜利。',
+  '好的节奏，继续。',
+]
 
 export interface FocusTaskItem {
   id: string
@@ -49,9 +62,24 @@ export function FocusView({ tasks, dateLabel }: FocusViewProps) {
   const finished = enriched.filter((t) => t.status === 'done')
   const activeTask = enriched.find((t) => t.id === activeTaskId) ?? null
 
+  const [toast, setToast] = useState<string | null>(null)
+  const [allDoneDismissed, setAllDoneDismissed] = useState(false)
+  const allDoneCelebration =
+    !allDoneDismissed &&
+    tasks.length > 0 &&
+    pending.length === 0 &&
+    finished.length === tasks.length
+
+  const showMotivation = useCallback(() => {
+    const msg = MOTIVATIONS[Math.floor(Math.random() * MOTIVATIONS.length)]
+    setToast(msg)
+    setTimeout(() => setToast(null), 2500)
+  }, [])
+
   const setStatus = (taskId: string, status: string) => {
     const prev = localStatus[taskId]
     setLocalStatus((s) => ({ ...s, [taskId]: status }))
+    if (status === 'done') showMotivation()
     startTransition(async () => {
       try {
         const res = await fetch(`/api/tasks/${taskId}`, {
@@ -89,12 +117,69 @@ export function FocusView({ tasks, dateLabel }: FocusViewProps) {
         </div>
       </header>
 
+      {/* 激励 Toast */}
+      {toast && (
+        <div className="fixed top-20 left-1/2 z-50 -translate-x-1/2 animate-bounce">
+          <div className="bg-celadon/15 border-celadon/40 text-celadon font-serif-cn rounded-sm border px-6 py-3 text-sm shadow-lg">
+            ✓ {toast}
+          </div>
+        </div>
+      )}
+
+      {/* 全部完成庆祝 */}
+      {allDoneCelebration && pending.length === 0 && finished.length > 0 && (
+        <div className="border-celadon/30 bg-celadon/5 mb-8 rounded-sm border px-8 py-10 text-center">
+          <p className="text-4xl">🎋</p>
+          <h2 className="font-serif-cn text-ink-heavy mt-4 text-2xl">今日事，今日毕</h2>
+          <p className="text-ink-medium mt-3 text-sm leading-relaxed">
+            你完成了今天全部{' '}
+            <span className="text-celadon font-mono font-bold">{finished.length}</span> 项任务。
+            <br />
+            去喝杯茶，或者看看本周复盘。
+          </p>
+          <div className="mt-6 flex items-center justify-center gap-4">
+            <Link
+              href="/journal"
+              className="bg-ink-heavy hover:bg-ink-medium rounded-sm px-5 py-2 text-sm text-[color:var(--paper-rice)] transition"
+            >
+              查看复盘
+            </Link>
+            <button
+              onClick={() => setAllDoneDismissed(true)}
+              className="text-ink-light hover:text-ink-heavy text-sm transition"
+            >
+              继续留在这里
+            </button>
+          </div>
+        </div>
+      )}
+
       {tasks.length === 0 ? (
         <EmptyState />
       ) : (
         <div className="grid gap-10 lg:grid-cols-[1fr_320px]">
           {/* 左：任务列表 */}
           <section>
+            {/* 进度条 */}
+            {tasks.length > 0 && (
+              <div className="mb-6">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-ink-light">今日进度</span>
+                  <span className="text-ink-medium font-mono">
+                    {finished.length}/{tasks.length}
+                  </span>
+                </div>
+                <div className="bg-ink-light/10 mt-2 h-1.5 overflow-hidden rounded-full">
+                  <div
+                    className="bg-celadon h-full rounded-full transition-all duration-500 ease-out"
+                    style={{
+                      width: `${tasks.length > 0 ? (finished.length / tasks.length) * 100 : 0}%`,
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+
             {pending.length > 0 ? (
               <ul className="space-y-3">
                 {pending.map((t) => (

@@ -3,6 +3,7 @@ import { getLocale } from 'next-intl/server'
 import { Fraunces, JetBrains_Mono, Noto_Serif_SC } from 'next/font/google'
 import type { ReactNode } from 'react'
 import { ServiceWorkerRegister } from '@/components/layout/ServiceWorkerRegister'
+import { CursorGlow } from '@/components/ui/CursorGlow'
 import { applyThemeScript } from '@/lib/themes/catalog'
 import './globals.css'
 
@@ -84,6 +85,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       </head>
       <body className="bg-paper-rice text-ink-heavy font-serif-cn flex min-h-full flex-col">
         {children}
+        <CursorGlow />
         <ServiceWorkerRegister />
       </body>
     </html>
