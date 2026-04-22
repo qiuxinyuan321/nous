@@ -2,13 +2,16 @@
  * Stage 4 · Proactive Questions 类型定义
  */
 
-export type PromptKind =
-  | 'zombie_idea' // 7 天未动的 idea 被轻轻唤起
-  | 'stalled_plan' // 14 天未推进的 milestone
-  | 'orphan_goal' // memory.kind=goal 最近无相关行动
-  | 'dormant_blindspot' // memory.kind=blindspot 30 天未触达
-  | 'hoarding_pattern' // 近 14 天 raw idea 堆积但少进 refining（INTP 收藏癖）
-  | 'seasonal_review' // 周日 / 月初温和提醒
+export const PROMPT_KINDS = [
+  'zombie_idea', // 7 天未动的 idea 被轻轻唤起
+  'stalled_plan', // 14 天未推进的 milestone
+  'orphan_goal', // memory.kind=goal 最近无相关行动
+  'dormant_blindspot', // memory.kind=blindspot 30 天未触达
+  'hoarding_pattern', // 近 14 天 raw idea 堆积但少进 refining（INTP 收藏癖）
+  'seasonal_review', // 周日 / 月初温和提醒
+] as const
+
+export type PromptKind = (typeof PROMPT_KINDS)[number]
 
 export type PromptSeverity = 'gentle' | 'alert' // gentle=轻墨色 alert=朱砂
 

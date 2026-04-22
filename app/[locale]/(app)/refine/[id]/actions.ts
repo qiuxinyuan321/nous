@@ -8,15 +8,18 @@ import { consumeToken } from '@/lib/ai/ratelimit'
 import { QuotaExceededError, RateLimitError } from '@/lib/ai/types'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
+import { DEFAULT_PERSONA_ID, isValidPersonaId } from '@/lib/proactive/personas'
 
 export type GeneratePlanResult = { ok: true; redirectTo: string } | { ok: false; error: string }
 
 /**
  * Server Action: 基于 idea + 对话历史生成结构化 Plan，持久化并跳转 /plan/[ideaId]。
+ * persona 由前端从 localStorage 读取后传入 · 用于 plan 语气层。
  */
 export async function generatePlanAction(
   ideaId: string,
   locale: 'zh-CN' | 'en-US',
+  personaHint?: string | null,
 ): Promise<GeneratePlanResult> {
   const session = await auth()
   if (!session?.user?.id) return { ok: false, error: 'UNAUTHORIZED' }
@@ -62,6 +65,8 @@ export async function generatePlanAction(
     }
   }
 
+  const personaId = isValidPersonaId(personaHint) ? personaHint : DEFAULT_PERSONA_ID
+
   let draft
   try {
     draft = await generatePlan({
@@ -72,6 +77,7 @@ export async function generatePlanAction(
         .filter((m) => m.role === 'user' || m.role === 'assistant')
         .map((m) => ({ role: m.role as 'user' | 'assistant', content: m.content })),
       locale,
+      personaId,
     })
   } catch (e) {
     console.error('[generatePlan] AI failed:', e)

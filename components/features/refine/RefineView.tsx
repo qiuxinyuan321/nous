@@ -107,7 +107,7 @@ export function RefineView({
   function handleGeneratePlan() {
     setPlanError(null)
     startPlanning(async () => {
-      const res = await generatePlanAction(ideaId, locale)
+      const res = await generatePlanAction(ideaId, locale, personaId)
       if (res && !res.ok) {
         setPlanError(res.error)
       }

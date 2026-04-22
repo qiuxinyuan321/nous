@@ -121,6 +121,18 @@ export function ProactivePrompts() {
     async (prompt: ProactivePrompt) => {
       setPendingKey(prompt.key)
       try {
+        // 0) 先 ack · 用于 server 侧更新 memory.lastUsedAt 防止盲点/目标重复 fire
+        //    fire-and-forget · 失败不阻断主动作
+        void fetch('/api/proactive/ack', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            key: prompt.key,
+            kind: prompt.kind,
+            ...(prompt.relatedRef?.type === 'memory' ? { memoryId: prompt.relatedRef.id } : {}),
+          }),
+        }).catch(() => {})
+
         // 1) 有 related idea · 直接去那个 idea 的 refine
         if (prompt.relatedRef?.type === 'idea') {
           router.push(`/${locale}/refine/${prompt.relatedRef.id}`)
