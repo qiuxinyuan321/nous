@@ -155,15 +155,19 @@ export async function POST(req: Request) {
         // fire-and-forget: 从本轮对话抽取长期记忆
         // 只在 detail / boundary 阶段抽 (intent 轮信号稀薄, ready 已总结完)
         if (phase === 'detail' || phase === 'boundary') {
+          // 过滤掉 system · 保持 recentContext 是纯净的 user/assistant 对话流
+          // 之前把 system 粗暴压成 assistant · 会让 extractor 把系统指令当成 AI 回复
+          // 干扰"关于用户的稳定事实"判断
+          const cleanContext = messages
+            .filter((m) => m.role === 'user' || m.role === 'assistant')
+            .slice(-4)
+            .map((m) => ({ role: m.role as 'user' | 'assistant', content: m.content }))
           void extractMemories(userId, ideaId, {
             provider,
             locale,
             userMessage: lastMessage.content,
             assistantMessage: text,
-            recentContext: messages.slice(-4).map((m) => ({
-              role: m.role === 'system' ? 'assistant' : m.role,
-              content: m.content,
-            })),
+            recentContext: cleanContext,
           })
         }
       } catch (err) {

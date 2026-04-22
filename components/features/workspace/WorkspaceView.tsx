@@ -12,6 +12,7 @@ import { useIdeas } from '@/lib/hooks/useIdeas'
 import { usePaletteStore } from '@/lib/stores/palette'
 import { usePomodoroStore } from '@/lib/stores/pomodoro'
 import type { FocusTaskItem } from '@/components/features/focus/FocusView'
+import { GreetingCard } from './GreetingCard'
 import { ProactivePrompts } from './ProactivePrompts'
 import { StatCard } from './StatCard'
 import { SparkLine } from './SparkLine'
@@ -76,6 +77,14 @@ export function WorkspaceView({ focusTasks, dateLabel, stats }: WorkspaceViewPro
           </kbd>
         </button>
       </header>
+
+      {/* Persona 化开场白 · 按时段 + 今日 + persona 生成 */}
+      <GreetingCard
+        todayDone={stats.todayDone}
+        todayTotal={stats.todayTotal}
+        weekIdeas={stats.weekIdeas}
+        streak={stats.streak}
+      />
 
       {/* AI 主动问（无内容时自动隐藏） */}
       <ProactivePrompts />

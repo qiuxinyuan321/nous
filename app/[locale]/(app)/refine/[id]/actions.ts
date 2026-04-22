@@ -1,7 +1,8 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-import { generatePlan } from '@/lib/ai/planner'
+import { generatePlan, type PlanDraft } from '@/lib/ai/planner'
 import { resolveProvider } from '@/lib/ai/providers'
 import { consumeDemoQuota } from '@/lib/ai/quota'
 import { consumeToken } from '@/lib/ai/ratelimit'
@@ -128,4 +129,123 @@ export async function generatePlanAction(
   }
 
   redirect(`/${locale}/plan/${ideaId}`)
+}
+
+export type RegeneratePlanResult = { ok: true } | { ok: false; error: string }
+
+/**
+ * 删除旧 plan + milestones + tasks · 用新 persona 重新生成一版。
+ * 用户在 plan 页不满意输出时调用（比如换一个 persona 的风格）。
+ *
+ * 注意：Task 上的 focusedOn / status 会一并丢失 · 设计上接受 —— 因为 plan 结构
+ * 可能完全不同 · 旧任务的"今日聚焦"标记意义不大。
+ */
+export async function regeneratePlanAction(
+  ideaId: string,
+  locale: 'zh-CN' | 'en-US',
+  personaHint?: string | null,
+): Promise<RegeneratePlanResult> {
+  const session = await auth()
+  if (!session?.user?.id) return { ok: false, error: 'UNAUTHORIZED' }
+  const userId = session.user.id
+
+  try {
+    // regenerate 比首次生成更贵 · 更紧的限频（3 次/小时）
+    await consumeToken(`plan-regen:${userId}`, 3, 3600)
+  } catch (e) {
+    if (e instanceof RateLimitError) return { ok: false, error: 'RATE_LIMITED' }
+    throw e
+  }
+
+  const idea = await prisma.idea.findFirst({
+    where: { id: ideaId, userId },
+    include: {
+      messages: { orderBy: { createdAt: 'asc' } },
+      plan: { select: { id: true } },
+    },
+  })
+  if (!idea) return { ok: false, error: 'NOT_FOUND' }
+  if (!idea.plan) return { ok: false, error: 'NO_EXISTING_PLAN' }
+
+  let provider
+  try {
+    provider = await resolveProvider(userId)
+  } catch (e) {
+    return { ok: false, error: 'PROVIDER_UNAVAILABLE: ' + (e as Error).message }
+  }
+
+  if (provider.source === 'demo') {
+    try {
+      await consumeDemoQuota(userId)
+    } catch (e) {
+      if (e instanceof QuotaExceededError) return { ok: false, error: 'QUOTA_EXCEEDED' }
+      throw e
+    }
+  }
+
+  const personaId = isValidPersonaId(personaHint) ? personaHint : DEFAULT_PERSONA_ID
+
+  let draft: PlanDraft
+  try {
+    draft = await generatePlan({
+      provider,
+      ideaTitle: idea.title ?? '',
+      ideaContent: idea.rawContent,
+      recentMessages: idea.messages
+        .filter((m) => m.role === 'user' || m.role === 'assistant')
+        .map((m) => ({ role: m.role as 'user' | 'assistant', content: m.content })),
+      locale,
+      personaId,
+    })
+  } catch (e) {
+    console.error('[regeneratePlan] AI failed:', e)
+    return { ok: false, error: 'AI_GENERATION_FAILED: ' + (e as Error).message }
+  }
+
+  try {
+    await prisma.$transaction(async (tx) => {
+      // 先删旧 plan · 外键 cascade 会带走 milestones 和 tasks
+      // schema 里 Plan→Milestone→Task 都是 onDelete: Cascade · 一条 delete 即可
+      await tx.plan.delete({ where: { id: idea.plan!.id } })
+
+      const plan = await tx.plan.create({
+        data: {
+          ideaId: idea.id,
+          goal: draft.goal,
+          successCriteria: draft.successCriteria,
+          firstAction: draft.firstAction,
+          risks: draft.risks,
+        },
+      })
+      for (const [mIdx, m] of draft.milestones.entries()) {
+        const milestone = await tx.milestone.create({
+          data: {
+            planId: plan.id,
+            title: m.title,
+            deadline: m.deadline ? new Date(m.deadline) : null,
+            orderIdx: mIdx,
+          },
+        })
+        for (const [tIdx, t] of m.tasks.entries()) {
+          await tx.task.create({
+            data: {
+              milestoneId: milestone.id,
+              title: t.title,
+              description: t.description ?? null,
+              priority: t.priority,
+              estimatedMin: t.estimatedMin,
+              orderIdx: tIdx,
+            },
+          })
+        }
+      }
+      // idea.status 保持 planned · 不回退
+    })
+  } catch (e) {
+    console.error('[regeneratePlan] persist failed:', e)
+    return { ok: false, error: 'PERSIST_FAILED' }
+  }
+
+  revalidatePath(`/${locale}/plan/${ideaId}`)
+  return { ok: true }
 }

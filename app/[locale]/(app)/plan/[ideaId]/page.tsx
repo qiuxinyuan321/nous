@@ -2,6 +2,7 @@ import { setRequestLocale } from 'next-intl/server'
 import { notFound, redirect } from 'next/navigation'
 import { FirstActionCard } from '@/components/features/plan/FirstActionCard'
 import { MilestoneSection } from '@/components/features/plan/MilestoneSection'
+import { RegenerateButton } from '@/components/features/plan/RegenerateButton'
 import { RelationRail } from '@/components/features/relations/RelationRail'
 import { InkStroke } from '@/components/ink/InkStroke'
 import { Seal } from '@/components/ink/Seal'
@@ -16,6 +17,7 @@ export default async function PlanPage({
 }) {
   const { locale, ideaId } = await params
   setRequestLocale(locale)
+  const typedLocale: 'zh-CN' | 'en-US' = locale === 'en-US' ? 'en-US' : 'zh-CN'
 
   const session = await auth()
   if (!session?.user?.id) {
@@ -118,16 +120,17 @@ export default async function PlanPage({
           </section>
         )}
 
-        <footer className="border-ink-light/20 mt-20 flex items-center justify-between border-t pt-6">
+        <footer className="border-ink-light/20 mt-20 flex flex-wrap items-center gap-4 border-t pt-6">
           <Link
             href={`/refine/${idea.id}`}
             className="text-ink-light hover:text-ink-heavy text-xs transition"
           >
             ← 回到对话
           </Link>
+          <RegenerateButton ideaId={idea.id} locale={typedLocale} />
           <Link
             href="/focus"
-            className="bg-cinnabar/10 text-cinnabar hover:bg-cinnabar/20 rounded-sm px-4 py-2 text-sm transition"
+            className="bg-cinnabar/10 text-cinnabar hover:bg-cinnabar/20 ml-auto rounded-sm px-4 py-2 text-sm transition"
           >
             今日聚焦 · 番茄钟 →
           </Link>
