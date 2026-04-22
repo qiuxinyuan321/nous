@@ -11,12 +11,14 @@ import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
 import { memoriesToPromptBlock, searchMemories } from '@/lib/memory/store'
 import { extractMemories } from '@/lib/memory/extract'
+import { DEFAULT_PERSONA_ID, isValidPersonaId } from '@/lib/proactive/personas'
 
 export const runtime = 'nodejs'
 
 const bodySchema = z.object({
   ideaId: z.string().min(1),
   locale: z.enum(['zh-CN', 'en-US']).default('zh-CN'),
+  persona: z.string().max(32).optional(),
   messages: z
     .array(
       z.object({
@@ -43,7 +45,8 @@ export async function POST(req: Request) {
       { status: 400 },
     )
   }
-  const { ideaId, messages, locale } = parsed.data
+  const { ideaId, messages, locale, persona } = parsed.data
+  const personaId = isValidPersonaId(persona) ? persona : DEFAULT_PERSONA_ID
 
   try {
     await consumeToken(`chat:${userId}`, 20, 60)
@@ -118,6 +121,7 @@ export async function POST(req: Request) {
     ideaTitle: idea.title ?? '',
     ideaContent: idea.rawContent,
     memoryBlock: memoryBlock || undefined,
+    personaId,
   })
 
   const result = streamText({
@@ -172,6 +176,7 @@ export async function POST(req: Request) {
     headers: {
       'X-Phase': phase,
       'X-Source': provider.source,
+      'X-Persona': personaId,
       ...(memoryBlock ? { 'X-Memory-Injected': '1' } : {}),
     },
   })

@@ -1,3 +1,5 @@
+import type { PersonaId } from '@/lib/proactive/personas'
+import { personaVoiceBlock } from './persona-voice'
 import type { Phase } from './types'
 
 /**
@@ -17,6 +19,7 @@ interface PromptContext {
   ideaTitle: string
   ideaContent: string
   memoryBlock?: string
+  personaId?: PersonaId | null
 }
 
 export function socraticSystemPrompt({
@@ -25,9 +28,14 @@ export function socraticSystemPrompt({
   ideaTitle,
   ideaContent,
   memoryBlock,
+  personaId,
 }: PromptContext): string {
-  if (locale === 'en-US') return enPrompt(phase, ideaTitle, ideaContent, memoryBlock)
-  return zhPrompt(phase, ideaTitle, ideaContent, memoryBlock)
+  const base =
+    locale === 'en-US'
+      ? enPrompt(phase, ideaTitle, ideaContent, memoryBlock)
+      : zhPrompt(phase, ideaTitle, ideaContent, memoryBlock)
+  const voice = personaVoiceBlock({ personaId, locale })
+  return voice ? base + voice : base
 }
 
 // ─────────────────── 中文 Prompt ───────────────────

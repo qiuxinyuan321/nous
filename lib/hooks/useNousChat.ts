@@ -10,6 +10,7 @@ interface UseNousChatOptions {
   initialMessages?: ChatMessage[]
   initialPhase?: Phase
   locale?: 'zh-CN' | 'en-US'
+  persona?: string | null
   onError?: (code: string) => void
 }
 
@@ -18,6 +19,7 @@ export function useNousChat({
   initialMessages = [],
   initialPhase = 'intent',
   locale = 'zh-CN',
+  persona,
   onError,
 }: UseNousChatOptions) {
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages)
@@ -53,7 +55,12 @@ export function useNousChat({
         const res = await fetch('/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ideaId, messages: next, locale }),
+          body: JSON.stringify({
+            ideaId,
+            messages: next,
+            locale,
+            ...(persona ? { persona } : {}),
+          }),
         })
 
         if (!res.ok || !res.body) {
@@ -113,7 +120,7 @@ export function useNousChat({
         onError?.((e as Error).message)
       }
     },
-    [ideaId, locale, onError],
+    [ideaId, locale, persona, onError],
   )
 
   return { messages, streaming, status, error, phase, send, setPhase }

@@ -1,11 +1,17 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef, useState, useTransition } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore, useTransition } from 'react'
 import type { ChatMessage, Phase } from '@/lib/ai/types'
 import { useNousChat } from '@/lib/hooks/useNousChat'
 import { generatePlanAction } from '@/app/[locale]/(app)/refine/[id]/actions'
 import { useRouter } from 'next/navigation'
+import { DEFAULT_PERSONA_ID, PERSONAS, type PersonaId } from '@/lib/proactive/personas'
+import {
+  readPersonaIdFromStorage,
+  subscribePersonaChange,
+  writePersonaIdToStorage,
+} from '@/lib/proactive/persona-client'
 import { MessageBubble } from './MessageBubble'
 import { PhaseIndicator } from './PhaseIndicator'
 import { QuotaBanner } from './QuotaBanner'
@@ -48,11 +54,20 @@ export function RefineView({
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const router = useRouter()
+  const personaId = useSyncExternalStore(
+    subscribePersonaChange,
+    readPersonaIdFromStorage,
+    () => DEFAULT_PERSONA_ID,
+  )
+  const currentPersona = PERSONAS.find((p) => p.id === personaId) ?? PERSONAS[0]
+  const [personaOpen, setPersonaOpen] = useState(false)
+
   const { messages, streaming, status, error, phase, send } = useNousChat({
     ideaId,
     initialMessages,
     initialPhase,
     locale,
+    persona: personaId,
   })
 
   async function handleCreateNote() {
@@ -65,7 +80,9 @@ export function RefineView({
       if (!res.ok) return
       const note = await res.json()
       router.push(`/notes?id=${note.id}`)
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
   }
 
   useEffect(() => {
@@ -111,12 +128,64 @@ export function RefineView({
             <h1 className="font-serif-cn text-ink-heavy text-2xl">{ideaTitle || '无题'}</h1>
             <p className="text-ink-light mt-2 line-clamp-2 text-xs">{ideaContent}</p>
           </div>
-          <button
-            onClick={handleCreateNote}
-            className="border-ink-light/40 text-ink-medium hover:border-ink-heavy hover:text-ink-heavy shrink-0 rounded-md border px-3 py-1.5 text-xs transition"
-          >
-            📓 记笔记
-          </button>
+          <div className="flex shrink-0 items-center gap-2">
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setPersonaOpen((v) => !v)}
+                aria-haspopup="listbox"
+                aria-expanded={personaOpen}
+                title={`语气：${currentPersona.name}`}
+                className="border-ink-light/40 text-ink-medium hover:border-ink-heavy hover:text-ink-heavy rounded-md border px-3 py-1.5 text-xs transition"
+              >
+                <span className="text-ink-light mr-1">语气</span>
+                <span className="text-ink-heavy font-serif-cn">{currentPersona.name}</span>
+              </button>
+              {personaOpen && (
+                <div
+                  role="listbox"
+                  className="border-ink-light/40 bg-paper-rice absolute top-full right-0 z-20 mt-1 w-60 overflow-hidden rounded-md border shadow-lg"
+                >
+                  {PERSONAS.map((p) => {
+                    const active = p.id === personaId
+                    return (
+                      <button
+                        key={p.id}
+                        type="button"
+                        role="option"
+                        aria-selected={active}
+                        onClick={() => {
+                          writePersonaIdToStorage(p.id as PersonaId)
+                          setPersonaOpen(false)
+                        }}
+                        className={`flex w-full items-start gap-2 px-3 py-2 text-left text-xs transition ${
+                          active
+                            ? 'bg-paper-aged text-ink-heavy'
+                            : 'text-ink-medium hover:bg-paper-aged/60'
+                        }`}
+                      >
+                        <span className="font-serif-cn text-ink-heavy w-5 shrink-0">
+                          {p.avatar}
+                        </span>
+                        <span className="min-w-0 flex-1">
+                          <span className="font-serif-cn text-ink-heavy block">{p.name}</span>
+                          <span className="text-ink-light mt-0.5 block text-[10px] leading-snug">
+                            {p.tagline}
+                          </span>
+                        </span>
+                      </button>
+                    )
+                  })}
+                </div>
+              )}
+            </div>
+            <button
+              onClick={handleCreateNote}
+              className="border-ink-light/40 text-ink-medium hover:border-ink-heavy hover:text-ink-heavy rounded-md border px-3 py-1.5 text-xs transition"
+            >
+              📓 记笔记
+            </button>
+          </div>
         </div>
         <div className="mt-6">
           <PhaseIndicator phase={phase} />

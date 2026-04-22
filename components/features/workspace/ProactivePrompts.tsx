@@ -5,49 +5,17 @@ import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 
 import { useRouter } from 'next/navigation'
 import { useLocale } from 'next-intl'
 import { cn } from '@/lib/utils'
+import { DEFAULT_PERSONA_ID, PERSONAS, type PersonaId } from '@/lib/proactive/personas'
 import {
-  DEFAULT_PERSONA_ID,
-  PERSONAS,
-  isValidPersonaId,
-  type PersonaId,
-} from '@/lib/proactive/personas'
+  readPersonaIdFromStorage,
+  subscribePersonaChange,
+  writePersonaIdToStorage,
+} from '@/lib/proactive/persona-client'
 import type { ProactivePrompt, ProactiveResponse } from '@/lib/proactive/types'
 
 const DISMISS_KEY = 'nous.proactive.dismissed.v1'
 const DISMISS_TTL_MS = 7 * 24 * 3600 * 1000 // 1 周内不再显示同 key
 const DISMISS_CHANGE_EVENT = 'nous-proactive-dismiss-change'
-const PERSONA_KEY = 'nous.proactive.persona.v1'
-const PERSONA_CHANGE_EVENT = 'nous-proactive-persona-change'
-
-function readPersonaId(): PersonaId {
-  if (typeof window === 'undefined') return DEFAULT_PERSONA_ID
-  try {
-    const v = localStorage.getItem(PERSONA_KEY)
-    return isValidPersonaId(v) ? v : DEFAULT_PERSONA_ID
-  } catch {
-    return DEFAULT_PERSONA_ID
-  }
-}
-
-function writePersonaId(id: PersonaId) {
-  try {
-    localStorage.setItem(PERSONA_KEY, id)
-    window.dispatchEvent(new Event(PERSONA_CHANGE_EVENT))
-  } catch {
-    /* silent */
-  }
-}
-
-function subscribePersona(cb: () => void) {
-  if (typeof window === 'undefined') return () => {}
-  const h = () => cb()
-  window.addEventListener('storage', h)
-  window.addEventListener(PERSONA_CHANGE_EVENT, h)
-  return () => {
-    window.removeEventListener('storage', h)
-    window.removeEventListener(PERSONA_CHANGE_EVENT, h)
-  }
-}
 
 type DismissMap = Record<string, number>
 
@@ -111,7 +79,11 @@ export function ProactivePrompts() {
   const raw = useSyncExternalStore(subscribeDismiss, readRawDismiss, () => '{}')
   const dismissed = useMemo(() => parseDismiss(raw), [raw])
 
-  const personaId = useSyncExternalStore(subscribePersona, readPersonaId, () => DEFAULT_PERSONA_ID)
+  const personaId = useSyncExternalStore(
+    subscribePersonaChange,
+    readPersonaIdFromStorage,
+    () => DEFAULT_PERSONA_ID,
+  )
 
   // persona 变化 · 重新 fetch
   useEffect(() => {
@@ -129,7 +101,7 @@ export function ProactivePrompts() {
   }, [personaId])
 
   const setPersonaId = useCallback((id: PersonaId) => {
-    writePersonaId(id)
+    writePersonaIdToStorage(id)
   }, [])
 
   const visiblePrompts = useMemo(() => {
