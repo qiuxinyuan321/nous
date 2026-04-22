@@ -101,6 +101,9 @@ export async function findOrphanGoals(ctx: RuleContext): Promise<ProactivePrompt
       userId: ctx.userId,
       kind: 'goal',
       importance: { gte: 3 }, // 至少 3 分重要性才值得提醒
+      // 刚被讨论过的 goal 不提（与 findDormantBlindspots 对齐）
+      // 自动抽取时 lastUsedAt=now · 需 ORPHAN_DAYS 后才可能再次入选
+      OR: [{ lastUsedAt: null }, { lastUsedAt: { lte: threshold } }],
     },
     orderBy: [{ importance: 'desc' }, { createdAt: 'desc' }],
     take: 3,

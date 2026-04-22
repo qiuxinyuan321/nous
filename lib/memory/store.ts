@@ -13,6 +13,24 @@ export interface MemoryInput {
   sourceRef?: string
 }
 
+/**
+ * 判断一条刚创建的 memory 是否该被视作"刚刚被讨论过"（lastUsedAt = now）。
+ *
+ * 目的：主动问规则 (findDormantBlindspots / findOrphanGoals) 以
+ * `OR: [{lastUsedAt: null}, {lastUsedAt: {lte: threshold}}]` 选取候选。
+ * 若从当前对话中抽出的 memory 默认 lastUsedAt=null，会立刻满足此条件 · 用户会看到
+ * "你刚刚说的"被 5 秒后又原样反问回来，非常荒谬。
+ *
+ * 规则：
+ * - manual · 用户自己手动记下 · lastUsedAt=null → 下次 proactive 可立刻提（期望）
+ * - extracted-* / derived 等自动来源 · 算作"在当前对话中被激活过" → lastUsedAt=now
+ */
+export function isAutoExtractedSource(source: string | undefined): boolean {
+  if (!source) return false
+  if (source === 'manual') return false
+  return source.startsWith('extracted-') || source === 'derived'
+}
+
 export interface MemoryRecord {
   id: string
   kind: MemoryKind
@@ -27,6 +45,7 @@ export interface MemoryRecord {
 
 export async function createMemory(userId: string, input: MemoryInput): Promise<MemoryRecord> {
   const embedding = await embedText(userId, input.content)
+  const source = input.source ?? 'manual'
   const m = await prisma.memory.create({
     data: {
       userId,
@@ -34,8 +53,10 @@ export async function createMemory(userId: string, input: MemoryInput): Promise<
       content: input.content.trim(),
       embedding: embedding ?? undefined,
       importance: Math.min(5, Math.max(1, input.importance ?? 3)),
-      source: input.source ?? 'manual',
+      source,
       sourceRef: input.sourceRef,
+      // 自动抽取的 memory 视为已在当前对话中"用过"· 避免立即被 proactive 反问
+      lastUsedAt: isAutoExtractedSource(source) ? new Date() : undefined,
     },
   })
   return toRecord(m)
