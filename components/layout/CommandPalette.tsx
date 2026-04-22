@@ -22,14 +22,16 @@ import {
   ArrowLeft,
   CornerDownLeft,
   Command as CommandIcon,
+  Search as SearchIcon,
 } from 'lucide-react'
 import { usePaletteStore } from '@/lib/stores/palette'
 import { useIdeas, useCreateIdea } from '@/lib/hooks/useIdeas'
 import { useTheme } from '@/lib/hooks/useTheme'
 import { VoiceButton } from '@/components/features/inbox/VoiceButton'
+import { SearchMode } from '@/components/layout/palette/SearchMode'
 import { cn } from '@/lib/utils'
 
-type Mode = 'command' | 'capture' | 'theme'
+type Mode = 'command' | 'capture' | 'theme' | 'search'
 
 interface NoteResult {
   id: string
@@ -49,12 +51,17 @@ interface NoteResult {
 export function CommandPalette() {
   const { open, closePalette } = usePaletteStore()
 
-  // 全局 ⌘K / Ctrl+K 唤起
+  // 全局 ⌘K / Ctrl+K 唤起 · ⌘⇧K 直接进深度搜
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      const meta = e.metaKey || e.ctrlKey
+      if (meta && e.key.toLowerCase() === 'k') {
         e.preventDefault()
-        usePaletteStore.getState().togglePalette()
+        if (e.shiftKey) {
+          usePaletteStore.getState().openSearch()
+        } else {
+          usePaletteStore.getState().togglePalette()
+        }
       }
       if (e.key === 'Escape' && usePaletteStore.getState().open) {
         usePaletteStore.getState().closePalette()
@@ -74,7 +81,13 @@ function PaletteBody({ onClose }: { onClose: () => void }) {
   const router = useRouter()
   const t = useTranslations('inbox.quickCapture')
 
-  const [mode, setMode] = useState<Mode>('command')
+  // 从 store 的 initialMode 决定初始模式（⌘⇧K 走 search）
+  const initialMode = usePaletteStore.getState().initialMode
+  useEffect(() => {
+    usePaletteStore.getState().consumeInitialMode()
+  }, [])
+
+  const [mode, setMode] = useState<Mode>(initialMode)
   const [query, setQuery] = useState('')
   const [captureValue, setCaptureValue] = useState('')
   const captureRef = useRef<HTMLTextAreaElement>(null)
@@ -173,7 +186,16 @@ function PaletteBody({ onClose }: { onClose: () => void }) {
         {mode === 'command' && (
           <CommandMode
             query={query}
-            setQuery={setQuery}
+            setQuery={(v) => {
+              // 输入首字符 "?" 自动切深度搜 · 去掉前缀
+              if (v.startsWith('?')) {
+                const rest = v.slice(1).trimStart()
+                setQuery(rest)
+                setMode('search')
+                return
+              }
+              setQuery(v)
+            }}
             ideas={topIdeas}
             noteResults={noteResults}
             onSelectIdea={(id) => go(`/refine/${id}`)}
@@ -183,7 +205,19 @@ function PaletteBody({ onClose }: { onClose: () => void }) {
               setQuery('')
               setMode('theme')
             }}
+            onSearch={() => setMode('search')}
             onGo={go}
+          />
+        )}
+
+        {mode === 'search' && (
+          <SearchMode
+            onBack={() => {
+              setQuery('')
+              setMode('command')
+            }}
+            onNavigate={go}
+            initialQuery={query}
           />
         )}
 
@@ -272,6 +306,7 @@ interface CommandModeProps {
   onSelectNote: (id: string) => void
   onCapture: () => void
   onTheme: () => void
+  onSearch: () => void
   onGo: (path: string) => void
 }
 
@@ -284,6 +319,7 @@ function CommandMode({
   onSelectNote,
   onCapture,
   onTheme,
+  onSearch,
   onGo,
 }: CommandModeProps) {
   const locale = useLocale()
@@ -348,6 +384,19 @@ function CommandMode({
 
         {/* 操作 */}
         <Command.Group heading="操作">
+          <PaletteItem
+            value="search deep omni 深度 搜索 全局 search all everywhere"
+            onSelect={onSearch}
+          >
+            <SearchIcon className="h-4 w-4 shrink-0" />
+            <span>深度搜索</span>
+            <span className="text-ink-light ml-auto flex items-center gap-1 text-[10px] tracking-wider uppercase">
+              跨想法笔记对话
+              <kbd className="border-ink-light/40 rounded border px-1 py-0.5 font-mono text-[10px]">
+                ?
+              </kbd>
+            </span>
+          </PaletteItem>
           <PaletteItem value="new idea capture 新建 想法 捕获" onSelect={onCapture}>
             <Feather className="h-4 w-4 shrink-0" />
             <span>新建想法</span>
