@@ -13,6 +13,9 @@ const ZOMBIE_DAYS = 7
 const STALLED_DAYS = 14
 const ORPHAN_DAYS = 7
 const BLINDSPOT_DAYS = 30
+const HOARDING_WINDOW_DAYS = 14
+const HOARDING_RAW_THRESHOLD = 7 // 近 14 天 raw idea >= 7
+const HOARDING_DEEPENED_MAX = 2 // 但 refining+以上 <= 2 才命中
 
 export interface RuleContext {
   userId: string
@@ -34,7 +37,7 @@ export async function findZombieIdeas(ctx: RuleContext): Promise<ProactivePrompt
       updatedAt: { lte: threshold },
     },
     orderBy: { updatedAt: 'asc' },
-    take: 3,
+    take: 1,
   })
 
   return rows.map((r) => ({
@@ -76,7 +79,7 @@ export async function findStalledPlans(ctx: RuleContext): Promise<ProactivePromp
     return !lastDone || lastDone.getTime() < threshold.getTime()
   })
 
-  return stalled.slice(0, 2).map((m) => ({
+  return stalled.slice(0, 1).map((m) => ({
     key: `stalled_plan:${m.id}`,
     kind: 'stalled_plan' as const,
     question: `「${m.title}」这个里程碑半个月没推进 · 是卡在了某一步，还是方向变了？`,
@@ -118,8 +121,8 @@ export async function findOrphanGoals(ctx: RuleContext): Promise<ProactivePrompt
     }),
   ])
 
-  // 如果用户近期很活跃（>= 5 条）· 不提醒 goal · 避免打扰
-  if (recentIdeasCount + recentTasksCount >= 5) return []
+  // 如果用户近期很活跃（>= 8 条 · 放宽阈值，INTP 常一周写十几条 idea 但仍然目标孤儿）· 不提醒
+  if (recentIdeasCount + recentTasksCount >= 8) return []
 
   // 取第一条最重要的 goal
   const g = goals[0]
@@ -164,7 +167,49 @@ export async function findDormantBlindspots(ctx: RuleContext): Promise<Proactive
   }))
 }
 
-/** 5. 季节性复盘 · 每周日 · 每月 1 号 */
+/**
+ * 5. 收藏癖模式 · INTP 典型卡点
+ *    近 14 天 raw idea >= 7 条 · 但 refining/planning/doing/done 加起来 <= 2 条
+ *    → 提醒：想法堆太多 · 要不要挑一个深耕
+ */
+export async function findHoardingPattern(ctx: RuleContext): Promise<ProactivePrompt[]> {
+  const now = ctx.now ?? new Date()
+  const windowStart = new Date(now.getTime() - HOARDING_WINDOW_DAYS * day)
+
+  const [rawCount, deepenedCount] = await Promise.all([
+    prisma.idea.count({
+      where: {
+        userId: ctx.userId,
+        status: 'raw',
+        createdAt: { gte: windowStart },
+      },
+    }),
+    prisma.idea.count({
+      where: {
+        userId: ctx.userId,
+        status: { in: ['refining', 'planning', 'doing', 'done'] },
+        updatedAt: { gte: windowStart },
+      },
+    }),
+  ])
+
+  if (rawCount < HOARDING_RAW_THRESHOLD) return []
+  if (deepenedCount > HOARDING_DEEPENED_MAX) return []
+
+  return [
+    {
+      key: `hoarding:${now.toISOString().slice(0, 10)}`,
+      kind: 'hoarding_pattern' as const,
+      question: `这两周你记了 ${rawCount} 个新想法 · 但只有 ${deepenedCount} 个被深入 · 要不要挑一个聊聊？`,
+      context: '想法多不是坏事 · 想法都停在 raw 才是。',
+      severity: 'gentle' as const,
+      ctaLabel: '挑一个深耕',
+      generatedAt: now.toISOString(),
+    },
+  ]
+}
+
+/** 6. 季节性复盘 · 每周日 · 每月 1 号 */
 export async function findSeasonalReview(ctx: RuleContext): Promise<ProactivePrompt[]> {
   const now = ctx.now ?? new Date()
   const dow = now.getDay() // 0 = Sunday

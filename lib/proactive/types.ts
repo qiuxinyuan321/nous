@@ -5,8 +5,9 @@
 export type PromptKind =
   | 'zombie_idea' // 7 天未动的 idea 被轻轻唤起
   | 'stalled_plan' // 14 天未推进的 milestone
-  | 'orphan_goal' // memory.kind=goal 最近 7 天无相关行动
+  | 'orphan_goal' // memory.kind=goal 最近无相关行动
   | 'dormant_blindspot' // memory.kind=blindspot 30 天未触达
+  | 'hoarding_pattern' // 近 14 天 raw idea 堆积但少进 refining（INTP 收藏癖）
   | 'seasonal_review' // 周日 / 月初温和提醒
 
 export type PromptSeverity = 'gentle' | 'alert' // gentle=轻墨色 alert=朱砂
@@ -37,4 +38,11 @@ export interface ProactiveResponse {
   generatedAt: string
   /** 是否使用了 LLM 润色 */
   usedLLM: boolean
+  /** 当前生效的角色信息 · 供前端展示 */
+  persona?: {
+    id: string
+    name: string
+    avatar: string
+    tagline: string
+  }
 }

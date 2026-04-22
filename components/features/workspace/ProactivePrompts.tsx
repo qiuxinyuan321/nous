@@ -5,11 +5,49 @@ import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 
 import { useRouter } from 'next/navigation'
 import { useLocale } from 'next-intl'
 import { cn } from '@/lib/utils'
+import {
+  DEFAULT_PERSONA_ID,
+  PERSONAS,
+  isValidPersonaId,
+  type PersonaId,
+} from '@/lib/proactive/personas'
 import type { ProactivePrompt, ProactiveResponse } from '@/lib/proactive/types'
 
 const DISMISS_KEY = 'nous.proactive.dismissed.v1'
 const DISMISS_TTL_MS = 7 * 24 * 3600 * 1000 // 1 周内不再显示同 key
 const DISMISS_CHANGE_EVENT = 'nous-proactive-dismiss-change'
+const PERSONA_KEY = 'nous.proactive.persona.v1'
+const PERSONA_CHANGE_EVENT = 'nous-proactive-persona-change'
+
+function readPersonaId(): PersonaId {
+  if (typeof window === 'undefined') return DEFAULT_PERSONA_ID
+  try {
+    const v = localStorage.getItem(PERSONA_KEY)
+    return isValidPersonaId(v) ? v : DEFAULT_PERSONA_ID
+  } catch {
+    return DEFAULT_PERSONA_ID
+  }
+}
+
+function writePersonaId(id: PersonaId) {
+  try {
+    localStorage.setItem(PERSONA_KEY, id)
+    window.dispatchEvent(new Event(PERSONA_CHANGE_EVENT))
+  } catch {
+    /* silent */
+  }
+}
+
+function subscribePersona(cb: () => void) {
+  if (typeof window === 'undefined') return () => {}
+  const h = () => cb()
+  window.addEventListener('storage', h)
+  window.addEventListener(PERSONA_CHANGE_EVENT, h)
+  return () => {
+    window.removeEventListener('storage', h)
+    window.removeEventListener(PERSONA_CHANGE_EVENT, h)
+  }
+}
 
 type DismissMap = Record<string, number>
 
@@ -73,9 +111,13 @@ export function ProactivePrompts() {
   const raw = useSyncExternalStore(subscribeDismiss, readRawDismiss, () => '{}')
   const dismissed = useMemo(() => parseDismiss(raw), [raw])
 
+  const personaId = useSyncExternalStore(subscribePersona, readPersonaId, () => DEFAULT_PERSONA_ID)
+
+  // persona 变化 · 重新 fetch
   useEffect(() => {
     let cancelled = false
-    fetch('/api/proactive', { cache: 'no-store' })
+    const url = `/api/proactive?persona=${encodeURIComponent(personaId)}`
+    fetch(url, { cache: 'no-store' })
       .then((r) => (r.ok ? r.json() : null))
       .then((d: ProactiveResponse | null) => {
         if (!cancelled) setData(d)
@@ -84,6 +126,10 @@ export function ProactivePrompts() {
     return () => {
       cancelled = true
     }
+  }, [personaId])
+
+  const setPersonaId = useCallback((id: PersonaId) => {
+    writePersonaId(id)
   }, [])
 
   const visiblePrompts = useMemo(() => {
@@ -144,7 +190,13 @@ export function ProactivePrompts() {
         <span className="text-ink-medium font-serif-cn text-[11px] tracking-[0.2em] uppercase">
           Nous 想问问你
         </span>
-        <span className="text-ink-light ml-auto text-[10px]">{visiblePrompts.length} 条</span>
+        <span className="text-ink-light text-[10px]">{visiblePrompts.length} 条</span>
+        <div className="ml-auto flex items-center gap-2">
+          <span className="text-ink-light font-serif-cn text-[10px] tracking-[0.15em] uppercase">
+            由
+          </span>
+          <PersonaPicker current={personaId} onChange={setPersonaId} />
+        </div>
       </header>
 
       <div className="flex flex-col gap-3">
@@ -159,6 +211,45 @@ export function ProactivePrompts() {
         ))}
       </div>
     </section>
+  )
+}
+
+/**
+ * PersonaPicker · 原生 select · 墨色主题样式
+ * 选中后即刻触发上层重新 fetch
+ */
+function PersonaPicker({
+  current,
+  onChange,
+}: {
+  current: PersonaId
+  onChange: (id: PersonaId) => void
+}) {
+  const currentPersona = PERSONAS.find((p) => p.id === current) ?? PERSONAS[0]
+  return (
+    <label className="relative inline-flex items-center">
+      <span className="sr-only">选择角色</span>
+      <select
+        aria-label="选择角色"
+        value={current}
+        onChange={(e) => onChange(e.target.value as PersonaId)}
+        className="border-ink-light/30 bg-paper-rice/60 text-ink-heavy hover:border-ink-medium font-serif-cn focus:ring-cinnabar/40 cursor-pointer appearance-none rounded-sm border py-0.5 pr-6 pl-2 text-[11px] transition focus:ring-2 focus:outline-none"
+      >
+        {PERSONAS.map((p) => (
+          <option key={p.id} value={p.id}>
+            {p.avatar} {p.name} · {p.tagline}
+          </option>
+        ))}
+      </select>
+      <span
+        aria-hidden
+        className="text-ink-light pointer-events-none absolute right-1.5 text-[10px]"
+      >
+        ▾
+      </span>
+      {/* 当前角色小 chip · 提高辨识度 */}
+      <span className="text-ink-light sr-only">{currentPersona.name}</span>
+    </label>
   )
 }
 

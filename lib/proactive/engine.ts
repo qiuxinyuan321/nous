@@ -5,9 +5,11 @@
  * 频率控制：dismiss 追踪放在客户端 localStorage · 服务端不持久化
  */
 
+import { getPersona } from './personas'
 import type { ProactivePrompt, ProactiveResponse } from './types'
 import {
   findDormantBlindspots,
+  findHoardingPattern,
   findOrphanGoals,
   findSeasonalReview,
   findStalledPlans,
@@ -18,18 +20,22 @@ import {
 const MAX_PROMPTS = 3
 
 export interface GenerateOptions extends RuleContext {
+  /** 选择的角色 id · 默认 auto（保持原文） */
+  personaId?: string | null
   /** 是否跑 LLM 润色（将来再开，当前 no-op） */
   useLLM?: boolean
 }
 
 export async function generatePrompts(opts: GenerateOptions): Promise<ProactiveResponse> {
   const ctx: RuleContext = { userId: opts.userId, now: opts.now }
+  const persona = getPersona(opts.personaId)
 
   const results = await Promise.allSettled([
     findZombieIdeas(ctx),
     findStalledPlans(ctx),
     findOrphanGoals(ctx),
     findDormantBlindspots(ctx),
+    findHoardingPattern(ctx),
     findSeasonalReview(ctx),
   ])
 
@@ -52,11 +58,25 @@ export async function generatePrompts(opts: GenerateOptions): Promise<ProactiveR
   for (const p of merged) if (p.severity === 'alert') take(p)
   for (const p of merged) if (p.severity === 'gentle') take(p)
 
-  const prompts = deduped.slice(0, MAX_PROMPTS)
+  const topN = deduped.slice(0, MAX_PROMPTS)
+
+  // 应用 persona 对 question / ctaLabel / context 做角色化改写
+  const prompts: ProactivePrompt[] = topN.map((p) => ({
+    ...p,
+    question: persona.rewrite(p.question, p.kind),
+    ctaLabel: p.ctaLabel ? (persona.rewriteCTA?.(p.ctaLabel, p.kind) ?? p.ctaLabel) : p.ctaLabel,
+    context: p.context ? (persona.rewriteContext?.(p.context, p.kind) ?? p.context) : p.context,
+  }))
 
   return {
     prompts,
     generatedAt: (opts.now ?? new Date()).toISOString(),
     usedLLM: false,
+    persona: {
+      id: persona.id,
+      name: persona.name,
+      avatar: persona.avatar,
+      tagline: persona.tagline,
+    },
   }
 }
