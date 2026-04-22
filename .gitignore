@@ -21,3 +21,7 @@ coverage/
 
 # 临时备份
 *.bak
+
+# TypeScript incremental build cache（本地缓存，不该入库）
+tsconfig.tsbuildinfo
+*.tsbuildinfo
