@@ -12,6 +12,7 @@ import { useIdeas } from '@/lib/hooks/useIdeas'
 import { usePaletteStore } from '@/lib/stores/palette'
 import { usePomodoroStore } from '@/lib/stores/pomodoro'
 import type { FocusTaskItem } from '@/components/features/focus/FocusView'
+import { ProactivePrompts } from './ProactivePrompts'
 import { StatCard } from './StatCard'
 import { SparkLine } from './SparkLine'
 
@@ -75,6 +76,9 @@ export function WorkspaceView({ focusTasks, dateLabel, stats }: WorkspaceViewPro
           </kbd>
         </button>
       </header>
+
+      {/* AI 主动问（无内容时自动隐藏） */}
+      <ProactivePrompts />
 
       {/* Dashboard 4 卡 */}
       <section className="mb-10 grid grid-cols-2 gap-4 md:grid-cols-4">
