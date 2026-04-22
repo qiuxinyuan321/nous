@@ -54,64 +54,54 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <main className="relative mx-auto max-w-6xl px-6">
-      {/* 纸面装饰 · 柔色光晕 */}
+      {/* 纸面装饰 · 柔色光晕 · 移动端隐藏（4 个 blur-100px 合成层是 GPU 灾难） */}
       <div
-        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+        className="pointer-events-none absolute inset-0 -z-10 hidden overflow-hidden md:block"
         aria-hidden="true"
       >
-        <div className="bg-cinnabar/20 dark:bg-cinnabar/30 absolute top-[-10rem] right-[-10rem] h-[32rem] w-[32rem] rounded-full mix-blend-multiply blur-[100px] transition-colors duration-700 dark:mix-blend-screen" />
-        <div className="bg-indigo-stone/20 dark:bg-indigo-stone/30 absolute top-[20rem] left-[-12rem] h-[28rem] w-[28rem] rounded-full mix-blend-multiply blur-[100px] transition-colors duration-700 dark:mix-blend-screen" />
-        <div className="bg-celadon/20 dark:bg-celadon/30 absolute top-[70rem] right-[-8rem] h-[24rem] w-[24rem] rounded-full mix-blend-multiply blur-[100px] transition-colors duration-700 dark:mix-blend-screen" />
-        <div className="bg-gold-leaf/15 dark:bg-gold-leaf/20 absolute top-[45rem] left-[20%] h-[20rem] w-[20rem] rounded-full mix-blend-multiply blur-[80px] transition-colors duration-700 dark:mix-blend-screen" />
+        <div className="bg-cinnabar/20 dark:bg-cinnabar/30 absolute top-[-10rem] right-[-10rem] h-[32rem] w-[32rem] rounded-full mix-blend-multiply blur-[100px] dark:mix-blend-screen" />
+        <div className="bg-indigo-stone/20 dark:bg-indigo-stone/30 absolute top-[20rem] left-[-12rem] h-[28rem] w-[28rem] rounded-full mix-blend-multiply blur-[100px] dark:mix-blend-screen" />
+        <div className="bg-celadon/20 dark:bg-celadon/30 absolute top-[70rem] right-[-8rem] h-[24rem] w-[24rem] rounded-full mix-blend-multiply blur-[100px] dark:mix-blend-screen" />
+        <div className="bg-gold-leaf/15 dark:bg-gold-leaf/20 absolute top-[45rem] left-[20%] h-[20rem] w-[20rem] rounded-full mix-blend-multiply blur-[80px] dark:mix-blend-screen" />
       </div>
 
-      {/* ─── Hero ─── */}
+      {/* ─── Hero · 首屏脱掉所有 Reveal 入场（opacity:0 + whileInView 是 LCP 主因） ─── */}
       <section className="relative grid min-h-[calc(100vh-4rem)] items-center gap-12 py-20 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:gap-16 md:py-28">
         <div className="order-2 md:order-1">
-          <Reveal>
-            <p className="text-ink-light font-serif-en mb-5 text-xs tracking-[0.3em] uppercase">
-              {t('marketing.hero.lede')}
-            </p>
-          </Reveal>
+          <p className="text-ink-light font-serif-en mb-5 text-xs tracking-[0.3em] uppercase">
+            {t('marketing.hero.lede')}
+          </p>
 
-          <Reveal delay={0.08}>
-            <h1 className="font-serif-en text-ink-heavy text-6xl leading-[0.95] font-medium tracking-tight md:text-7xl lg:text-8xl">
-              Nous
-            </h1>
-          </Reveal>
+          <h1 className="font-serif-en text-ink-heavy text-6xl leading-[0.95] font-medium tracking-tight md:text-7xl lg:text-8xl">
+            Nous
+          </h1>
 
-          <Reveal delay={0.16} className="mt-6 w-28">
+          <div className="mt-6 w-28">
             <InkStroke variant="medium" />
-          </Reveal>
+          </div>
 
-          <Reveal delay={0.22}>
-            <p className="font-serif-cn mt-8 text-2xl leading-snug md:text-3xl">
-              <AuroraInkText duration={12}>{t('marketing.hero.title')}</AuroraInkText>
-            </p>
-          </Reveal>
+          <p className="font-serif-cn mt-8 text-2xl leading-snug md:text-3xl">
+            <AuroraInkText duration={12}>{t('marketing.hero.title')}</AuroraInkText>
+          </p>
 
-          <Reveal delay={0.3}>
-            <p className="text-ink-light mt-5 max-w-xl text-base leading-relaxed md:text-lg">
-              {t('marketing.hero.subtitle')}
-            </p>
-          </Reveal>
+          <p className="text-ink-light mt-5 max-w-xl text-base leading-relaxed md:text-lg">
+            {t('marketing.hero.subtitle')}
+          </p>
 
-          <Reveal delay={0.4}>
-            <div className="mt-12 flex flex-wrap gap-4">
-              <ShimmerInkButton href={ctaHref}>{t('marketing.hero.cta')}</ShimmerInkButton>
-              <a
-                href="https://github.com/qiuxinyuan321/nous"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-ink-light/60 text-ink-medium hover:border-ink-heavy hover:text-ink-heavy inline-flex items-center gap-2 rounded-md border px-7 py-3.5 transition"
-              >
-                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
-                  <path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.57.1.78-.25.78-.55v-2.1c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.74.4-1.25.74-1.54-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.28 1.2-3.08-.12-.3-.52-1.48.11-3.1 0 0 .97-.31 3.2 1.18a11.1 11.1 0 0 1 5.82 0c2.22-1.49 3.2-1.18 3.2-1.18.63 1.62.23 2.8.11 3.1.75.8 1.2 1.82 1.2 3.08 0 4.42-2.69 5.39-5.26 5.68.41.35.78 1.05.78 2.12v3.15c0 .3.2.66.78.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z" />
-                </svg>
-                GitHub
-              </a>
-            </div>
-          </Reveal>
+          <div className="mt-12 flex flex-wrap gap-4">
+            <ShimmerInkButton href={ctaHref}>{t('marketing.hero.cta')}</ShimmerInkButton>
+            <a
+              href="https://github.com/qiuxinyuan321/nous"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-ink-light/60 text-ink-medium hover:border-ink-heavy hover:text-ink-heavy inline-flex items-center gap-2 rounded-md border px-7 py-3.5 transition"
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
+                <path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.57.1.78-.25.78-.55v-2.1c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.74.4-1.25.74-1.54-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.28 1.2-3.08-.12-.3-.52-1.48.11-3.1 0 0 .97-.31 3.2 1.18a11.1 11.1 0 0 1 5.82 0c2.22-1.49 3.2-1.18 3.2-1.18.63 1.62.23 2.8.11 3.1.75.8 1.2 1.82 1.2 3.08 0 4.42-2.69 5.39-5.26 5.68.41.35.78 1.05.78 2.12v3.15c0 .3.2.66.78.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z" />
+              </svg>
+              GitHub
+            </a>
+          </div>
         </div>
 
         <div className="relative order-1 md:order-2">

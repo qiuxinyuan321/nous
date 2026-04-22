@@ -52,33 +52,73 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --font-sans-cn: var(--font-sans-cn), 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-sans-en: var(--font-sans-en), 'Inter', system-ui, sans-serif;
+  /* 注意：sans-cn / sans-en 不再加载自定义 web font，直接用系统字体链
+     —— Inter / Noto Sans SC 已从 layout.tsx 移除，减少首屏字节 */
+  --font-sans-cn: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --font-sans-en: system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-serif-cn: var(--font-serif-cn), 'Source Han Serif SC', 'Noto Serif CJK SC', serif;
   --font-serif-en: var(--font-serif-en), 'Fraunces', 'EB Garamond', serif;
   --font-mono: var(--font-mono), 'JetBrains Mono', 'IBM Plex Mono', monospace;
 }
 
-/* ─── 宣纸纹理 ─── */
+/* ─── 宣纸纹理 · 移动端精简版（色斑 + noise + color-burn blend 对手机 GPU 太重） ─── */
 body {
   background-color: var(--paper-rice);
-  background-image:
-    radial-gradient(circle at 15% 50%, rgba(139, 136, 128, 0.06) 0, transparent 50%),
-    radial-gradient(circle at 85% 30%, rgba(184, 149, 90, 0.05) 0, transparent 50%),
-    radial-gradient(circle at 50% 100%, rgba(107, 142, 122, 0.04) 0, transparent 40%),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
-  background-blend-mode: normal, normal, normal, color-burn;
   color: var(--foreground);
 }
 
-.dark body {
-  background-blend-mode: normal, normal, normal, overlay;
+/* 桌面端再堆装饰层：3 层柔色光晕 + 噪点 + color-burn 纹理 */
+@media (min-width: 768px) {
+  body {
+    background-image:
+      radial-gradient(circle at 15% 50%, rgba(139, 136, 128, 0.06) 0, transparent 50%),
+      radial-gradient(circle at 85% 30%, rgba(184, 149, 90, 0.05) 0, transparent 50%),
+      radial-gradient(circle at 50% 100%, rgba(107, 142, 122, 0.04) 0, transparent 40%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+    background-blend-mode: normal, normal, normal, color-burn;
+  }
+
+  .dark body {
+    background-blend-mode: normal, normal, normal, overlay;
+  }
 }
 
 /* ─── 选区颜色 ─── */
 ::selection {
   background-color: var(--cinnabar);
   color: var(--paper-rice);
+}
+
+/* ─── 入场 · Reveal · 仅 motion-safe 下跑 · 纯 CSS 不依赖 JS ─── */
+@keyframes revealUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0.001;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes sealDrop {
+  from {
+    transform: rotate(-16deg) scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(-6deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-revealUp {
+    animation: revealUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+  .animate-sealDrop {
+    animation: sealDrop 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.5s backwards;
+  }
 }
 
 /* ─── AI 流式打字光标 ─── */
