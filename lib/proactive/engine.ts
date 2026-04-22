@@ -38,22 +38,19 @@ export async function generatePrompts(opts: GenerateOptions): Promise<ProactiveR
     if (r.status === 'fulfilled') merged.push(...r.value)
   }
 
-  // 同 key 去重（罕见但防御） · 按 severity alert > gentle · 然后按生成顺序
-  const seen = new Set<string>()
+  // 按 severity alert > gentle · 同 kind 最多 1 条 · 同 key 去重
+  const seenKey = new Set<string>()
+  const seenKind = new Set<string>()
   const deduped: ProactivePrompt[] = []
+  const take = (p: ProactivePrompt) => {
+    if (seenKey.has(p.key) || seenKind.has(p.kind)) return
+    seenKey.add(p.key)
+    seenKind.add(p.kind)
+    deduped.push(p)
+  }
   // alert 优先
-  for (const p of merged) {
-    if (p.severity === 'alert' && !seen.has(p.key)) {
-      seen.add(p.key)
-      deduped.push(p)
-    }
-  }
-  for (const p of merged) {
-    if (p.severity === 'gentle' && !seen.has(p.key)) {
-      seen.add(p.key)
-      deduped.push(p)
-    }
-  }
+  for (const p of merged) if (p.severity === 'alert') take(p)
+  for (const p of merged) if (p.severity === 'gentle') take(p)
 
   const prompts = deduped.slice(0, MAX_PROMPTS)
 
