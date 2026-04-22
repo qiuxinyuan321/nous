@@ -96,7 +96,7 @@ const zhuge: Persona = {
     }
     if (kind === 'stalled_plan') {
       if (c.subject)
-        return `亮尝曰：兵久而不胜，非兵之罪 · 计之过也。「${c.subject}」淹滞半月 · 非力之弱也 · 盖路径未明耳。可重整其策，分而图之否？`
+        return `亮以为 · 凡久不胜者 · 多因计未密 · 非志之弱也。「${c.subject}」淹滞半月 · 或未得其节耳。可重整其策，分而图之否？`
       return `此役迟滞 · 非志之过 · 或计未密。亮以为：化大为小 · 其成可期。`
     }
     if (kind === 'orphan_goal') {
@@ -151,7 +151,7 @@ const rick: Persona = {
     const c = parseRaw(raw, kind)
     if (kind === 'zombie_idea') {
       if (c.subject)
-        return `*打嗝* 听着 · 你把「${c.subject}」扔那儿一周多了 · multiverse 里一个你已经 ship 了 · 另一个已经放弃了 · 还有一个正在 couch 上打游戏。你选哪个时间线？我无所谓 · I'm just here for the science.`
+        return `*打嗝* 听着 · 你把「${c.subject}」扔那儿一周多了 · multiverse 里一个你已经 ship 了 · 另一个已经放弃了 · 还有一个正在 couch 上打游戏。你选哪个时间线？我无所谓 · Science, Morty. Science.`
       return `*打嗝* 这想法你放烂了 · multiverse 不等你 · 要么 ship 要么 delete · Morty.`
     }
     if (kind === 'stalled_plan') {
@@ -166,7 +166,7 @@ const rick: Persona = {
     }
     if (kind === 'dormant_blindspot') {
       if (c.subject)
-        return `*打嗝* 哟 · 你又回到「${c.subject}」这坑了。我不是心理医生 · Morty 更不是。但 seriously · 这模式你都复现第 N 次了 · 再装新鲜我要开始叫你 Jerry 了。`
+        return `*打嗝* 哟 · 你又回到「${c.subject}」这坑了。我不是 Dr. Wong · 你自己找她预约。但 seriously · 这模式你都复现第 N 次了 · 再装新鲜我要开始叫你 Jerry 了。`
       return `*打嗝* 又来这一套 · 别装没看见 · I'm not Jerry.`
     }
     if (kind === 'hoarding_pattern') {
@@ -325,7 +325,7 @@ const socrates: Persona = {
     if (kind === 'seasonal_review') {
       if (c.isMonthly)
         return `一月既过。请举出一件你此刻仍能记起 · 不必翻日记便能忆起的事。为何是它？请你自问。`
-      return `一周既过。请举一件你做完后发觉 "比之前更懂了一点" 的事——哪怕懂的是 "自己还不懂"。若举不出 · 此亦为知识。`
+      return `未经审视的人生不值得过。一周既过——请举一件你做完后发觉 "比之前更懂了一点" 的事，哪怕懂的是 "自己还不懂"。若举不出 · 此亦为知识。`
     }
     return `我一无所知 · 但想问你：${raw}`
   },
@@ -405,8 +405,8 @@ const holmes: Persona = {
     }
     if (kind === 'orphan_goal') {
       if (c.subject)
-        return `观察 · 目标为「${c.subject}」· 然近 7 日无相关行动。When the facts disagree with your beliefs, change the beliefs. 你或须更新目标 · 或须更新行动。二者必选其一。`
-      return `观察 · 言行不一致 · 是推理的突破口。改言 · 或改行？`
+        return `观察 · 目标为「${c.subject}」· 然近 7 日无相关行动。It is a capital mistake to theorize before one has data —— 以无行动为证据的目标 · 不过是 theorize。你或须更新目标 · 或须更新行动。二者必选其一。`
+      return `观察 · 言行不一致 · 是推理的突破口。Theorize before data is a capital mistake。改言 · 或改行？`
     }
     if (kind === 'dormant_blindspot') {
       if (c.subject)
