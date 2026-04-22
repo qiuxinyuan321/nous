@@ -282,6 +282,13 @@ const NAV_ITEMS: Array<{
   },
   { path: '/memory', labelZh: '记忆', labelEn: 'Memory', icon: Brain, keywords: 'memory profile' },
   {
+    path: '/chronicle',
+    labelZh: '编年',
+    labelEn: 'Chronicle',
+    icon: BookOpen,
+    keywords: 'chronicle timeline history 足迹 时间轴',
+  },
+  {
     path: '/graph',
     labelZh: '知识图谱',
     labelEn: 'Graph',
