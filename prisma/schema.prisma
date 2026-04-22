@@ -138,6 +138,7 @@ model Idea {
   status         String   @default("raw")
   // raw | refining | planned | executing | done | archived
   tags           String[]
+  embedding      Json? // number[] · 语义向量（可选，embed API 不可用时为空）
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
@@ -159,6 +160,7 @@ model Message {
   content   String   @db.Text
   phase     String // intent | detail | boundary | ready
   metadata  Json? // quick_replies, tokens, model
+  embedding Json? // number[] · 语义向量（可选）
   createdAt DateTime @default(now())
 
   idea Idea @relation(fields: [ideaId], references: [id], onDelete: Cascade)
@@ -225,6 +227,7 @@ model Reflection {
   content   String   @db.Text
   aiInsight String?  @db.Text
   metadata  Json? // 聚合指标:completedCount, blockedCount 等
+  embedding Json? // number[] · 语义向量（可选）
   createdAt DateTime @default(now())
 
   user User  @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -288,6 +291,7 @@ model Note {
   tags      String[]
   pinned    Boolean  @default(false)
   archived  Boolean  @default(false)
+  embedding Json? // number[] · 语义向量（可选）
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
