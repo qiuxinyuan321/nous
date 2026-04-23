@@ -11,12 +11,14 @@ import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
 import { memoriesToPromptBlock, searchMemories } from '@/lib/memory/store'
 import { extractMemories } from '@/lib/memory/extract'
+import { DEFAULT_PERSONA_ID, isValidPersonaId } from '@/lib/proactive/personas'
 
 export const runtime = 'nodejs'
 
 const bodySchema = z.object({
   ideaId: z.string().min(1),
   locale: z.enum(['zh-CN', 'en-US']).default('zh-CN'),
+  persona: z.string().max(32).optional(),
   messages: z
     .array(
       z.object({
@@ -43,7 +45,8 @@ export async function POST(req: Request) {
       { status: 400 },
     )
   }
-  const { ideaId, messages, locale } = parsed.data
+  const { ideaId, messages, locale, persona } = parsed.data
+  const personaId = isValidPersonaId(persona) ? persona : DEFAULT_PERSONA_ID
 
   try {
     await consumeToken(`chat:${userId}`, 20, 60)
@@ -118,6 +121,7 @@ export async function POST(req: Request) {
     ideaTitle: idea.title ?? '',
     ideaContent: idea.rawContent,
     memoryBlock: memoryBlock || undefined,
+    personaId,
   })
 
   const result = streamText({
@@ -133,6 +137,8 @@ export async function POST(req: Request) {
             role: 'assistant',
             content: text,
             phase,
+            // 非 auto 时才写 · auto 写 null 让气泡保持默认样式 · 不显眼
+            personaId: personaId === 'auto' ? null : personaId,
             metadata: {
               model: provider.model,
               source: provider.source,
@@ -151,15 +157,19 @@ export async function POST(req: Request) {
         // fire-and-forget: 从本轮对话抽取长期记忆
         // 只在 detail / boundary 阶段抽 (intent 轮信号稀薄, ready 已总结完)
         if (phase === 'detail' || phase === 'boundary') {
+          // 过滤掉 system · 保持 recentContext 是纯净的 user/assistant 对话流
+          // 之前把 system 粗暴压成 assistant · 会让 extractor 把系统指令当成 AI 回复
+          // 干扰"关于用户的稳定事实"判断
+          const cleanContext = messages
+            .filter((m) => m.role === 'user' || m.role === 'assistant')
+            .slice(-4)
+            .map((m) => ({ role: m.role as 'user' | 'assistant', content: m.content }))
           void extractMemories(userId, ideaId, {
             provider,
             locale,
             userMessage: lastMessage.content,
             assistantMessage: text,
-            recentContext: messages.slice(-4).map((m) => ({
-              role: m.role === 'system' ? 'assistant' : m.role,
-              content: m.content,
-            })),
+            recentContext: cleanContext,
           })
         }
       } catch (err) {
@@ -172,6 +182,7 @@ export async function POST(req: Request) {
     headers: {
       'X-Phase': phase,
       'X-Source': provider.source,
+      'X-Persona': personaId,
       ...(memoryBlock ? { 'X-Memory-Injected': '1' } : {}),
     },
   })

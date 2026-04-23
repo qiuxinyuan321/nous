@@ -1,7 +1,9 @@
 import { generateObject } from 'ai'
 import { z } from 'zod'
 import { buildModel } from './model'
+import { personaVoiceBlock } from './persona-voice'
 import type { ResolvedProvider } from './types'
+import type { PersonaId } from '@/lib/proactive/personas'
 
 /** 里程碑中的任务 */
 const taskSchema = z.object({
@@ -39,6 +41,7 @@ interface GeneratePlanInput {
   ideaContent: string
   recentMessages: { role: 'user' | 'assistant'; content: string }[]
   locale: 'zh-CN' | 'en-US'
+  personaId?: PersonaId | null
 }
 
 const ZH_SYSTEM = `你是「Nous」的规划助手，把 INTP 型思考者的想法转为结构化、低门槛、可立刻启动的执行方案。
@@ -81,6 +84,7 @@ export async function generatePlan({
   ideaContent,
   recentMessages,
   locale,
+  personaId,
 }: GeneratePlanInput): Promise<PlanDraft> {
   const recent = recentMessages
     .slice(-12)
@@ -110,16 +114,40 @@ ${ideaContent}
 ${recent || '（无）'}
 `
 
+  const system = buildPlanSystem({ locale, personaId })
+
   const result = await generateObject({
     model: buildModel(provider),
     schema: planSchema,
     schemaName: 'plan',
     schemaDescription: 'Structured execution plan for an idea',
-    system: locale === 'en-US' ? EN_SYSTEM : ZH_SYSTEM,
+    system,
     prompt,
     maxOutputTokens: Math.max(provider.maxOutputTokens, 4000),
     maxRetries: 2,
   })
 
   return result.object
+}
+
+/**
+ * 构建 plan 生成的 system prompt · 纯函数便于单测。
+ * persona 存在时 · 在 base 硬性规则后追加 voice block · 再贴一段刚性提示
+ * 防止某些 persona（例如楚轩）把 JSON 字段写成决策列表或带编号。
+ */
+export function buildPlanSystem({
+  locale,
+  personaId,
+}: {
+  locale: 'zh-CN' | 'en-US'
+  personaId?: PersonaId | null
+}): string {
+  const baseSystem = locale === 'en-US' ? EN_SYSTEM : ZH_SYSTEM
+  const voice = personaVoiceBlock({ personaId, locale })
+  if (!voice) return baseSystem
+  const rule =
+    locale === 'en-US'
+      ? '\n\n## Voice-vs-structure rule\nThe persona voice above only affects the *wording* of goal / successCriteria / firstAction / task titles / risks. JSON structure, field names, and the Hard rules (MoSCoW, ≤3 milestones, firstAction < 15min, etc.) MUST remain intact.'
+      : '\n\n## 语气与结构的边界\n以上语气层仅影响 goal / successCriteria / firstAction / 任务 title / risks 等**字段内文字的措辞**。JSON 结构、字段名、以及所有硬性原则（MoSCoW 分布、≤ 3 milestones、firstAction < 15 分钟等）必须保持不变。'
+  return baseSystem + voice + rule
 }

@@ -22,14 +22,16 @@ import {
   ArrowLeft,
   CornerDownLeft,
   Command as CommandIcon,
+  Search as SearchIcon,
 } from 'lucide-react'
 import { usePaletteStore } from '@/lib/stores/palette'
 import { useIdeas, useCreateIdea } from '@/lib/hooks/useIdeas'
 import { useTheme } from '@/lib/hooks/useTheme'
 import { VoiceButton } from '@/components/features/inbox/VoiceButton'
+import { SearchMode } from '@/components/layout/palette/SearchMode'
 import { cn } from '@/lib/utils'
 
-type Mode = 'command' | 'capture' | 'theme'
+type Mode = 'command' | 'capture' | 'theme' | 'search'
 
 interface NoteResult {
   id: string
@@ -47,14 +49,22 @@ interface NoteResult {
  * 从而避免在 effect 内做 setState 重置。
  */
 export function CommandPalette() {
-  const { open, closePalette } = usePaletteStore()
+  const open = usePaletteStore((s) => s.open)
+  const closePalette = usePaletteStore((s) => s.closePalette)
+  // initialMode 用作 key · 从 'command' 切到 'capture' / 'search' 时 remount PaletteBody · 内部 mode 自然重置
+  const initialMode = usePaletteStore((s) => s.initialMode)
 
-  // 全局 ⌘K / Ctrl+K 唤起
+  // 全局 ⌘K / Ctrl+K 唤起 · ⌘⇧K 直接进深度搜
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      const meta = e.metaKey || e.ctrlKey
+      if (meta && e.key.toLowerCase() === 'k') {
         e.preventDefault()
-        usePaletteStore.getState().togglePalette()
+        if (e.shiftKey) {
+          usePaletteStore.getState().openSearch()
+        } else {
+          usePaletteStore.getState().togglePalette()
+        }
       }
       if (e.key === 'Escape' && usePaletteStore.getState().open) {
         usePaletteStore.getState().closePalette()
@@ -64,7 +74,11 @@ export function CommandPalette() {
     return () => window.removeEventListener('keydown', handler)
   }, [])
 
-  return <AnimatePresence>{open && <PaletteBody onClose={closePalette} />}</AnimatePresence>
+  return (
+    <AnimatePresence mode="wait">
+      {open && <PaletteBody key={initialMode} onClose={closePalette} />}
+    </AnimatePresence>
+  )
 }
 
 /* ────── 面板主体（仅在 open 时挂载，天然重置内部 state） ────── */
@@ -74,7 +88,11 @@ function PaletteBody({ onClose }: { onClose: () => void }) {
   const router = useRouter()
   const t = useTranslations('inbox.quickCapture')
 
-  const [mode, setMode] = useState<Mode>('command')
+  // 初始 mode 从 store 读一次 · 后续的 initialMode 切换由 parent 通过 key 触发 remount 完成
+  // 规则：store.initialMode 变化（openPalette / openSearch / openCapture 触发）→ parent key 变
+  //      → PaletteBody remount → 此处重新读取最新 initialMode 作为 mode 初始值
+  const initialMode = usePaletteStore.getState().initialMode
+  const [mode, setMode] = useState<Mode>(initialMode)
   const [query, setQuery] = useState('')
   const [captureValue, setCaptureValue] = useState('')
   const captureRef = useRef<HTMLTextAreaElement>(null)
@@ -173,17 +191,41 @@ function PaletteBody({ onClose }: { onClose: () => void }) {
         {mode === 'command' && (
           <CommandMode
             query={query}
-            setQuery={setQuery}
+            setQuery={(v) => {
+              // 输入首字符 "?" 自动切深度搜 · 去掉前缀
+              if (v.startsWith('?')) {
+                const rest = v.slice(1).trimStart()
+                setQuery(rest)
+                setMode('search')
+                return
+              }
+              setQuery(v)
+            }}
             ideas={topIdeas}
             noteResults={noteResults}
             onSelectIdea={(id) => go(`/refine/${id}`)}
             onSelectNote={(id) => go(`/notes?id=${id}`)}
-            onCapture={() => setMode('capture')}
+            onCapture={(prefill) => {
+              if (prefill) setCaptureValue(prefill)
+              setMode('capture')
+            }}
             onTheme={() => {
               setQuery('')
               setMode('theme')
             }}
+            onSearch={() => setMode('search')}
             onGo={go}
+          />
+        )}
+
+        {mode === 'search' && (
+          <SearchMode
+            onBack={() => {
+              setQuery('')
+              setMode('command')
+            }}
+            onNavigate={go}
+            initialQuery={query}
           />
         )}
 
@@ -248,6 +290,13 @@ const NAV_ITEMS: Array<{
   },
   { path: '/memory', labelZh: '记忆', labelEn: 'Memory', icon: Brain, keywords: 'memory profile' },
   {
+    path: '/chronicle',
+    labelZh: '编年',
+    labelEn: 'Chronicle',
+    icon: BookOpen,
+    keywords: 'chronicle timeline history 足迹 时间轴',
+  },
+  {
     path: '/graph',
     labelZh: '知识图谱',
     labelEn: 'Graph',
@@ -270,8 +319,10 @@ interface CommandModeProps {
   noteResults: NoteResult[]
   onSelectIdea: (id: string) => void
   onSelectNote: (id: string) => void
-  onCapture: () => void
+  /** 无命中时传入 query 作为预填 · 其他入口不传参 */
+  onCapture: (prefill?: string) => void
   onTheme: () => void
+  onSearch: () => void
   onGo: (path: string) => void
 }
 
@@ -284,6 +335,7 @@ function CommandMode({
   onSelectNote,
   onCapture,
   onTheme,
+  onSearch,
   onGo,
 }: CommandModeProps) {
   const locale = useLocale()
@@ -298,6 +350,19 @@ function CommandMode({
         <Command.Input
           value={query}
           onValueChange={setQuery}
+          onKeyDown={(e) => {
+            // cmdk 默认 Enter 选中高亮 item · 无高亮（= 无命中）时就把输入落成新想法
+            if (e.key === 'Enter' && !e.shiftKey) {
+              const q = query.trim()
+              if (!q) return
+              const root = e.currentTarget.closest('[cmdk-root]') as HTMLElement | null
+              const selected = root?.querySelector('[cmdk-item][data-selected="true"]')
+              if (!selected) {
+                e.preventDefault()
+                onCapture(q)
+              }
+            }
+          }}
           placeholder="搜索想法、笔记，或输入命令..."
           className="font-serif-cn text-ink-heavy flex-1 bg-transparent text-base outline-none placeholder:text-[color:var(--ink-light)]"
           autoFocus
@@ -348,6 +413,19 @@ function CommandMode({
 
         {/* 操作 */}
         <Command.Group heading="操作">
+          <PaletteItem
+            value="search deep omni 深度 搜索 全局 search all everywhere"
+            onSelect={onSearch}
+          >
+            <SearchIcon className="h-4 w-4 shrink-0" />
+            <span>深度搜索</span>
+            <span className="text-ink-light ml-auto flex items-center gap-1 text-[10px] tracking-wider uppercase">
+              跨想法笔记对话
+              <kbd className="border-ink-light/40 rounded border px-1 py-0.5 font-mono text-[10px]">
+                ?
+              </kbd>
+            </span>
+          </PaletteItem>
           <PaletteItem value="new idea capture 新建 想法 捕获" onSelect={onCapture}>
             <Feather className="h-4 w-4 shrink-0" />
             <span>新建想法</span>

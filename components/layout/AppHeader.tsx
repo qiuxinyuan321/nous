@@ -22,6 +22,7 @@ export async function AppHeader({ user }: { user: NonNullable<Session['user']> }
             <NavLink href="/workspace">{t('nav.workspace')}</NavLink>
             <NavLink href="/notes">{t('nav.notes')}</NavLink>
             <span className="bg-ink-light/20 h-4 w-px" />
+            <NavLink href="/chronicle">{t('nav.chronicle')}</NavLink>
             <NavLink href="/journal">{t('nav.journal')}</NavLink>
             <NavLink href="/memory">{t('nav.memory')}</NavLink>
             <NavLink href="/graph">{t('nav.graph')}</NavLink>

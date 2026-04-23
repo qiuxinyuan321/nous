@@ -10,6 +10,7 @@ interface UseNousChatOptions {
   initialMessages?: ChatMessage[]
   initialPhase?: Phase
   locale?: 'zh-CN' | 'en-US'
+  persona?: string | null
   onError?: (code: string) => void
 }
 
@@ -18,6 +19,7 @@ export function useNousChat({
   initialMessages = [],
   initialPhase = 'intent',
   locale = 'zh-CN',
+  persona,
   onError,
 }: UseNousChatOptions) {
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages)
@@ -42,7 +44,7 @@ export function useNousChat({
       const trimmed = text.trim()
       if (!trimmed || statusRef.current === 'sending' || statusRef.current === 'streaming') return
 
-      const userMsg: ChatMessage = { role: 'user', content: trimmed }
+      const userMsg: ChatMessage = { role: 'user', content: trimmed, personaId: null }
       const next = [...messagesRef.current, userMsg]
       setMessages(next)
       setStreaming('')
@@ -53,7 +55,12 @@ export function useNousChat({
         const res = await fetch('/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ideaId, messages: next, locale }),
+          body: JSON.stringify({
+            ideaId,
+            messages: next,
+            locale,
+            ...(persona ? { persona } : {}),
+          }),
         })
 
         if (!res.ok || !res.body) {
@@ -72,6 +79,10 @@ export function useNousChat({
 
         const headerPhase = res.headers.get('x-phase') as Phase | null
         if (headerPhase) setPhase(headerPhase)
+        // 服务器最终确定的 persona · 优先于客户端传入的（防止 invalid → default 的降级不一致）
+        // auto 写 null · 和 DB 落盘一致
+        const headerPersona = res.headers.get('x-persona')
+        const assistantPersonaId = headerPersona && headerPersona !== 'auto' ? headerPersona : null
         setStatus('streaming')
 
         const reader = res.body.getReader()
@@ -90,7 +101,10 @@ export function useNousChat({
           onError?.('AI_EMPTY_RESPONSE')
           return
         }
-        setMessages((m) => [...m, { role: 'assistant', content: full }])
+        setMessages((m) => [
+          ...m,
+          { role: 'assistant', content: full, personaId: assistantPersonaId },
+        ])
         setStreaming('')
         setStatus('idle')
 
@@ -113,7 +127,7 @@ export function useNousChat({
         onError?.((e as Error).message)
       }
     },
-    [ideaId, locale, onError],
+    [ideaId, locale, persona, onError],
   )
 
   return { messages, streaming, status, error, phase, send, setPhase }

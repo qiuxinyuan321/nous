@@ -112,12 +112,27 @@ body {
   }
 }
 
+/* dropdown / popover · 自顶部右侧回落 · 配合 origin-top-right */
+@keyframes dropIn {
+  from {
+    transform: translateY(-4px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .animate-revealUp {
     animation: revealUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
   }
   .animate-sealDrop {
     animation: sealDrop 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.5s backwards;
+  }
+  .animate-dropIn {
+    animation: dropIn 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 }
 

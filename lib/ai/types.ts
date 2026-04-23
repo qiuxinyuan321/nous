@@ -5,6 +5,11 @@ export type ChatRole = 'user' | 'assistant' | 'system'
 export interface ChatMessage {
   role: ChatRole
   content: string
+  /**
+   * Assistant 消息：生成时的 persona · null 表示 auto / 历史数据
+   * User / system 消息：始终 null
+   */
+  personaId?: string | null
 }
 
 export interface ResolvedProvider {

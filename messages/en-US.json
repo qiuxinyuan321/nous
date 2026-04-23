@@ -20,6 +20,7 @@
     "memory": "Memory",
     "journal": "Journal",
     "notes": "Notes",
+    "chronicle": "Chronicle",
     "executor": "Inbox",
     "settings": "Settings",
     "logout": "Log out"

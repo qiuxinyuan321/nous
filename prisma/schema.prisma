@@ -138,6 +138,7 @@ model Idea {
   status         String   @default("raw")
   // raw | refining | planned | executing | done | archived
   tags           String[]
+  embedding      Json? // number[] · 语义向量（可选，embed API 不可用时为空）
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
@@ -158,7 +159,11 @@ model Message {
   role      String // user | assistant | system
   content   String   @db.Text
   phase     String // intent | detail | boundary | ready
+  // assistant 消息写入时记录当时对话用的 persona · 便于时间线回看风格演变
+  // auto / 未指定 / user 消息均为 null
+  personaId String?
   metadata  Json? // quick_replies, tokens, model
+  embedding Json? // number[] · 语义向量（可选）
   createdAt DateTime @default(now())
 
   idea Idea @relation(fields: [ideaId], references: [id], onDelete: Cascade)
@@ -175,6 +180,9 @@ model Plan {
   successCriteria Json // string[]
   risks           Json // string[]
   firstAction     String
+  // 生成此 plan 时的 persona · 用于 plan 页 header 展示 + 重生时默认
+  // null 表示历史数据 / auto
+  generatedByPersonaId String?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -225,6 +233,7 @@ model Reflection {
   content   String   @db.Text
   aiInsight String?  @db.Text
   metadata  Json? // 聚合指标:completedCount, blockedCount 等
+  embedding Json? // number[] · 语义向量（可选）
   createdAt DateTime @default(now())
 
   user User  @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -288,6 +297,7 @@ model Note {
   tags      String[]
   pinned    Boolean  @default(false)
   archived  Boolean  @default(false)
+  embedding Json? // number[] · 语义向量（可选）
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

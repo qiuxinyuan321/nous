@@ -1,62 +1,36 @@
-'use client'
-
-import { useEffect, useRef, useState } from 'react'
-import { motion, useInView, useMotionValue, useSpring, useReducedMotion } from 'framer-motion'
-
 interface NumberTickerProps {
   value: number
   decimals?: number
-  duration?: number // spring 速度感受（越大越慢）
+  /** @deprecated 保留签名向后兼容 · 静态化后不再使用 */
+  duration?: number
   className?: string
   prefix?: string
   suffix?: string
 }
 
 /**
- * 禅意版 NumberTicker：数字滚动到目标值
- * - 墨色风格，不带浮夸 bounce，用温和 spring
- * - 支持 prefixed 数字（如 01 / 02）：value=1 配 decimals=0 + prefix="0"
- * - 尊重 prefers-reduced-motion
+ * 数字标签 · 服务端组件 · 零 JS
+ *
+ * 历史：旧版用 `useInView + useSpring` 做 "0 → N" 滚动。
+ * 首屏快速浏览时用户会看到编号从 0 跳到 01/02/03 · 和禅意调性不符 ·
+ * 也存在 SSR hydration 时机的视觉闪烁。
+ *
+ * 现在：SSR 直出最终值 · 保留组件签名向后兼容。
+ * 如需动效可将具体使用点替换为 framer-motion spring · 不影响此处。
  */
 export function NumberTicker({
   value,
   decimals = 0,
-  duration = 2,
   className,
   prefix,
   suffix,
 }: NumberTickerProps) {
-  const ref = useRef<HTMLSpanElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
-  const reduce = useReducedMotion()
-
-  const mv = useMotionValue(reduce ? value : 0)
-  const spring = useSpring(mv, { damping: 40 + duration * 10, stiffness: 90 })
-  const [display, setDisplay] = useState<string>(
-    reduce ? value.toFixed(decimals) : (0).toFixed(decimals),
-  )
-
-  useEffect(() => {
-    if (reduce) return
-    if (inView) mv.set(value)
-  }, [inView, mv, reduce, value])
-
-  useEffect(() => {
-    const unsub = spring.on('change', (latest) => {
-      setDisplay(latest.toFixed(decimals))
-    })
-    return () => unsub()
-  }, [spring, decimals])
-
+  const display = value.toFixed(decimals)
   return (
-    <motion.span
-      ref={ref}
-      className={className}
-      aria-label={`${prefix ?? ''}${value}${suffix ?? ''}`}
-    >
+    <span className={className} aria-label={`${prefix ?? ''}${value}${suffix ?? ''}`}>
       {prefix}
       {display}
       {suffix}
-    </motion.span>
+    </span>
   )
 }

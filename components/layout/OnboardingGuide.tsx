@@ -1,13 +1,40 @@
 'use client'
 
-import { useCallback, useState } from 'react'
+import { type ReactNode, useCallback, useState } from 'react'
+import { PERSONAS } from '@/lib/proactive/personas'
+import { PersonaAvatar } from '@/components/proactive/PersonaAvatar'
 
 const STORAGE_KEY = 'nous-onboarding-seen'
 
 interface Step {
+  /** Emoji / 字符 · 当 body 未提供时作主视觉 */
   icon: string
   title: string
   desc: string
+  /** 可选 · 自定义 body 会取代 icon 位置（用于有图像阵列的步骤 · 如“智性相伴”） */
+  body?: ReactNode
+}
+
+/**
+ * 渲染 6 方智者印章 · 除 Nous 本体 · 横排 wrap
+ * 按前后顺序 · 以简短停顽动感逐格缓出
+ */
+function PersonaShowcase() {
+  const sages = PERSONAS.filter((p) => p.id !== 'auto')
+  return (
+    <div className="flex flex-wrap items-end justify-center gap-x-5 gap-y-4">
+      {sages.map((p, i) => (
+        <div
+          key={p.id}
+          className="motion-safe:animate-revealUp flex flex-col items-center"
+          style={{ animationDelay: `${80 * i}ms` }}
+        >
+          <PersonaAvatar persona={p} size={44} />
+          <span className="font-serif-cn text-ink-heavy mt-1.5 text-xs">{p.name}</span>
+        </div>
+      ))}
+    </div>
+  )
 }
 
 const STEPS: Step[] = [
@@ -22,6 +49,12 @@ const STEPS: Step[] = [
     desc: '点击想法卡片进入对话，AI 会用苏格拉底式提问帮你把模糊的念头理清楚。',
   },
   {
+    icon: '•••',
+    title: '智性相伴 · 六位顶级智者',
+    desc: '诸葛亮 · Rick · 楚轩 · 苏格拉底 · 庄子 · Holmes——选一位同行，他会以自己的思维方式，从对话到方案到复盘，一路陪你把想法落地执行。',
+    body: <PersonaShowcase />,
+  },
+  {
     icon: '📋',
     title: '方案生成',
     desc: '对话够了，一键生成可执行方案——目标、里程碑、任务，全部拆好。',
@@ -32,7 +65,7 @@ const STEPS: Step[] = [
     desc: '随时记录想法、参考资料。支持 Markdown 和双向链接。',
   },
   {
-    icon: '�',
+    icon: '🪷',
     title: '复盘与记忆',
     desc: 'AI 每周复盘你的节奏，长期记忆帮你越聊越懂自己。',
   },
@@ -73,9 +106,13 @@ export function OnboardingGuide() {
           <p className="text-ink-light mt-1 text-sm">让想法，落地 — 快速了解核心功能</p>
         </div>
 
-        {/* Content */}
-        <div className="px-6 py-8 text-center">
-          <div className="text-4xl">{current.icon}</div>
+        {/* Content · body 取代默认 icon 渲染 */}
+        <div className="motion-safe:animate-revealUp px-6 py-8 text-center" key={step}>
+          {current.body ? (
+            <div className="min-h-[92px]">{current.body}</div>
+          ) : (
+            <div className="text-4xl">{current.icon}</div>
+          )}
           <h3 className="font-serif-cn text-ink-heavy mt-4 text-lg font-medium">{current.title}</h3>
           <p className="text-ink-medium mt-3 text-sm leading-relaxed">{current.desc}</p>
         </div>

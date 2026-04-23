@@ -1,11 +1,14 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef, useState, useTransition } from 'react'
+import { useEffect, useMemo, useRef, useState, useTransition } from 'react'
 import type { ChatMessage, Phase } from '@/lib/ai/types'
 import { useNousChat } from '@/lib/hooks/useNousChat'
 import { generatePlanAction } from '@/app/[locale]/(app)/refine/[id]/actions'
 import { useRouter } from 'next/navigation'
+import { isValidPersonaId, PERSONAS, type PersonaId } from '@/lib/proactive/personas'
+import { writePersonaIdToStorage } from '@/lib/proactive/persona-client'
+import { PersonaAvatar } from '@/components/proactive/PersonaAvatar'
 import { MessageBubble } from './MessageBubble'
 import { PhaseIndicator } from './PhaseIndicator'
 import { QuotaBanner } from './QuotaBanner'
@@ -19,6 +22,52 @@ interface RefineViewProps {
   locale: 'zh-CN' | 'en-US'
   hasPlan: boolean
 }
+
+/**
+ * 按阶段生成输入框 placeholder · 对新用户提供方向感
+ * 而不是笼统的"回应一句…"
+ */
+function placeholderFor(phase: Phase, streaming: boolean, locale: 'zh-CN' | 'en-US'): string {
+  if (streaming) return locale === 'en-US' ? 'Thinking…' : '思索中…'
+  if (locale === 'en-US') {
+    switch (phase) {
+      case 'intent':
+        return 'What do you most want to nail down first? (Enter to send, Shift+Enter for newline)'
+      case 'detail':
+        return 'A concrete scenario, or the thing you worry about most…'
+      case 'boundary':
+        return 'What should we explicitly NOT cover right now?'
+      case 'ready':
+        return 'Ready for a plan — or add one more detail…'
+    }
+  }
+  switch (phase) {
+    case 'intent':
+      return '先说说你最想先确定的那一步…（Enter 送出，Shift+Enter 换行）'
+    case 'detail':
+      return '补充一个具体场景 · 或你最担心的一点…'
+    case 'boundary':
+      return '哪些情况先不考虑 · 哪些是底线…'
+    case 'ready':
+      return '准备生成方案了 · 也可以再补一句再生成…'
+  }
+}
+
+/**
+ * 空对话时的"起手句"建议 · 按阶段（刚进时始终是 intent 阶段）
+ * 点击即填入输入框 · 降低新用户首次对话的心理门槛
+ */
+const STARTER_PROMPTS_ZH = [
+  '我想从最小可行的一步开始，先确定：',
+  '我现在最不确定的是',
+  '成功的标志对我来说是',
+] as const
+
+const STARTER_PROMPTS_EN = [
+  'Start with the smallest viable step — first confirm:',
+  'The thing I am least sure about is',
+  'Success for me would look like',
+] as const
 
 const ERROR_LABEL: Record<string, string> = {
   QUOTA_EXCEEDED: '今日体验额度已用完。可配置自己的 API Key 继续。',
@@ -48,11 +97,37 @@ export function RefineView({
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const router = useRouter()
+
+  // per-idea persona：优先从历史 assistant 消息推断 · 否则默认 Nous（auto）
+  // 不再从全局 localStorage 初始化 · 避免"别的 idea 选的 persona 污染当前新对话"
+  const inferredInitialPersona = useMemo<PersonaId>(() => {
+    for (let i = initialMessages.length - 1; i >= 0; i--) {
+      const m = initialMessages[i]
+      if (m.role === 'assistant' && isValidPersonaId(m.personaId)) {
+        return m.personaId as PersonaId
+      }
+    }
+    return 'auto'
+  }, [initialMessages])
+
+  const [personaId, setPersonaId] = useState<PersonaId>(inferredInitialPersona)
+  const currentPersona = PERSONAS.find((p) => p.id === personaId) ?? PERSONAS[0]
+  const [personaOpen, setPersonaOpen] = useState(false)
+
+  // 切 persona 时 · 当前 session 立即生效 + 同步到 localStorage
+  // （让 workspace greeting / proactive prompts 等全局 UI 跟随最新偏好）
+  function handlePickPersona(id: PersonaId) {
+    setPersonaId(id)
+    writePersonaIdToStorage(id)
+    setPersonaOpen(false)
+  }
+
   const { messages, streaming, status, error, phase, send } = useNousChat({
     ideaId,
     initialMessages,
     initialPhase,
     locale,
+    persona: personaId,
   })
 
   async function handleCreateNote() {
@@ -65,7 +140,9 @@ export function RefineView({
       if (!res.ok) return
       const note = await res.json()
       router.push(`/notes?id=${note.id}`)
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
   }
 
   useEffect(() => {
@@ -90,7 +167,7 @@ export function RefineView({
   function handleGeneratePlan() {
     setPlanError(null)
     startPlanning(async () => {
-      const res = await generatePlanAction(ideaId, locale)
+      const res = await generatePlanAction(ideaId, locale, personaId)
       if (res && !res.ok) {
         setPlanError(res.error)
       }
@@ -111,12 +188,60 @@ export function RefineView({
             <h1 className="font-serif-cn text-ink-heavy text-2xl">{ideaTitle || '无题'}</h1>
             <p className="text-ink-light mt-2 line-clamp-2 text-xs">{ideaContent}</p>
           </div>
-          <button
-            onClick={handleCreateNote}
-            className="border-ink-light/40 text-ink-medium hover:border-ink-heavy hover:text-ink-heavy shrink-0 rounded-md border px-3 py-1.5 text-xs transition"
-          >
-            📓 记笔记
-          </button>
+          <div className="flex shrink-0 items-center gap-2">
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setPersonaOpen((v) => !v)}
+                aria-haspopup="listbox"
+                aria-expanded={personaOpen}
+                title={`当前智者：${currentPersona.name}`}
+                aria-label={`当前智者：${currentPersona.name} · 点击更换`}
+                className="border-ink-light/40 text-ink-medium hover:border-ink-heavy hover:text-ink-heavy inline-flex items-center gap-2 rounded-md border px-3 py-1.5 text-xs transition"
+              >
+                <PersonaAvatar persona={currentPersona} size={18} />
+                <span className="text-ink-heavy font-serif-cn">{currentPersona.name}</span>
+              </button>
+              {personaOpen && (
+                <div
+                  role="listbox"
+                  className="border-ink-light/40 bg-paper-rice motion-safe:animate-dropIn absolute top-full right-0 z-20 mt-1 w-60 origin-top-right overflow-hidden rounded-md border shadow-lg"
+                >
+                  {PERSONAS.map((p) => {
+                    const active = p.id === personaId
+                    return (
+                      <button
+                        key={p.id}
+                        type="button"
+                        role="option"
+                        aria-selected={active}
+                        onClick={() => handlePickPersona(p.id as PersonaId)}
+                        className={`flex w-full items-start gap-2 px-3 py-2 text-left text-xs transition ${
+                          active
+                            ? 'bg-paper-aged text-ink-heavy'
+                            : 'text-ink-medium hover:bg-paper-aged/60'
+                        }`}
+                      >
+                        <PersonaAvatar persona={p} size={20} className="mt-0.5 shrink-0" />
+                        <span className="min-w-0 flex-1">
+                          <span className="font-serif-cn text-ink-heavy block">{p.name}</span>
+                          <span className="text-ink-light mt-0.5 block text-[10px] leading-snug">
+                            {p.tagline}
+                          </span>
+                        </span>
+                      </button>
+                    )
+                  })}
+                </div>
+              )}
+            </div>
+            <button
+              onClick={handleCreateNote}
+              className="border-ink-light/40 text-ink-medium hover:border-ink-heavy hover:text-ink-heavy rounded-md border px-3 py-1.5 text-xs transition"
+            >
+              📓 记笔记
+            </button>
+          </div>
         </div>
         <div className="mt-6">
           <PhaseIndicator phase={phase} />
@@ -127,14 +252,42 @@ export function RefineView({
 
       <div ref={scrollRef} className="flex flex-1 flex-col gap-4 overflow-y-auto pb-6">
         {!hasConversation && (
-          <div className="text-ink-light py-16 text-center text-sm">
-            AI 会从你的想法开始问。先说一句你现在脑子里最清楚的部分。
+          <div className="mx-auto max-w-md py-10 text-center">
+            <p className="font-serif-cn text-ink-heavy text-[15px] leading-relaxed">
+              {locale === 'en-US'
+                ? 'I’ll ask in four phases: intent → detail → boundary → ready.'
+                : '我会用四个阶段问：意图 → 细节 → 边界 → 就绪。'}
+            </p>
+            <p className="text-ink-light mt-2 text-[13px] leading-relaxed">
+              {locale === 'en-US'
+                ? 'Start with the part you feel most clear about — or pick one below.'
+                : '先说你现在脑子里最清楚的部分 — 也可以挑一句开头。'}
+            </p>
+            <div className="mt-6 flex flex-col gap-2">
+              {(locale === 'en-US' ? STARTER_PROMPTS_EN : STARTER_PROMPTS_ZH).map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  onClick={() => setInput(s + (s.endsWith('：') || s.endsWith(':') ? '' : ' '))}
+                  className="border-ink-light/30 bg-paper-aged/40 text-ink-medium hover:border-ink-heavy hover:text-ink-heavy rounded-sm border px-4 py-2 text-left text-[13px] transition"
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
           </div>
         )}
         {messages.map((m, i) => (
-          <MessageBubble key={i} role={m.role} content={m.content} />
+          <MessageBubble key={i} role={m.role} content={m.content} personaId={m.personaId} />
         ))}
-        {streaming && <MessageBubble role="assistant" content={streaming} streaming />}
+        {streaming && (
+          <MessageBubble
+            role="assistant"
+            content={streaming}
+            streaming
+            personaId={personaId === 'auto' ? null : personaId}
+          />
+        )}
         {status === 'sending' && !streaming && (
           <div className="flex justify-start">
             <div className="border-ink-light/30 bg-paper-aged/60 flex items-center gap-1.5 rounded-sm border px-4 py-3">
@@ -163,9 +316,7 @@ export function RefineView({
           onKeyDown={onKeyDown}
           rows={2}
           disabled={status === 'streaming' || status === 'sending' || isPlanning}
-          placeholder={
-            status === 'streaming' ? t('thinking') : '回应一句…（Enter 送出，Shift+Enter 换行）'
-          }
+          placeholder={placeholderFor(phase, status === 'streaming', locale)}
           className="text-ink-heavy w-full resize-none bg-transparent px-3 py-2 text-[15px] leading-relaxed outline-none placeholder:text-[color:var(--ink-light)] disabled:opacity-60"
         />
         <div className="flex items-center justify-between px-2 pt-1 pb-1">

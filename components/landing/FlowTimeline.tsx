@@ -1,6 +1,4 @@
-'use client'
-
-import { motion, useReducedMotion } from 'framer-motion'
+import type { CSSProperties } from 'react'
 
 export interface FlowStep {
   key: string
@@ -8,9 +6,20 @@ export interface FlowStep {
   desc: string
 }
 
+/**
+ * 流程时间线 · 服务端组件 · 零 JS
+ *
+ * 历史：旧版用 `motion.li + whileInView + initial opacity:0`，
+ * 依赖 IntersectionObserver 触发可见。用户快速滚动进入该 section 时
+ * observer 在连续帧里 miss · li 保持 opacity:0 = 视觉"空白"。
+ *
+ * 现在：和 {@link Reveal} 对齐
+ * - SSR 直出 opacity:1 · 内容立刻可见
+ * - 用 `animate-revealUp` CSS keyframe + `animationDelay` 做微上浮
+ * - `motion-safe:` 前缀尊重 prefers-reduced-motion
+ * - 零 framer-motion / 零 hydration 风险
+ */
 export function FlowTimeline({ steps }: { steps: FlowStep[] }) {
-  const reduce = useReducedMotion()
-
   return (
     <ol className="relative mx-auto max-w-3xl space-y-9 pl-10 md:pl-14">
       <span
@@ -18,28 +27,24 @@ export function FlowTimeline({ steps }: { steps: FlowStep[] }) {
         aria-hidden
       />
 
-      {steps.map((step, idx) => (
-        <motion.li
-          key={step.key}
-          initial={reduce ? false : { opacity: 0, x: -16 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
-          className="relative"
-        >
-          <span
-            className="bg-ink-heavy text-paper-rice font-serif-en absolute top-0.5 left-[-2.5rem] flex h-7 w-7 items-center justify-center rounded-full text-xs shadow-[0_0_0_4px_var(--paper-rice)] md:left-[-3rem] md:h-8 md:w-8 md:text-sm"
-            aria-hidden
-          >
-            {idx + 1}
-          </span>
+      {steps.map((step, idx) => {
+        const style: CSSProperties = { animationDelay: `${idx * 0.08}s` }
+        return (
+          <li key={step.key} className="motion-safe:animate-revealUp relative" style={style}>
+            <span
+              className="bg-ink-heavy text-paper-rice font-serif-en absolute top-0.5 left-[-2.5rem] flex h-7 w-7 items-center justify-center rounded-full text-xs shadow-[0_0_0_4px_var(--paper-rice)] md:left-[-3rem] md:h-8 md:w-8 md:text-sm"
+              aria-hidden
+            >
+              {idx + 1}
+            </span>
 
-          <h3 className="font-serif-cn text-ink-heavy text-base font-medium md:text-lg">
-            {step.title}
-          </h3>
-          <p className="text-ink-medium mt-1.5 text-sm leading-relaxed">{step.desc}</p>
-        </motion.li>
-      ))}
+            <h3 className="font-serif-cn text-ink-heavy text-base font-medium md:text-lg">
+              {step.title}
+            </h3>
+            <p className="text-ink-medium mt-1.5 text-sm leading-relaxed">{step.desc}</p>
+          </li>
+        )
+      })}
     </ol>
   )
 }

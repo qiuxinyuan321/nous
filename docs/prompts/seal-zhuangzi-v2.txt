@@ -1,0 +1,28 @@
+A single traditional Chinese carved stone seal imprint, photographed in pure isolation, centered on a completely clean pure white background.
+
+The seal contains EXACTLY ONE Chinese character, and that character MUST be 莊 (traditional form of 庄, pinyin: zhuāng, meaning "solemn, Zhuang surname"). This is a classical Han / Qin dynasty small seal script (秦汉小篆) rendering of the TRADITIONAL form 莊.
+
+STRUCTURE of the character 莊 in small seal script — two stacked zones top-to-bottom:
+  • TOP zone: 艸 / 艹 grass radical — in small seal script this appears as TWO small curving plant-like strokes side by side, each looking like a short vertical stem with a tiny leaf curling off. Together they form a compact "grass" header.
+  • BOTTOM zone: 壯 (zhuàng, "strong") — composed of LEFT component 爿 (a narrow vertical pictograph like a bed on its side, with three horizontal notches) and RIGHT component 士 (scholar, rendered as one long horizontal on top, a vertical pillar, and one long horizontal at the bottom). The 爿 and 士 are placed side by side horizontally within the bottom zone.
+Total: small grass radical on top, then 壯 (a horizontal two-part compound) beneath. Three vertically-arranged "layers" when the 壯 is read.
+
+CRITICAL — what the character is NOT:
+  • NOT simply 壯 without the grass radical on top
+  • NOT 士 doubled, NOT 世, NOT 壯士 (two separate characters side by side)
+  • NOT any compound that reads horizontally as two separate characters
+  • NOT any other character — only 莊
+
+The seal is pressed in vermilion cinnabar red paste (朱砂印泥), raised positive relief (阳文 yang wen) carving. Simple square red border frame with imperfect hand-stamped edges. Natural uneven ink distribution, slight bleeding, imperfect spots.
+
+Square format, seal occupies the center 70% of the frame. Slightly rotated -2 degrees. Pure clean white seamless background.
+
+Photography style: museum artifact documentation from a classical Chinese seal catalog (印谱), even soft diffused studio lighting.
+
+Color palette: pure white background, vermilion cinnabar red (approximately #C8342B) only.
+
+Strictly forbidden:
+- NO character other than 莊
+- NO TWO separate characters placed side-by-side (must be ONE unified character)
+- NO paper texture, drop shadow, glow, or gradient on background
+- NO outer decorative frame beyond the simple seal border
