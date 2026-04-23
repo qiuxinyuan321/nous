@@ -25,3 +25,7 @@ coverage/
 # TypeScript incremental build cache（本地缓存，不该入库）
 tsconfig.tsbuildinfo
 *.tsbuildinfo
+
+# AI 生图临时产出（候选图仅本地 · 采用后 copy 到 docs/ 对应 slot）
+docs/gen/
+

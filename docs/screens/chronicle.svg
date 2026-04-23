@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 500" role="img" aria-labelledby="t">
+  <title id="t">Nous · Chronicle 时间线</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAF7EF"/>
+      <stop offset="100%" stop-color="#F2EBD8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="880" height="500" fill="url(#bg)"/>
+
+  <!-- 顶部栏 -->
+  <text x="48" y="54" font-family="Noto Serif SC, serif" font-size="11" fill="#8B8880" letter-spacing="3">CHRONICLE</text>
+  <text x="48" y="82" font-family="Noto Serif SC, serif" font-size="19" fill="#1C1B19" font-weight="500">时间轴</text>
+  <path d="M48 94 Q 70 91, 112 94" stroke="#1C1B19" stroke-width="1.2" fill="none" opacity="0.5"/>
+
+  <!-- 日期导航 -->
+  <g transform="translate(680, 60)" font-family="Noto Serif SC, serif" font-size="11">
+    <text x="0" y="14" fill="#8B8880">‹</text>
+    <text x="18" y="14" fill="#1C1B19">2026 年 4 月 23 日 · 周四</text>
+    <text x="180" y="14" fill="#8B8880">›</text>
+  </g>
+
+  <!-- 维度切换 · 日 / 周 / 月 -->
+  <g transform="translate(48, 106)">
+    <rect x="0" y="0" width="48" height="22" rx="3" fill="#1C1B19"/>
+    <text x="24" y="15" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" fill="#FAF7EF" letter-spacing="1">日</text>
+    <text x="68" y="15" font-family="Noto Serif SC, serif" font-size="11" fill="#8B8880" letter-spacing="1">周</text>
+    <text x="100" y="15" font-family="Noto Serif SC, serif" font-size="11" fill="#8B8880" letter-spacing="1">月</text>
+  </g>
+
+  <!-- 时间轴竖线 -->
+  <line x1="138" y1="160" x2="138" y2="470" stroke="#1C1B19" stroke-width="0.8" stroke-opacity="0.2"/>
+
+  <!-- 事件 1 · 09:12 · 想法 -->
+  <g transform="translate(48, 160)">
+    <text x="0" y="12" font-family="Georgia, serif" font-size="10" fill="#8B8880">09:12</text>
+    <circle cx="90" cy="9" r="3.5" fill="#FAF7EF" stroke="#B8372F" stroke-width="1.4"/>
+    <g transform="translate(114, 0)">
+      <text x="0" y="12" font-family="Noto Serif SC, serif" font-size="10" fill="#B8372F" letter-spacing="2">想法</text>
+      <text x="0" y="30" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">INTP 审美的边界，到底在哪一处</text>
+      <text x="0" y="48" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">#审美 #设计 · 用克制代替装饰，是信号还是门槛</text>
+    </g>
+  </g>
+
+  <!-- 事件 2 · 10:45 · 苏格拉底 回应 -->
+  <g transform="translate(48, 216)">
+    <text x="0" y="12" font-family="Georgia, serif" font-size="10" fill="#8B8880">10:45</text>
+    <circle cx="90" cy="9" r="3.5" fill="#FAF7EF" stroke="#3E5871" stroke-width="1.4"/>
+    <g transform="translate(114, 0)">
+      <g>
+        <text x="0" y="12" font-family="Noto Serif SC, serif" font-size="10" fill="#3E5871" letter-spacing="2">苏格拉底 回应</text>
+        <rect x="78" y="2" width="24" height="13" rx="2" fill="#3E5871" fill-opacity="0.1"/>
+        <text x="90" y="12" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="9" fill="#3E5871">Σ</text>
+      </g>
+      <text x="0" y="30" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">若克制是标尺，边界就在读者呼吸之处</text>
+      <text x="0" y="48" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">那么朋友 · 我再问一次——你是想降噪，还是想过滤人</text>
+    </g>
+  </g>
+
+  <!-- 事件 3 · 14:23 · 笔记 -->
+  <g transform="translate(48, 272)">
+    <text x="0" y="12" font-family="Georgia, serif" font-size="10" fill="#8B8880">14:23</text>
+    <circle cx="90" cy="9" r="3.5" fill="#FAF7EF" stroke="#6B8E7A" stroke-width="1.4"/>
+    <g transform="translate(114, 0)">
+      <text x="0" y="12" font-family="Noto Serif SC, serif" font-size="10" fill="#6B8E7A" letter-spacing="2">笔记</text>
+      <text x="0" y="30" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">构图留白的三个可用比例</text>
+      <text x="0" y="48" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">黄金段 · 三分法 · 对称呼吸 · 选一个坚持到底</text>
+    </g>
+  </g>
+
+  <!-- 事件 4 · 15:06 · 任务完成 -->
+  <g transform="translate(48, 328)">
+    <text x="0" y="12" font-family="Georgia, serif" font-size="10" fill="#8B8880">15:06</text>
+    <circle cx="90" cy="9" r="3.5" fill="#6B8E7A"/>
+    <path d="M88 9 L 90 11 L 93 7" stroke="#FAF7EF" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <g transform="translate(114, 0)">
+      <text x="0" y="12" font-family="Noto Serif SC, serif" font-size="10" fill="#6B8E7A" letter-spacing="2">任务 · 已完成</text>
+      <text x="0" y="30" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500" text-decoration="line-through" opacity="0.7">重做 README 头图 · INTP 节点星座</text>
+      <text x="0" y="48" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">朱砂章 + 宣纸 + 几何 · 第三版定稿</text>
+    </g>
+  </g>
+
+  <!-- 事件 5 · 16:40 · 复盘 -->
+  <g transform="translate(48, 384)">
+    <text x="0" y="12" font-family="Georgia, serif" font-size="10" fill="#8B8880">16:40</text>
+    <circle cx="90" cy="9" r="3.5" fill="#FAF7EF" stroke="#B8955A" stroke-width="1.4"/>
+    <g transform="translate(114, 0)">
+      <text x="0" y="12" font-family="Noto Serif SC, serif" font-size="10" fill="#B8955A" letter-spacing="2">复盘</text>
+      <text x="0" y="30" font-family="Noto Serif SC, serif" font-size="13" fill="#1C1B19" font-weight="500">这周对 "少即是多" 的理解深了一层</text>
+      <text x="0" y="48" font-family="Noto Serif SC, serif" font-size="11" fill="#4A4842">做了 · 3 件 · 卡在 · 1 件 · 下周一件事：把 hero 压到 1MB 以内</text>
+    </g>
+  </g>
+
+  <!-- 事件 6 · 18:12 · 记忆 -->
+  <g transform="translate(48, 440)">
+    <text x="0" y="12" font-family="Georgia, serif" font-size="10" fill="#8B8880">18:12</text>
+    <circle cx="90" cy="9" r="3.5" fill="#FAF7EF" stroke="#8B8880" stroke-width="1.4" stroke-dasharray="2 2"/>
+    <g transform="translate(114, 0)">
+      <text x="0" y="12" font-family="Noto Serif SC, serif" font-size="10" fill="#8B8880" letter-spacing="2">记忆 · 已沉淀</text>
+      <text x="0" y="30" font-family="Noto Serif SC, serif" font-size="12" fill="#1C1B19">「先减，再加」— 从这一轮对话抽出</text>
+    </g>
+  </g>
+
+  <!-- 右上小印 -->
+  <g transform="translate(800, 64) rotate(-6)">
+    <rect x="0" y="0" width="36" height="36" rx="3" fill="#B8372F" opacity="0.93"/>
+    <text x="18" y="26" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="17" font-weight="500" fill="#FAF7EF">录</text>
+  </g>
+</svg>
