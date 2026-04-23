@@ -1,14 +1,17 @@
 import { setRequestLocale } from 'next-intl/server'
 import { notFound, redirect } from 'next/navigation'
 import { FirstActionCard } from '@/components/features/plan/FirstActionCard'
+import { FocusPlanButton } from '@/components/features/plan/FocusPlanButton'
 import { MilestoneSection } from '@/components/features/plan/MilestoneSection'
 import { RegenerateButton } from '@/components/features/plan/RegenerateButton'
 import { RelationRail } from '@/components/features/relations/RelationRail'
 import { InkStroke } from '@/components/ink/InkStroke'
 import { Seal } from '@/components/ink/Seal'
+import { PersonaAvatar } from '@/components/proactive/PersonaAvatar'
 import { Link } from '@/lib/i18n/navigation'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
+import { getPersona, isValidPersonaId } from '@/lib/proactive/personas'
 
 export default async function PlanPage({
   params,
@@ -42,6 +45,10 @@ export default async function PlanPage({
   const { plan } = idea
   const successCriteria = (plan.successCriteria as unknown as string[]) ?? []
   const risks = (plan.risks as unknown as string[]) ?? []
+  // 若历史 plan 没存 persona · 降级为 null 不展示 seal（避免误导）
+  const planPersona = isValidPersonaId(plan.generatedByPersonaId)
+    ? getPersona(plan.generatedByPersonaId)
+    : null
 
   return (
     <div className="mx-auto flex w-full max-w-7xl gap-6 px-4 py-10 lg:px-6">
@@ -57,6 +64,14 @@ export default async function PlanPage({
             <div className="mt-4 w-16">
               <InkStroke variant="medium" />
             </div>
+            {planPersona && planPersona.id !== 'auto' && (
+              <p
+                className="text-ink-light font-serif-cn mt-3 inline-flex items-center gap-2 text-[11px] tracking-[0.15em]"
+                title={`本方案由 ${planPersona.name} 的视角生成`}
+              >
+                <PersonaAvatar persona={planPersona} size={28} />由 {planPersona.name} 拟定
+              </p>
+            )}
           </div>
           <Seal variant="done" size="lg">
             已定
@@ -64,6 +79,17 @@ export default async function PlanPage({
         </header>
 
         <FirstActionCard text={plan.firstAction} />
+
+        <FocusPlanButton
+          tasks={plan.milestones.flatMap((m) =>
+            m.tasks.map((t) => ({
+              id: t.id,
+              priority: t.priority,
+              status: t.status,
+              focusedOn: t.focusedOn,
+            })),
+          )}
+        />
 
         <section className="mt-12">
           <h2 className="font-serif-cn text-ink-heavy mb-6 text-lg">成功标准</h2>

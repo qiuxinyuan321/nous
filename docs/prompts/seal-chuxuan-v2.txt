@@ -1,0 +1,29 @@
+A single traditional Chinese carved stone seal imprint, photographed in pure isolation, centered on a completely clean pure white background.
+
+The seal contains EXACTLY ONE Chinese character, and that character MUST be 楚 (pinyin: chǔ, meaning "clarity, state of Chu, distinct"). This is a classical Han / Qin dynasty small seal script (秦汉小篆) rendering.
+
+STRUCTURE of the character 楚 in small seal script — you must render these two vertical zones top-to-bottom, in this exact order:
+  • TOP zone: 林 radical — TWO copies of the 木 (tree) radical placed side by side. Each 木 in small seal script looks like a central vertical stem with two curved branches going up-left and up-right near the top, and two curved roots going down-left and down-right near the bottom. The two trees are placed symmetrically side-by-side, sharing the top register.
+  • BOTTOM zone: 疋 radical — a small cap at the top (like a flattened arc), below which are two curving symmetrical strokes that splay outward and down like a pair of bent legs, with a small vertical drop in the middle.
+Total: TWO tree radicals on top, one 疋 foot radical beneath. Top-to-bottom layered structure.
+
+CRITICAL — what the character is NOT:
+  • NOT 林 alone (two trees only) — there must be a 疋 beneath
+  • NOT 森 (three trees) — ONLY TWO trees on top
+  • NOT 丹 / 己 / anything resembling 丹丹己
+  • NOT any other character — only 楚
+
+The seal is pressed in vermilion cinnabar red paste (朱砂印泥), raised positive relief (阳文 yang wen) carving. Simple square red border frame with imperfect hand-stamped edges. Natural uneven ink distribution, slight bleeding, imperfect spots.
+
+Square format, seal occupies the center 70% of the frame. Slightly rotated -2 degrees. Pure clean white seamless background.
+
+Photography style: museum artifact documentation from a classical Chinese seal catalog (印谱), even soft diffused studio lighting.
+
+Color palette: pure white background, vermilion cinnabar red (approximately #C8342B) only.
+
+Strictly forbidden:
+- NO character other than 楚
+- NO additional Chinese characters, Latin letters, or symbols
+- NO paper texture, drop shadow, glow, or gradient on background
+- NO outer decorative frame beyond the simple seal border
+- NO broken or disconnected stroke components

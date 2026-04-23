@@ -12,9 +12,10 @@
  */
 import { useSyncExternalStore } from 'react'
 import { useLocale } from 'next-intl'
-import { readPersonaIdFromStorage, subscribePersonaChange } from '@/lib/proactive/persona-client'
 import { greetForPersona } from '@/lib/proactive/greeting'
 import { getPersona } from '@/lib/proactive/personas'
+import { usePersonaId } from '@/lib/proactive/use-persona-id'
+import { PersonaAvatar } from '@/components/proactive/PersonaAvatar'
 
 interface Props {
   todayDone: number
@@ -29,17 +30,13 @@ const getClientHour = () => new Date().getHours()
 const getServerHour = () => null
 
 export function GreetingCard({ todayDone, todayTotal, weekIdeas, streak }: Props) {
-  const personaId = useSyncExternalStore(
-    subscribePersonaChange,
-    readPersonaIdFromStorage,
-    readPersonaIdFromStorage,
-  )
+  const { personaId, hydrated } = usePersonaId()
   const hour = useSyncExternalStore<number | null>(subscribeNoop, getClientHour, getServerHour)
   const rawLocale = useLocale()
   const locale: 'zh-CN' | 'en-US' = rawLocale === 'en-US' ? 'en-US' : 'zh-CN'
 
-  if (hour === null) {
-    // SSR 占位 · 保持高度稳定 · 无闪烁
+  // hour 或 persona 未 ready 时占位 · 保持高度稳定 · 避免 hydration mismatch
+  if (hour === null || !hydrated) {
     return (
       <section
         aria-hidden
@@ -64,13 +61,8 @@ export function GreetingCard({ todayDone, todayTotal, weekIdeas, streak }: Props
       aria-label="Nous 开场"
       className="border-ink-light/20 bg-paper-aged/25 mb-6 flex items-center gap-3 rounded-sm border px-4 py-3"
     >
-      <span
-        aria-hidden
-        className="font-serif-cn text-ink-heavy shrink-0 text-xl leading-none"
-        title={persona.name}
-      >
-        {persona.avatar}
-      </span>
+      <PersonaAvatar persona={persona} size={32} className="shrink-0" />
+
       <p className="font-serif-cn text-ink-heavy flex-1 text-[13px] leading-relaxed">{text}</p>
       <span className="text-ink-light hidden text-[10px] tracking-widest uppercase md:block">
         {persona.name}

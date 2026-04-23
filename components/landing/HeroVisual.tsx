@@ -25,7 +25,7 @@ export function HeroVisual({ alt, className }: HeroVisualProps) {
       )}
     >
       <Image
-        src="/hero.jpg"
+        src="/hero.webp"
         alt={alt}
         fill
         priority

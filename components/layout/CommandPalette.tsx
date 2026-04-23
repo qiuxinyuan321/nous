@@ -49,7 +49,10 @@ interface NoteResult {
  * 从而避免在 effect 内做 setState 重置。
  */
 export function CommandPalette() {
-  const { open, closePalette } = usePaletteStore()
+  const open = usePaletteStore((s) => s.open)
+  const closePalette = usePaletteStore((s) => s.closePalette)
+  // initialMode 用作 key · 从 'command' 切到 'capture' / 'search' 时 remount PaletteBody · 内部 mode 自然重置
+  const initialMode = usePaletteStore((s) => s.initialMode)
 
   // 全局 ⌘K / Ctrl+K 唤起 · ⌘⇧K 直接进深度搜
   useEffect(() => {
@@ -71,7 +74,11 @@ export function CommandPalette() {
     return () => window.removeEventListener('keydown', handler)
   }, [])
 
-  return <AnimatePresence>{open && <PaletteBody onClose={closePalette} />}</AnimatePresence>
+  return (
+    <AnimatePresence mode="wait">
+      {open && <PaletteBody key={initialMode} onClose={closePalette} />}
+    </AnimatePresence>
+  )
 }
 
 /* ────── 面板主体（仅在 open 时挂载，天然重置内部 state） ────── */
@@ -81,12 +88,10 @@ function PaletteBody({ onClose }: { onClose: () => void }) {
   const router = useRouter()
   const t = useTranslations('inbox.quickCapture')
 
-  // 从 store 的 initialMode 决定初始模式（⌘⇧K 走 search）
+  // 初始 mode 从 store 读一次 · 后续的 initialMode 切换由 parent 通过 key 触发 remount 完成
+  // 规则：store.initialMode 变化（openPalette / openSearch / openCapture 触发）→ parent key 变
+  //      → PaletteBody remount → 此处重新读取最新 initialMode 作为 mode 初始值
   const initialMode = usePaletteStore.getState().initialMode
-  useEffect(() => {
-    usePaletteStore.getState().consumeInitialMode()
-  }, [])
-
   const [mode, setMode] = useState<Mode>(initialMode)
   const [query, setQuery] = useState('')
   const [captureValue, setCaptureValue] = useState('')
@@ -200,7 +205,10 @@ function PaletteBody({ onClose }: { onClose: () => void }) {
             noteResults={noteResults}
             onSelectIdea={(id) => go(`/refine/${id}`)}
             onSelectNote={(id) => go(`/notes?id=${id}`)}
-            onCapture={() => setMode('capture')}
+            onCapture={(prefill) => {
+              if (prefill) setCaptureValue(prefill)
+              setMode('capture')
+            }}
             onTheme={() => {
               setQuery('')
               setMode('theme')
@@ -311,7 +319,8 @@ interface CommandModeProps {
   noteResults: NoteResult[]
   onSelectIdea: (id: string) => void
   onSelectNote: (id: string) => void
-  onCapture: () => void
+  /** 无命中时传入 query 作为预填 · 其他入口不传参 */
+  onCapture: (prefill?: string) => void
   onTheme: () => void
   onSearch: () => void
   onGo: (path: string) => void
@@ -341,6 +350,19 @@ function CommandMode({
         <Command.Input
           value={query}
           onValueChange={setQuery}
+          onKeyDown={(e) => {
+            // cmdk 默认 Enter 选中高亮 item · 无高亮（= 无命中）时就把输入落成新想法
+            if (e.key === 'Enter' && !e.shiftKey) {
+              const q = query.trim()
+              if (!q) return
+              const root = e.currentTarget.closest('[cmdk-root]') as HTMLElement | null
+              const selected = root?.querySelector('[cmdk-item][data-selected="true"]')
+              if (!selected) {
+                e.preventDefault()
+                onCapture(q)
+              }
+            }
+          }}
           placeholder="搜索想法、笔记，或输入命令..."
           className="font-serif-cn text-ink-heavy flex-1 bg-transparent text-base outline-none placeholder:text-[color:var(--ink-light)]"
           autoFocus

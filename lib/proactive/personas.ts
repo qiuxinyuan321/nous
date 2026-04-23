@@ -24,7 +24,13 @@ export type PersonaId = 'auto' | 'zhuge' | 'rick' | 'chuxuan' | 'socrates' | 'zh
 export interface Persona {
   id: PersonaId
   name: string
+  /** Fallback 字符 · 用于 <option> 等无法嵌入 img 的场景 · 也是 SSR 首帧占位 */
   avatar: string
+  /**
+   * 朱砂印章 webp 路径 · 置于 public/personas/{id}.webp
+   * auto 无印章（保持 ◌ 品牌符号）· 其他 persona 各一方 1024→256 抠透明印谱
+   */
+  seal?: string
   tagline: string
   rewrite: (raw: string, kind: PromptKind) => string
   rewriteCTA?: (cta: string, kind: PromptKind) => string
@@ -84,6 +90,7 @@ const auto: Persona = {
 // ─────────────────────────────────────────────────
 const zhuge: Persona = {
   id: 'zhuge',
+  seal: '/personas/zhuge.webp',
   name: '诸葛亮',
   avatar: '羽',
   tagline: '谋士 · 文言温厚 · 可深思',
@@ -144,6 +151,7 @@ const zhuge: Persona = {
 // ─────────────────────────────────────────────────
 const rick: Persona = {
   id: 'rick',
+  seal: '/personas/rick.webp',
   name: 'Rick',
   avatar: 'R',
   tagline: 'C-137 · *打嗝* · 虚无主义 · Wubba lubba dub dub',
@@ -205,6 +213,7 @@ const rick: Persona = {
 // ─────────────────────────────────────────────────
 const chuxuan: Persona = {
   id: 'chuxuan',
+  seal: '/personas/chuxuan.webp',
   name: '楚轩',
   avatar: '楚',
   tagline: '《无限恐怖》· 楚轩认为 · 代价必须合理',
@@ -292,6 +301,7 @@ const chuxuan: Persona = {
 // ─────────────────────────────────────────────────
 const socrates: Persona = {
   id: 'socrates',
+  seal: '/personas/socrates.webp',
   name: '苏格拉底',
   avatar: 'Σ',
   tagline: '反诘 · 我一无所知',
@@ -339,6 +349,7 @@ const socrates: Persona = {
 // ─────────────────────────────────────────────────
 const zhuangzi: Persona = {
   id: 'zhuangzi',
+  seal: '/personas/zhuangzi.webp',
   name: '庄子',
   avatar: '鲲',
   tagline: '寓言 · 相对 · 逍遥',
@@ -388,6 +399,7 @@ const zhuangzi: Persona = {
 // ─────────────────────────────────────────────────
 const holmes: Persona = {
   id: 'holmes',
+  seal: '/personas/holmes.webp',
   name: 'Holmes',
   avatar: 'H',
   tagline: 'Observation + Deduction · 排除不可能',

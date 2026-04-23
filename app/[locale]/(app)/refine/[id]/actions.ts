@@ -94,6 +94,7 @@ export async function generatePlanAction(
           successCriteria: draft.successCriteria,
           firstAction: draft.firstAction,
           risks: draft.risks,
+          generatedByPersonaId: personaId,
         },
       })
       for (const [mIdx, m] of draft.milestones.entries()) {
@@ -215,6 +216,7 @@ export async function regeneratePlanAction(
           successCriteria: draft.successCriteria,
           firstAction: draft.firstAction,
           risks: draft.risks,
+          generatedByPersonaId: personaId,
         },
       })
       for (const [mIdx, m] of draft.milestones.entries()) {

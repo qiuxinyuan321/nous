@@ -59,9 +59,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         rel="preload"
         as="image"
         fetchPriority="high"
-        imageSrcSet="/_next/image?url=%2Fhero.jpg&w=640&q=75 640w, /_next/image?url=%2Fhero.jpg&w=828&q=75 828w, /_next/image?url=%2Fhero.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fhero.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fhero.jpg&w=1920&q=75 1920w"
+        imageSrcSet="/_next/image?url=%2Fhero.webp&w=640&q=75 640w, /_next/image?url=%2Fhero.webp&w=828&q=75 828w, /_next/image?url=%2Fhero.webp&w=1080&q=75 1080w, /_next/image?url=%2Fhero.webp&w=1200&q=75 1200w, /_next/image?url=%2Fhero.webp&w=1920&q=75 1920w"
         imageSizes="(max-width: 768px) 100vw, 60vw"
-        href="/_next/image?url=%2Fhero.jpg&w=1200&q=75"
+        href="/_next/image?url=%2Fhero.webp&w=1200&q=75"
       />
       <main className="relative mx-auto max-w-6xl px-6">
         {/* 纸面装饰 · 柔色光晕 · 移动端隐藏（4 个 blur-100px 合成层是 GPU 灾难） */}

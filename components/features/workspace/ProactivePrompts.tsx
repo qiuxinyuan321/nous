@@ -5,12 +5,9 @@ import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 
 import { useRouter } from 'next/navigation'
 import { useLocale } from 'next-intl'
 import { cn } from '@/lib/utils'
-import { DEFAULT_PERSONA_ID, PERSONAS, type PersonaId } from '@/lib/proactive/personas'
-import {
-  readPersonaIdFromStorage,
-  subscribePersonaChange,
-  writePersonaIdToStorage,
-} from '@/lib/proactive/persona-client'
+import { PERSONAS, type PersonaId } from '@/lib/proactive/personas'
+import { writePersonaIdToStorage } from '@/lib/proactive/persona-client'
+import { usePersonaId } from '@/lib/proactive/use-persona-id'
 import type { ProactivePrompt, ProactiveResponse } from '@/lib/proactive/types'
 
 const DISMISS_KEY = 'nous.proactive.dismissed.v1'
@@ -79,11 +76,7 @@ export function ProactivePrompts() {
   const raw = useSyncExternalStore(subscribeDismiss, readRawDismiss, () => '{}')
   const dismissed = useMemo(() => parseDismiss(raw), [raw])
 
-  const personaId = useSyncExternalStore(
-    subscribePersonaChange,
-    readPersonaIdFromStorage,
-    () => DEFAULT_PERSONA_ID,
-  )
+  const { personaId } = usePersonaId()
 
   // persona 变化 · 重新 fetch
   useEffect(() => {

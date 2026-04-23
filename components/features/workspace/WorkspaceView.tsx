@@ -45,6 +45,7 @@ export function WorkspaceView({ focusTasks, dateLabel, stats }: WorkspaceViewPro
   const tCommon = useTranslations('common')
   const { data: ideas, isLoading, error } = useIdeas()
   const openPalette = usePaletteStore((s) => s.openPalette)
+  const openCapture = usePaletteStore((s) => s.openCapture)
   const isMac = typeof navigator !== 'undefined' && /Mac/.test(navigator.platform)
   const kbd = isMac ? '⌘K' : 'Ctrl+K'
 
@@ -66,16 +67,27 @@ export function WorkspaceView({ focusTasks, dateLabel, stats }: WorkspaceViewPro
           <p className="text-ink-light text-xs tracking-widest uppercase">{dateLabel}</p>
           <h1 className="font-serif-cn text-ink-heavy mt-1 text-3xl">工作台</h1>
         </div>
-        <button
-          onClick={openPalette}
-          className="border-ink-light/40 bg-paper-aged/40 text-ink-medium hover:border-ink-heavy hover:text-ink-heavy flex items-center gap-2 rounded-md border px-4 py-2 text-sm transition"
-        >
-          <span>+</span>
-          <span>落一笔</span>
-          <kbd className="border-ink-light/40 rounded border px-1.5 py-0.5 font-mono text-[10px]">
+        {/* 分段按钮：主键"落一笔"直连捕获 · 副键 ⌘K 打开命令面板 */}
+        <div className="border-ink-light/40 bg-paper-aged/40 hover:border-ink-heavy flex items-stretch overflow-hidden rounded-md border text-sm transition">
+          <button
+            type="button"
+            onClick={openCapture}
+            title="直接开始记录一个新想法"
+            className="text-ink-medium hover:text-ink-heavy hover:bg-paper-aged flex items-center gap-2 px-4 py-2 transition"
+          >
+            <span aria-hidden>+</span>
+            <span>落一笔</span>
+          </button>
+          <button
+            type="button"
+            onClick={openPalette}
+            title="打开命令面板（搜索 / 跳转 / 主题）"
+            aria-label="命令面板"
+            className="border-ink-light/30 text-ink-light hover:bg-paper-rice hover:text-ink-heavy flex items-center border-l px-2 font-mono text-[10px] transition"
+          >
             {kbd}
-          </kbd>
-        </button>
+          </button>
+        </div>
       </header>
 
       {/* Persona 化开场白 · 按时段 + 今日 + persona 生成 */}
@@ -173,11 +185,12 @@ export function WorkspaceView({ focusTasks, dateLabel, stats }: WorkspaceViewPro
               </Seal>
               <p className="text-ink-medium mt-6 text-[15px]">{t('empty')}</p>
               <button
-                onClick={openPalette}
+                onClick={openCapture}
                 className="text-indigo-stone hover:text-ink-heavy mt-4 text-sm underline-offset-4 transition hover:underline"
               >
-                按 {kbd} 开始
+                + 落第一笔
               </button>
+              <span className="text-ink-light/70 mt-1 text-[10px]">或按 {kbd} 打开命令面板</span>
             </div>
           ) : (
             <div className="grid gap-4">
@@ -211,7 +224,6 @@ function FocusPanel({ tasks }: { tasks: FocusTaskItem[]; dateLabel: string }) {
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
   const activeTaskId = usePomodoroStore((s) => s.activeTaskId)
-  const setTask = usePomodoroStore((s) => s.setTask)
 
   const [localStatus, setLocalStatus] = useState<Record<string, string>>(() =>
     Object.fromEntries(tasks.map((t) => [t.id, t.status])),

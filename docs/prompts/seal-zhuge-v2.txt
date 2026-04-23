@@ -1,0 +1,31 @@
+A single traditional Chinese carved stone seal imprint, photographed in pure isolation, centered on a completely clean pure white background.
+
+The seal contains EXACTLY ONE Chinese character, and that character MUST be 亮 (pinyin: liàng, meaning "bright, clear"). This is a classical Han / Qin dynasty small seal script (秦汉小篆) rendering.
+
+STRUCTURE of the character 亮 in small seal script — you must render these three vertical zones top-to-bottom, in this exact order:
+  • TOP zone: 亠 radical — one short horizontal stroke at the very top, sometimes with a small dot above it.
+  • MIDDLE zone: 口 — a small rectangular square shape.
+  • BOTTOM zone: 儿 — two vertical legs splaying slightly outward, like a pair of stretched brackets standing on the ground.
+Total: three distinct stacked elements, vertically composed, top-heavy-to-bottom rhythm.
+
+CRITICAL — what the character is NOT:
+  • NOT 壽 (longevity) — do NOT render horizontal ladder-like stacked lines
+  • NOT 喜 (joy) — do NOT put a 口 at the bottom
+  • NOT 寿 / 帝 / 亭 / 高 — these have different stroke structures
+  • NOT any other character — only 亮
+
+The seal is pressed in vermilion cinnabar red paste (朱砂印泥), showing natural uneven ink distribution: slight bleeding at stroke edges, tiny imperfect spots, thicker ink at some intersections. Raised positive relief (阳文 yang wen) carving. The seal has a simple square red border frame with imperfect hand-stamped edges.
+
+Square format, seal occupies the center 70% of the frame. Slightly rotated -2 degrees. Pure clean white seamless background. No paper fiber visible.
+
+Photography style: museum artifact documentation from a classical Chinese seal catalog (印谱), even soft diffused studio lighting, sharp focus on seal edges.
+
+Color palette: pure white background, vermilion cinnabar red (approximately #C8342B) only. No other colors.
+
+Strictly forbidden:
+- NO character other than 亮
+- NO additional Chinese characters, Latin letters, or symbols
+- NO ladder-like horizontal stacked pattern (that is 壽, wrong)
+- NO two squares stacked (that is 喜, wrong)
+- NO paper texture, drop shadow, glow, or gradient on background
+- NO outer decorative frame beyond the simple seal border

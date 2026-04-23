@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { NotesSidebar } from './NotesSidebar'
 import { NoteEditor } from './NoteEditor'
@@ -23,10 +23,6 @@ export function NotesView() {
     setLastUrlId(urlId)
     setSelectedNoteId(urlId)
   }
-
-  const handleSelectNote = useCallback((id: string) => {
-    setSelectedNoteId(id)
-  }, [])
 
   const { data: note, isLoading } = useNote(selectedNoteId)
 

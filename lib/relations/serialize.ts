@@ -5,6 +5,7 @@
  * 统一归一化，保证上层渲染用同一套字段。
  */
 
+import { getPersona, isValidPersonaId } from '@/lib/proactive/personas'
 import type { EntityRef } from './types'
 
 const SNIPPET_LEN = 120
@@ -86,11 +87,23 @@ export function toMessageRef(msg: {
   phase: string
   ideaId: string
   createdAt: Date
+  /** assistant 消息的生成 persona · 有值时标题显示具体智者名（"诸葛亮 回应"） */
+  personaId?: string | null
 }): EntityRef {
+  let title: string
+  if (msg.role === 'user') {
+    title = '我说'
+  } else if (isValidPersonaId(msg.personaId) && msg.personaId !== 'auto') {
+    // 具名 persona · 显示"XX 回应"
+    title = `${getPersona(msg.personaId).name} 回应`
+  } else {
+    // auto / 历史无 personaId 数据 · 保持通用文案
+    title = 'AI 回应'
+  }
   return {
     type: 'message',
     id: msg.id,
-    title: msg.role === 'user' ? '我说' : 'AI 回应',
+    title,
     snippet: snippet(msg.content),
     timestamp: msg.createdAt,
     meta: { role: msg.role, phase: msg.phase, ideaId: msg.ideaId },

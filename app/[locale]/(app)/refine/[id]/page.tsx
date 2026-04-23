@@ -31,7 +31,11 @@ export default async function RefinePage({
 
   const initialMessages: ChatMessage[] = idea.messages
     .filter((m) => m.role === 'user' || m.role === 'assistant')
-    .map((m) => ({ role: m.role as 'user' | 'assistant', content: m.content }))
+    .map((m) => ({
+      role: m.role as 'user' | 'assistant',
+      content: m.content,
+      personaId: m.personaId ?? null,
+    }))
 
   const userTurnCount = initialMessages.filter((m) => m.role === 'user').length
   const initialPhase: Phase = phaseForMessageCount(userTurnCount)

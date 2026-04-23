@@ -137,6 +137,8 @@ export async function POST(req: Request) {
             role: 'assistant',
             content: text,
             phase,
+            // 非 auto 时才写 · auto 写 null 让气泡保持默认样式 · 不显眼
+            personaId: personaId === 'auto' ? null : personaId,
             metadata: {
               model: provider.model,
               source: provider.source,
