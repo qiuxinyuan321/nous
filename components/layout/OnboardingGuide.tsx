@@ -1,6 +1,6 @@
 'use client'
 
-import { type ReactNode, useCallback, useState } from 'react'
+import { type ReactNode, useCallback, useMemo, useState } from 'react'
 import { PERSONAS } from '@/lib/proactive/personas'
 import { PersonaAvatar } from '@/components/proactive/PersonaAvatar'
 
@@ -78,6 +78,10 @@ export function OnboardingGuide() {
     return !localStorage.getItem(STORAGE_KEY)
   })
   const [step, setStep] = useState(0)
+  const kbd = useMemo(() => {
+    if (typeof navigator === 'undefined') return 'Ctrl+K'
+    return /Mac|iPhone|iPad|iPod/.test(navigator.platform) ? '⌘K' : 'Ctrl+K'
+  }, [])
 
   const dismiss = useCallback(() => {
     setVisible(false)
@@ -114,7 +118,9 @@ export function OnboardingGuide() {
             <div className="text-4xl">{current.icon}</div>
           )}
           <h3 className="font-serif-cn text-ink-heavy mt-4 text-lg font-medium">{current.title}</h3>
-          <p className="text-ink-medium mt-3 text-sm leading-relaxed">{current.desc}</p>
+          <p className="text-ink-medium mt-3 text-sm leading-relaxed">
+            {current.desc.replace('⌘K', kbd)}
+          </p>
         </div>
 
         {/* Progress dots */}

@@ -11,6 +11,8 @@ import { Pomodoro } from '@/components/features/focus/Pomodoro'
 import { useIdeas } from '@/lib/hooks/useIdeas'
 import { usePaletteStore } from '@/lib/stores/palette'
 import { usePomodoroStore } from '@/lib/stores/pomodoro'
+import { InlineIdeaCapture } from '@/components/features/inbox/InlineIdeaCapture'
+import { ActionError, LoadingCards } from '@/components/ui/StateViews'
 import type { FocusTaskItem } from '@/components/features/focus/FocusView'
 import { GreetingCard } from './GreetingCard'
 import { ProactivePrompts } from './ProactivePrompts'
@@ -173,24 +175,29 @@ export function WorkspaceView({ focusTasks, dateLabel, stats }: WorkspaceViewPro
           </div>
 
           {isLoading ? (
-            <p className="text-ink-light py-12 text-center text-sm">{tCommon('loading')}</p>
+            <LoadingCards title={tCommon('loading')} count={2} />
           ) : error ? (
-            <p className="text-cinnabar py-12 text-center text-sm">
-              {tCommon('error')}: {(error as Error).message}
-            </p>
+            <div className="py-8">
+              <ActionError
+                detail={(error as Error).message}
+                onRetry={() => window.location.reload()}
+              />
+            </div>
           ) : !ideas || ideas.length === 0 ? (
-            <div className="flex flex-col items-center py-16 text-center">
+            <div className="flex flex-col items-center py-10 text-center">
               <Seal variant="pending" size="lg">
                 待
               </Seal>
               <p className="text-ink-medium mt-6 text-[15px]">{t('empty')}</p>
+              <div className="mt-5 w-full max-w-xl">
+                <InlineIdeaCapture compact />
+              </div>
               <button
                 onClick={openCapture}
-                className="text-indigo-stone hover:text-ink-heavy mt-4 text-sm underline-offset-4 transition hover:underline"
+                className="text-ink-light hover:text-ink-heavy mt-3 text-xs underline-offset-4 transition hover:underline"
               >
-                + 落第一笔
+                或按 {kbd} 打开命令面板
               </button>
-              <span className="text-ink-light/70 mt-1 text-[10px]">或按 {kbd} 打开命令面板</span>
             </div>
           ) : (
             <div className="grid gap-4">

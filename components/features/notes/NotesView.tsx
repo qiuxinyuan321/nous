@@ -7,6 +7,7 @@ import { NoteEditor } from './NoteEditor'
 import { BacklinkPanel } from './BacklinkPanel'
 import { useNote } from '@/lib/hooks/useNotes'
 import { InkStroke } from '@/components/ink/InkStroke'
+import { LoadingCards } from '@/components/ui/StateViews'
 
 export function NotesView() {
   const searchParams = useSearchParams()
@@ -37,7 +38,11 @@ export function NotesView() {
         onSearchChange={setSearchQuery}
       />
       <main className="flex-1 overflow-y-auto">
-        {selectedNoteId && note ? (
+        {selectedNoteId && isLoading ? (
+          <div className="px-8 py-10">
+            <LoadingCards title="正在翻开这篇笔记…" count={2} />
+          </div>
+        ) : selectedNoteId && note ? (
           <>
             <NoteEditor
               key={note.id}
@@ -55,7 +60,7 @@ export function NotesView() {
             <div className="w-16 opacity-70">
               <InkStroke variant="thin" />
             </div>
-            <p className="text-ink-light text-sm">{isLoading ? '加载中…' : '选择或新建一篇笔记'}</p>
+            <p className="text-ink-light text-sm">选择或新建一篇笔记</p>
             <p className="text-ink-light/50 text-xs">
               支持 Markdown · 双向链接 [[笔记名]] · AI 整理
             </p>

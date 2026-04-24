@@ -8,6 +8,7 @@ import { useGraph } from '@/lib/hooks/useGraph'
 import { IdeaGraph } from '@/components/features/graph/IdeaGraph'
 import { NodeDetail } from '@/components/features/graph/NodeDetail'
 import { cn } from '@/lib/utils'
+import { ActionError, LoadingCards } from '@/components/ui/StateViews'
 import type { IdeaStatus } from '@/lib/graph/types'
 
 const STATUS_OPTIONS: Array<{ key: IdeaStatus | 'all'; color: string }> = [
@@ -43,13 +44,13 @@ export function GraphView() {
   }, [])
 
   if (isLoading) {
-    return <p className="text-ink-light py-24 text-center text-sm">{tCommon('loading')}</p>
+    return <LoadingCards title={tCommon('loading')} count={4} />
   }
   if (error) {
     return (
-      <p className="text-cinnabar py-24 text-center text-sm">
-        {tCommon('error')}: {(error as Error).message}
-      </p>
+      <div className="py-20">
+        <ActionError detail={(error as Error).message} onRetry={() => window.location.reload()} />
+      </div>
     )
   }
   if (!data) return null

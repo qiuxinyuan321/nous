@@ -5,6 +5,8 @@ import { IdeaCard } from '@/components/features/inbox/IdeaCard'
 import { Seal } from '@/components/ink/Seal'
 import { useIdeas } from '@/lib/hooks/useIdeas'
 import { usePaletteStore } from '@/lib/stores/palette'
+import { InlineIdeaCapture } from '@/components/features/inbox/InlineIdeaCapture'
+import { ActionError, LoadingCards } from '@/components/ui/StateViews'
 
 export function InboxView() {
   const t = useTranslations('inbox')
@@ -16,14 +18,14 @@ export function InboxView() {
   const kbd = isMac ? '⌘K' : 'Ctrl+K'
 
   if (isLoading) {
-    return <p className="text-ink-light py-24 text-center text-sm">{tCommon('loading')}</p>
+    return <LoadingCards title={tCommon('loading')} />
   }
 
   if (error) {
     return (
-      <p className="text-cinnabar py-24 text-center text-sm">
-        {tCommon('error')}: {(error as Error).message}
-      </p>
+      <div className="py-20">
+        <ActionError detail={(error as Error).message} onRetry={() => window.location.reload()} />
+      </div>
     )
   }
 
@@ -44,16 +46,19 @@ export function InboxView() {
       </div>
 
       {!ideas || ideas.length === 0 ? (
-        <div className="flex flex-col items-center py-32 text-center">
+        <div className="mx-auto flex max-w-2xl flex-col items-center py-20 text-center">
           <Seal variant="pending" size="lg">
             待
           </Seal>
           <p className="text-ink-medium mt-8 text-base">{t('empty')}</p>
+          <div className="mt-6 w-full">
+            <InlineIdeaCapture />
+          </div>
           <button
             onClick={openPalette}
-            className="text-indigo-stone hover:text-ink-heavy mt-6 text-sm underline-offset-4 transition hover:underline"
+            className="text-ink-light hover:text-ink-heavy mt-4 text-xs underline-offset-4 transition hover:underline"
           >
-            按 {kbd} 开始
+            或按 {kbd} 打开命令面板
           </button>
         </div>
       ) : (

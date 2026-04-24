@@ -139,16 +139,18 @@ function KeyRow({ item, onChanged }: { item: ApiKeyRow; onChanged: () => Promise
 
 function KeyForm({ onDone }: { onDone: () => void }) {
   const router = useRouter()
+  const defaultPreset = findPreset('openai')
   const [providerId, setProviderId] = useState<string>('openai')
-  const [baseUrl, setBaseUrl] = useState('')
+  const [baseUrl, setBaseUrl] = useState(defaultPreset?.defaultBaseUrl ?? '')
   const [apiKey, setApiKey] = useState('')
-  const [model, setModel] = useState('')
+  const [model, setModel] = useState(defaultPreset?.defaultModel ?? '')
   const [label, setLabel] = useState('')
   const [makeDefault, setMakeDefault] = useState(true)
   const [testResult, setTestResult] = useState<{ ok: boolean; msg: string } | null>(null)
   const [isTesting, setIsTesting] = useState(false)
   const [isSaving, startSaving] = useTransition()
   const [error, setError] = useState<string | null>(null)
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
 
   const preset = findPreset(providerId)
 
@@ -158,9 +160,25 @@ function KeyForm({ onDone }: { onDone: () => void }) {
     setBaseUrl(p?.defaultBaseUrl ?? '')
     setModel(p?.defaultModel ?? '')
     setTestResult(null)
+    setFieldErrors({})
+  }
+
+  const validate = () => {
+    const next: Record<string, string> = {}
+    if (!apiKey.trim()) next.apiKey = '请先填入 API Key'
+    if (!model.trim()) next.model = '请选择或输入模型名'
+    if (providerId === 'openai-compatible' && !baseUrl.trim()) {
+      next.baseUrl = '自定义兼容服务需要 Base URL'
+    }
+    if (baseUrl.trim() && !/^https?:\/\//.test(baseUrl.trim())) {
+      next.baseUrl = 'Base URL 需要以 http:// 或 https:// 开头'
+    }
+    setFieldErrors(next)
+    return Object.keys(next).length === 0
   }
 
   const onTest = async () => {
+    if (!validate()) return
     setTestResult(null)
     setIsTesting(true)
     try {
@@ -169,9 +187,9 @@ function KeyForm({ onDone }: { onDone: () => void }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           provider: providerId,
-          baseUrl: baseUrl || undefined,
-          apiKey,
-          model,
+          baseUrl: baseUrl.trim() || undefined,
+          apiKey: apiKey.trim(),
+          model: model.trim(),
         }),
       })
       const data = (await res.json()) as { ok: boolean; message?: string; status?: number }
@@ -188,16 +206,17 @@ function KeyForm({ onDone }: { onDone: () => void }) {
 
   const onSave = () => {
     setError(null)
+    if (!validate()) return
     startSaving(async () => {
       const res = await fetch('/api/settings/api-keys', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           provider: providerId,
-          label: label || undefined,
-          baseUrl: baseUrl || undefined,
-          apiKey,
-          model,
+          label: label.trim() || undefined,
+          baseUrl: baseUrl.trim() || undefined,
+          apiKey: apiKey.trim(),
+          model: model.trim(),
           isDefault: makeDefault,
         }),
       })
@@ -266,22 +285,33 @@ function KeyForm({ onDone }: { onDone: () => void }) {
             onChange={(e) => {
               setApiKey(e.target.value)
               setTestResult(null)
+              setFieldErrors((prev) => ({ ...prev, apiKey: '' }))
             }}
             placeholder={preset?.keyPrefix ? `${preset.keyPrefix}...` : 'sk-...'}
             className="border-ink-light/40 focus:border-ink-heavy bg-paper-rice/70 w-full rounded-sm border px-3 py-2 font-mono text-sm transition outline-none"
           />
+          {fieldErrors.apiKey && (
+            <p className="text-cinnabar mt-1 text-[11px]">{fieldErrors.apiKey}</p>
+          )}
         </Field>
 
         <Field label="Base URL">
           <input
             type="url"
             value={baseUrl}
-            onChange={(e) => setBaseUrl(e.target.value)}
+            onChange={(e) => {
+              setBaseUrl(e.target.value)
+              setTestResult(null)
+              setFieldErrors((prev) => ({ ...prev, baseUrl: '' }))
+            }}
             placeholder={preset?.defaultBaseUrl || 'https://api.example.com/v1'}
             className="border-ink-light/40 focus:border-ink-heavy bg-paper-rice/70 w-full rounded-sm border px-3 py-2 font-mono text-sm transition outline-none"
           />
           {preset?.defaultBaseUrl && (
-            <p className="text-ink-light mt-1 text-[11px]">留空使用默认 {preset.defaultBaseUrl}</p>
+            <p className="text-ink-light mt-1 text-[11px]">已为你填入推荐地址，可按需替换。</p>
+          )}
+          {fieldErrors.baseUrl && (
+            <p className="text-cinnabar mt-1 text-[11px]">{fieldErrors.baseUrl}</p>
           )}
         </Field>
 
@@ -292,7 +322,11 @@ function KeyForm({ onDone }: { onDone: () => void }) {
                 <button
                   key={m}
                   type="button"
-                  onClick={() => setModel(m)}
+                  onClick={() => {
+                    setModel(m)
+                    setTestResult(null)
+                    setFieldErrors((prev) => ({ ...prev, model: '' }))
+                  }}
                   className={`rounded-sm border px-3 py-1 font-mono text-xs transition ${
                     model === m
                       ? 'border-ink-heavy text-ink-heavy bg-ink-heavy/5'
@@ -305,7 +339,11 @@ function KeyForm({ onDone }: { onDone: () => void }) {
               <input
                 type="text"
                 value={model}
-                onChange={(e) => setModel(e.target.value)}
+                onChange={(e) => {
+                  setModel(e.target.value)
+                  setTestResult(null)
+                  setFieldErrors((prev) => ({ ...prev, model: '' }))
+                }}
                 placeholder="自定义"
                 className="border-ink-light/40 focus:border-ink-heavy bg-paper-rice/70 flex-1 rounded-sm border px-3 py-1 font-mono text-xs transition outline-none"
               />
@@ -314,10 +352,17 @@ function KeyForm({ onDone }: { onDone: () => void }) {
             <input
               type="text"
               value={model}
-              onChange={(e) => setModel(e.target.value)}
+              onChange={(e) => {
+                setModel(e.target.value)
+                setTestResult(null)
+                setFieldErrors((prev) => ({ ...prev, model: '' }))
+              }}
               placeholder="gpt-4o-mini"
               className="border-ink-light/40 focus:border-ink-heavy bg-paper-rice/70 w-full rounded-sm border px-3 py-2 font-mono text-sm transition outline-none"
             />
+          )}
+          {fieldErrors.model && (
+            <p className="text-cinnabar mt-1 text-[11px]">{fieldErrors.model}</p>
           )}
         </Field>
 
@@ -342,9 +387,16 @@ function KeyForm({ onDone }: { onDone: () => void }) {
         </label>
 
         {testResult && (
-          <p className={`text-xs ${testResult.ok ? 'text-celadon' : 'text-cinnabar'}`}>
-            {testResult.msg}
-          </p>
+          <div
+            className={`rounded-sm border px-3 py-2 text-xs ${
+              testResult.ok
+                ? 'border-celadon/30 bg-celadon/5 text-celadon'
+                : 'border-cinnabar/30 bg-cinnabar/5 text-cinnabar'
+            }`}
+          >
+            <p>{testResult.msg}</p>
+            {testResult.ok && <p className="mt-1">连通成功，可以直接保存并设为默认。</p>}
+          </div>
         )}
 
         {error && <p className="text-cinnabar text-xs">错误：{error}</p>}
@@ -352,17 +404,21 @@ function KeyForm({ onDone }: { onDone: () => void }) {
         <div className="flex items-center gap-3 pt-2">
           <button
             onClick={onTest}
-            disabled={isTesting || !apiKey || !model}
+            disabled={isTesting}
             className="border-ink-heavy/40 text-ink-heavy hover:bg-ink-heavy/5 rounded-sm border px-4 py-2 text-sm transition disabled:opacity-50"
           >
             {isTesting ? '测试中…' : '测试连通'}
           </button>
           <button
             onClick={onSave}
-            disabled={isSaving || !apiKey || !model}
-            className="bg-ink-heavy hover:bg-ink-heavy/90 text-paper-rice rounded-sm px-5 py-2 text-sm transition disabled:opacity-60"
+            disabled={isSaving}
+            className={`text-paper-rice rounded-sm px-5 py-2 text-sm transition disabled:opacity-60 ${
+              testResult?.ok
+                ? 'bg-celadon hover:bg-celadon/90'
+                : 'bg-ink-heavy hover:bg-ink-heavy/90'
+            }`}
           >
-            {isSaving ? '保存中…' : '保存'}
+            {isSaving ? '保存中…' : testResult?.ok ? '保存并设为默认' : '保存'}
           </button>
         </div>
       </div>

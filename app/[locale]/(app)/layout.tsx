@@ -22,7 +22,7 @@ export default async function AppLayout({
   return (
     <QueryProvider>
       <AppHeader user={session.user} />
-      <div className="flex-1">{children}</div>
+      <div className="flex-1 pb-20 md:pb-0">{children}</div>
       <CommandPalette />
       <OnboardingGuide />
     </QueryProvider>

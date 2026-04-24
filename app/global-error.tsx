@@ -1,5 +1,8 @@
 'use client'
 
+import { useState } from 'react'
+import Link from 'next/link'
+
 /**
  * Root-level error boundary (Next.js 16 要求).
  * 只在 app/layout.tsx 本身抛错或嵌套 error.tsx 未捕获时兜底。
@@ -12,6 +15,18 @@ export default function GlobalError({
   error: Error & { digest?: string }
   reset: () => void
 }) {
+  const [copied, setCopied] = useState(false)
+
+  async function copyDiagnostic() {
+    const diagnostic = [error.message, error.digest ? `digest: ${error.digest}` : null]
+      .filter(Boolean)
+      .join('\n')
+    if (!diagnostic || !navigator.clipboard) return
+    await navigator.clipboard.writeText(diagnostic)
+    setCopied(true)
+    window.setTimeout(() => setCopied(false), 1400)
+  }
+
   return (
     <html lang="zh-CN">
       <body
@@ -32,26 +47,55 @@ export default function GlobalError({
         <p
           style={{ color: '#4A4842', fontSize: '0.875rem', maxWidth: '32rem', textAlign: 'center' }}
         >
-          {error.message || '未知错误'}
+          页面启动时没有顺利接上。先重试一次；如果仍失败，请检查环境变量、数据库连接或 API Key
+          配置。
         </p>
         {error.digest && (
           <p style={{ color: '#8B8880', fontSize: '0.75rem', fontFamily: 'monospace' }}>
-            digest: {error.digest}
+            诊断编号：{error.digest}
           </p>
         )}
-        <button
-          onClick={reset}
-          style={{
-            background: '#1C1B19',
-            color: '#FAF7EF',
-            padding: '0.5rem 1rem',
-            borderRadius: '2px',
-            border: 'none',
-            cursor: 'pointer',
-          }}
+        <div
+          style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}
         >
-          再试一次
-        </button>
+          <button
+            onClick={reset}
+            style={{
+              background: '#1C1B19',
+              color: '#FAF7EF',
+              padding: '0.5rem 1rem',
+              borderRadius: '2px',
+              border: 'none',
+              cursor: 'pointer',
+            }}
+          >
+            再试一次
+          </button>
+          <Link
+            href="/zh-CN/settings/api-keys"
+            style={{
+              color: '#1C1B19',
+              padding: '0.5rem 1rem',
+              borderRadius: '2px',
+              border: '1px solid #8B8880',
+              textDecoration: 'none',
+            }}
+          >
+            检查 API Key
+          </Link>
+          <button
+            onClick={copyDiagnostic}
+            style={{
+              background: 'transparent',
+              color: '#4A4842',
+              padding: '0.5rem 0.25rem',
+              border: 'none',
+              cursor: 'pointer',
+            }}
+          >
+            {copied ? '已复制' : '复制诊断'}
+          </button>
+        </div>
       </body>
     </html>
   )
